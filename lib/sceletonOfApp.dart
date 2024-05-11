@@ -6,9 +6,9 @@ import 'profilePage.dart';
 final List<String> _appBarTitles = ['Звонки', 'Чаты', 'Профиль'];
 
 final List<Widget> _widgetOptions = <Widget>[
-  callsPage(),
-  chatsPage(),
-  profilePage(),
+  const callsPage(),
+  const chatsPage(),
+  const profilePage(),
 ];
 
 class sceletonOfApp extends StatefulWidget {
@@ -38,11 +38,12 @@ class _sceletonOfAppState
           textAlign: TextAlign.center,
           style: const TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 20.0,
+            fontSize: 36.0,
           ),
         ),
         centerTitle: true,
         backgroundColor: Colors.blue[200],
+        toolbarHeight: 100,
       ),
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
