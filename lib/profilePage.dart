@@ -1,103 +1,228 @@
 import 'package:flutter/material.dart';
+import 'userSettings.dart';
 
-class profilePage extends StatelessWidget {
-  const profilePage({super.key});
+class profilePage extends StatefulWidget {
+  const profilePage({Key? key}) : super(key: key);
+
+  @override
+  _profilePageState createState() => _profilePageState();
+}
+
+class _profilePageState extends State<profilePage> {
+  final TextEditingController _nicknameController = TextEditingController();
+  final TextEditingController _statusController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-      ),
-      body: Stack(
+      body: ListView(
+        physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
         children: [
-          Container(
-            color: Colors.blueGrey, // Серый цвет фона
-            height: MediaQuery.of(context).size.height * 0.2, // Высота первого контейнера (половина экрана)
-          ),
-          Container(
-            color: Colors.white, // Белый цвет фона
-            height: MediaQuery.of(context).size.height, // Высота второго контейнера (весь экран)
-            margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.2), // Отступ сверху (равен высоте первого контейнера)
+          Padding(
+            padding: const EdgeInsets.all(20.0),
             child: Center(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  SizedBox(height: 30),
-                  Text(
-                    'Имя пользователя',
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    'Статус пользователя',
-                    style: TextStyle(fontSize: 18, color: Colors.grey[700]),
-                  ),
-                  SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      IconButton(
-                        icon: Icon(Icons.add_a_photo),
-                        onPressed: () {
-                          // Действие при нажатии на ссылку Instagram
-                        },
-                      ),
-                      Text(
-                        'Подпишитесь на меня в Instagram',
-                        style: TextStyle(fontSize: 16),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      IconButton(
-                        icon: Icon(Icons.videogame_asset),
-                        onPressed: () {
-                          // Действие при нажатии на ссылку игры
-                        },
-                      ),
-                      Text(
-                        'Я в игре!',
-                        style: TextStyle(fontSize: 16),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      IconButton(
-                        icon: Icon(Icons.playlist_play),
-                        onPressed: () {
-                          // Действие при нажатии на альтернативный плейлист
-                        },
-                      ),
-                      Text(
-                        'Альтернативный плейлист - лучшее',
-                        style: TextStyle(fontSize: 16),
-                      ),
-                    ],
-                  ),
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  _buildSectionTitle('Расскажи друзьям о себе'),
+                  _buildDivider(),
+                  _buildProfileField('Ник', 'Введите имя', _nicknameController),
+                  _buildDivider(),
+                  _buildProfileField('Статус', 'Введите статус', _statusController),
+                  _buildDivider(),
+                  _buildSectionTitle('Настройки'),
+                  _buildDivider(),
+                  _buildSettingItem('Скорость сообщения', _buildSpeedOptions()),
+                  _buildDivider(),
+                  _buildSettingSwitch('Вибрация', userSettings.vibration, (newValue) {
+                    setState(() {
+                      userSettings.vibration = newValue;
+                    });
+                  }),
+                  _buildDivider(),
+                  _buildSettingSwitch('Звук', userSettings.sound, (newValue) {
+                    setState(() {
+                      userSettings.sound = newValue;
+                    });
+                  }),
+                  _buildDivider(),
+                  _buildSettingSwitch('Музыка', userSettings.music, (newValue) {
+                    setState(() {
+                      userSettings.music = newValue;
+                    });
+                  }),
+                  _buildDivider(),
+                  _buildSectionTitle('Сохраненная игра'),
+                  _buildDivider(),
+                  _buildSettingButton('Загрузить сохранение'),
+                  _buildDivider(),
+                  _buildSettingButton('Перезапустить историю'),
+                  _buildDivider(),
+                  _buildSectionTitle('Конфиденциальность'),
+                  _buildDivider(),
+                  _buildPrivacyButton('Политика конфиденциальности'),
+                  _buildDivider(),
                 ],
               ),
-            ),
-          ),
-          Positioned(
-            top: MediaQuery.of(context).size.height * 0.2 - 50, // Положение аватара по вертикали (половина экрана - половина размера аватара)
-            left: MediaQuery.of(context).size.width * 0.5 - 50, // Положение аватара по горизонтали (половина экрана - половина размера аватара)
-            child: CircleAvatar(
-              radius: 50,
-              backgroundImage: NetworkImage(
-                  'https://i.pinimg.com/564x/1b/35/f4/1b35f423b1f9b3e10b69ae47692bd81c.jpg'),
             ),
           ),
         ],
       ),
     );
   }
+
+  Widget _buildSectionTitle(String title) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10.0),
+      child: Text(
+        title,
+        style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+      ),
+    );
+  }
+
+  Widget _buildProfileField(String label, String hintText, TextEditingController controller) {
+    controller.text = label == "Ник" ? userSettings.nickname : userSettings.status;
+    return Row(
+      children: [
+        Expanded(
+          flex: 1,
+          child: Text(
+            label,
+            style: const TextStyle(fontWeight: FontWeight.bold),
+          ),
+        ),
+        const SizedBox(width: 20),
+        Expanded(
+          flex: 3,
+          child: TextField(
+            controller: controller,
+            onChanged: (value) {
+              if (label == "Ник") {
+                userSettings.nickname = value;
+              } else {
+                userSettings.status = value;
+              }
+            },
+            decoration: InputDecoration(
+              hintText: hintText,
+              hintStyle: TextStyle(color: Colors.grey[500]),
+              border: InputBorder.none,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildDivider() {
+    return const Divider(
+      color: Colors.grey,
+      thickness: 1,
+    );
+  }
+
+  Widget _buildSettingItem(String label, Widget child) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        child,
+      ],
+    );
+  }
+
+  Widget _buildSpeedOptions() {
+    return Row(
+      children: [
+        const Expanded(
+          flex: 1,
+          child: Text(
+            'Скорость сообщений',
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+        ),
+        const SizedBox(width: 20),
+        Expanded(
+          flex: 3,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              _buildSpeedButton(Icons.keyboard_arrow_right, 1),
+              _buildSpeedButton(Icons.play_arrow, 2),
+              _buildSpeedButton(Icons.double_arrow_outlined, 3),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildSpeedButton(IconData icon, int speedValue) {
+    return Column(
+      children: [
+        ElevatedButton(
+          onPressed: () {
+            setState(() {
+              userSettings.selectedSpeed = speedValue;
+            });
+          },
+          style: ButtonStyle(
+            shape: MaterialStateProperty.all<CircleBorder>(
+              const CircleBorder(),
+            ),
+            backgroundColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+              if (userSettings.selectedSpeed == speedValue) {
+                return Colors.blue;
+              }
+              return Colors.grey;
+            }),
+          ),
+          child: Icon(icon, size: 30),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildSettingSwitch(String label, bool value, ValueChanged<bool> onChanged) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          label,
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
+        Switch(
+          value: value,
+          onChanged: onChanged,
+        ),
+      ],
+    );
+  }
+
+  Widget _buildSettingButton(String label) {
+    return ElevatedButton(
+      onPressed: () {},
+      child: Text(label),
+    );
+  }
+
+  Widget _buildPrivacyButton(String label) {
+    return TextButton(
+      onPressed: () {},
+      child: Text(label),
+    );
+  }
+
+  @override
+  void dispose() {
+    _nicknameController.dispose();
+    _statusController.dispose();
+    super.dispose();
+  }
+
 }
