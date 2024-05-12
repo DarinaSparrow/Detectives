@@ -19,8 +19,9 @@ class Message {
   int content;
   String message;
   String time;
+  int flag;
 
-  Message({required this.id, required this.status, required this.image, required this.name, required this.content, required this.message, required this.time});
+  Message({required this.id, required this.status, required this.image, required this.name, required this.content, required this.message, required this.time, required this.flag});
 }
 
 class conversationManager
@@ -38,22 +39,22 @@ class conversationManager
 
   static void initializeMessages() {
     messages = [
-      Message(id: 1, status: 1, image: 'assets/12345.jpg', name: "Кейт Бланшет", content: 1, message: "Лохи", time: "12:52"),
-      Message(id: 1, status: 2, image: 'assets/12345.jpg', name: "кто-то", content: 1, message: "Лохи", time: "12:52"),
-      Message(id: 1, status: 1, image: 'assets/54321.jpeg', name: "Хелена Боннем Картер", content: 1, message: "Лохи", time: "12:52"),
-      Message(id: 1, status: 1, image: 'assets/12345.jpg', name: "Кейт Бланшет", content: 1, message: "Лохи", time: "12:52"),
-      Message(id: 1, status: 2, image: 'assets/12345.jpg', name: "кто-то", content: 1, message: "Лохи", time: "12:52"),
-      Message(id: 1, status: 1, image: 'assets/54321.jpeg', name: "Хелена Боннем Картер", content: 1, message: "Лохи", time: "12:52"),
-      Message(id: 2, status: 1, image: 'assets/12345.jpg', name: "Кейт Бланшет", content: 1, message: "Лохи", time: "12:52"),
-      Message(id: 2, status: 2, image: 'assets/12345.jpg', name: "кто-то", content: 1, message: "Лохи", time: "12:52"),
-      Message(id: 2, status: 1, image: 'assets/12345.jpg', name: "Кейт Бланшет", content: 1, message: "Лохи", time: "12:52"),
-      Message(id: 2, status: 2, image: 'assets/12345.jpg', name: "кто-то", content: 1, message: "Лохи", time: "12:52"),
-      Message(id: 3, status: 1, image: 'assets/12345.jpg', name: "Кейт Бланшет", content: 1, message: "Лохи", time: "12:52"),
-      Message(id: 3, status: 2, image: 'assets/12345.jpg', name: "кто-то", content: 1, message: "Лохи", time: "12:52"),
-      Message(id: 3, status: 1, image: 'assets/12345.jpg', name: "Кейт Бланшет", content: 1, message: "Лохи", time: "12:52"),
-      Message(id: 3, status: 2, image: 'assets/12345.jpg', name: "кто-то", content: 1, message: "Лохи", time: "12:52"),
-      ];
-   }
+      Message(id: 1, status: 1, image: 'assets/12345.jpg', name: "Кейт Бланшет", content: 3, message: "assets/12345.jpg", time: "12:52", flag: 1),
+      Message(id: 1, status: 2, image: 'assets/12345.jpg', name: "кто-то", content: 1, message: "Лохи", time: "12:52", flag: 1),
+      Message(id: 1, status: 1, image: 'assets/54321.jpeg', name: "Хелена Боннем Картер", content: 1, message: "Лохи", time: "12:52", flag: 1),
+      Message(id: 1, status: 1, image: 'assets/12345.jpg', name: "Кейт Бланшет", content: 1, message: "Лохи", time: "12:52", flag: 1),
+      Message(id: 1, status: 2, image: 'assets/12345.jpg', name: "кто-то", content: 1, message: "Лохи", time: "12:52", flag: 1),
+      Message(id: 1, status: 1, image: 'assets/54321.jpeg', name: "Хелена Боннем Картер", content: 1, message: "Лохи", time: "12:52", flag: 1),
+      Message(id: 2, status: 1, image: 'assets/12345.jpg', name: "Кейт Бланшет", content: 1, message: "Лохи", time: "12:52", flag: 1),
+      Message(id: 2, status: 2, image: 'assets/12345.jpg', name: "кто-то", content: 1, message: "Лохи", time: "12:52", flag: 1),
+      Message(id: 2, status: 1, image: 'assets/12345.jpg', name: "Кейт Бланшет", content: 1, message: "Лохи", time: "12:52", flag: 1),
+      Message(id: 2, status: 2, image: 'assets/12345.jpg', name: "кто-то", content: 1, message: "Лохи", time: "12:52", flag: 1),
+      Message(id: 3, status: 1, image: 'assets/12345.jpg', name: "Кейт Бланшет", content: 1, message: "Лохи", time: "12:52", flag: 1),
+      Message(id: 3, status: 2, image: 'assets/12345.jpg', name: "кто-то", content: 3, message: "assets/54321.jpeg", time: "12:52", flag: 1),
+      Message(id: 3, status: 1, image: 'assets/12345.jpg', name: "Кейт Бланшет", content: 1, message: "Лохи", time: "12:52", flag: 1),
+      Message(id: 3, status: 2, image: 'assets/12345.jpg', name: "кто-то", content: 1, message: "Лохи", time: "12:52", flag: 1),
+    ];
+  }
 
   static int getTypeById(int id) {
     Conversation? conversation = conversations.firstWhere((
@@ -74,5 +75,16 @@ class conversationManager
   static bool getIsOnlineById(int id) {
     Conversation? conversation = conversations.firstWhere((conversation) => conversation.id == id);
     return conversation.isOnline;
+  }
+
+  static void setIsOnlineById(int id) {
+    for(var conversation in conversationManager.conversations) {
+      if (conversation.id == id) {
+        conversation.isOnline = true;
+      }
+      else {
+        conversation.isOnline = false;
+      }
+    }
   }
 }

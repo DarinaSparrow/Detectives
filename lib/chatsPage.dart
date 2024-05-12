@@ -134,7 +134,6 @@ class _detailedChatPageState extends State<detailedChatPage> {
                       Text(conversationManager.getNameById(widget.chatsId) ,style: const TextStyle( fontSize: 16, fontWeight: FontWeight.w600),),
                       const SizedBox(height: 3,),
                       if (conversationManager.getTypeById(widget.chatsId) == 2)
-                      Text(conversationManager.getIsOnlineById(widget.chatsId) ? 'Онлайн' : 'Офлайн', style: const TextStyle(fontSize: 13),),
                     ],
                   ),
                 ),
@@ -152,10 +151,9 @@ class _detailedChatPageState extends State<detailedChatPage> {
               });
             },
             child: ListView.builder(
-              itemCount: conversationManager.messages.length,
+              itemCount: _localMessages.length,
               padding: EdgeInsets.only(top: 10,bottom: _isAnswersVisible ? MediaQuery.of(context).size.height * 1 / 3 + 10 : 70),
               itemBuilder: (context, index) {
-                MainAxisAlignment alignment = conversationManager.messages[index].status == 1 ? MainAxisAlignment.start : MainAxisAlignment.end;
                 CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.start;
                 return Container(
                   padding: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
@@ -163,39 +161,47 @@ class _detailedChatPageState extends State<detailedChatPage> {
                     mainAxisAlignment: alignment,
                     crossAxisAlignment: crossAxisAlignment,
                     children: [
-                      if ((conversationManager.getTypeById(widget.chatsId) == 1) && (conversationManager.messages[index].status == 1))
+                      if ((conversationManager.getTypeById(widget.chatsId) == 1) && (_localMessages[index].status == 1))
                         CircleAvatar(
                           radius: 20,
-                          backgroundImage: AssetImage(conversationManager.messages[index].image),
+                          backgroundImage: AssetImage(_localMessages[index].image),
                         ),
                       const SizedBox(width: 10),
                       Column(
-                        crossAxisAlignment: conversationManager.messages[index].status == 1  ? CrossAxisAlignment.start : CrossAxisAlignment.end,
+                        crossAxisAlignment: _localMessages[index].status == 1  ? CrossAxisAlignment.start : CrossAxisAlignment.end,
                         children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: conversationManager.messages[index].status == 1 ? Colors.blue[400] : Colors.blue[500],
+                          if (_localMessages[index].content != 3)
+                            Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: _localMessages[index].status == 1 ? Colors.blue[400] : Colors.blue[500],
+                              ),
+                              padding: const EdgeInsets.all(16),
+                              child: Column(
+                                crossAxisAlignment: _localMessages[index].status == 1  ? CrossAxisAlignment.start : CrossAxisAlignment.end,
+                                  if ((conversationManager.getTypeById(widget.chatsId) == 1) && (_localMessages[index].status == 1))
+                                    Text(_localMessages[index].name, style: const TextStyle(fontSize: 10)),
+                                  if ((conversationManager.getTypeById(widget.chatsId) == 1) && (_localMessages[index].status == 1))
+                                  Text(_localMessages[index].message, style: const TextStyle(fontSize: 15)),
+                                ],
+                              ),
                             ),
                             padding: const EdgeInsets.all(16),
                             child: Column(
                               crossAxisAlignment: conversationManager.messages[index].status == 1  ? CrossAxisAlignment.start : CrossAxisAlignment.end,
                               children: [
                                 if ((conversationManager.getTypeById(widget.chatsId) == 1) && (conversationManager.messages[index].status == 1))
-                                  Text(conversationManager.messages[index].name, style: const TextStyle(fontSize: 10)),
-                                if ((conversationManager.getTypeById(widget.chatsId) == 1) && (conversationManager.messages[index].status == 1))
-                                  const SizedBox(height: 5),
-                                Text(conversationManager.messages[index].message, style: const TextStyle(fontSize: 15)),
-                              ],
+                          if (_localMessages[index].content == 3)
+                            Image.asset(
+                              _localMessages[index].message,
+                              width: MediaQuery.of(context).size.width * 1 / 3,
+                              height: MediaQuery.of(context).size.height * 1 / 3,
                             ),
-                          ),
                           const SizedBox(height: 5),
                           Row (
-                            children: [
-                              const SizedBox(width: 5),
-                              Text(conversationManager.messages[index].time, style: const TextStyle(fontSize: 12, color: Colors.black)),
-                              const SizedBox(width: 5),
-                            ]
+                              children: [
+                                const SizedBox(width: 5),
+                                Text(_localMessages[index].time, style: const TextStyle(fontSize: 12, color: Colors.black)),
                           ),
                         ],
                       ),
@@ -346,5 +352,11 @@ class _detailedChatPageState extends State<detailedChatPage> {
         ],
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _localMessages.clear();
+    super.dispose();
   }
 }
