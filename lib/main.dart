@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:detectives/sceletonOfApp.dart';
 import 'package:detectives/chatManager.dart';
+import 'package:flutter/services.dart';
 import 'dataManager.dart';
 import 'appService.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown
+  ]);
   dataManager.loadSettings();
   appService.initialize();
   conversationManager.initializeConversations();

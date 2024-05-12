@@ -170,7 +170,7 @@ class _detailedChatPageState extends State<detailedChatPage> {
                         ),
                       const SizedBox(width: 10),
                       Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: conversationManager.messages[index].status == 1  ? CrossAxisAlignment.start : CrossAxisAlignment.end,
                         children: [
                           Container(
                             decoration: BoxDecoration(
@@ -179,7 +179,7 @@ class _detailedChatPageState extends State<detailedChatPage> {
                             ),
                             padding: const EdgeInsets.all(16),
                             child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                              crossAxisAlignment: conversationManager.messages[index].status == 1  ? CrossAxisAlignment.start : CrossAxisAlignment.end,
                               children: [
                                 if ((conversationManager.getTypeById(widget.chatsId) == 1) && (conversationManager.messages[index].status == 1))
                                   Text(conversationManager.messages[index].name, style: const TextStyle(fontSize: 10)),
@@ -190,9 +190,12 @@ class _detailedChatPageState extends State<detailedChatPage> {
                             ),
                           ),
                           const SizedBox(height: 5),
-                          Align (
-                            alignment: conversationManager.messages[index].status == 1  ? Alignment.centerLeft : Alignment.centerRight,
-                            child: Text(conversationManager.messages[index].time, style: const TextStyle(fontSize: 12, color: Colors.black)),
+                          Row (
+                            children: [
+                              const SizedBox(width: 5),
+                              Text(conversationManager.messages[index].time, style: const TextStyle(fontSize: 12, color: Colors.black)),
+                              const SizedBox(width: 5),
+                            ]
                           ),
                         ],
                       ),
