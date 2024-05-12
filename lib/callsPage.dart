@@ -26,7 +26,7 @@ class _callsPageState extends State<callsPage> {
   }
 
   void dialNumber() {
-    print("Dialing $userSettings.phoneNumber");
+    print("Dialing ${userSettings.phoneNumber}");
     // Implement your dialing logic here
   }
 
@@ -110,8 +110,8 @@ class _callsPageState extends State<callsPage> {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ButtonStyle(
-          backgroundColor: icon == Icons.call ? MaterialStateProperty.all(Colors.green) : MaterialStateProperty.all(Colors.red),
-          foregroundColor: MaterialStateProperty.all(Colors.white)
+            backgroundColor: icon == Icons.call ? MaterialStateProperty.all(Colors.green) : MaterialStateProperty.all(Colors.red),
+            foregroundColor: MaterialStateProperty.all(Colors.white)
         ),
         child: Icon(icon, size: 50),
       ),
