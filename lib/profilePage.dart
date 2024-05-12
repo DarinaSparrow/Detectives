@@ -1,3 +1,4 @@
+import 'package:detectives/dataManager.dart';
 import 'package:flutter/material.dart';
 import 'userSettings.dart';
 
@@ -43,29 +44,26 @@ class _profilePageState extends State<profilePage> {
                     setState(() {
                       userSettings.vibration = newValue;
                     });
+                    dataManager.saveSettings();
                   }),
                   _buildDivider(),
                   _buildSettingSwitch('Звук', userSettings.sound, (newValue) {
                     setState(() {
                       userSettings.sound = newValue;
                     });
+                    dataManager.saveSettings();
                   }),
                   _buildDivider(),
                   _buildSettingSwitch('Музыка', userSettings.music, (newValue) {
                     setState(() {
                       userSettings.music = newValue;
                     });
+                    dataManager.saveSettings();
                   }),
                   _buildDivider(),
                   _buildSectionTitle('Сохраненная игра'),
                   _buildDivider(),
-                  _buildSettingButton('Загрузить сохранение'),
-                  _buildDivider(),
                   _buildSettingButton('Перезапустить историю'),
-                  _buildDivider(),
-                  _buildSectionTitle('Конфиденциальность'),
-                  _buildDivider(),
-                  _buildPrivacyButton('Политика конфиденциальности'),
                   _buildDivider(),
                 ],
               ),
@@ -108,6 +106,7 @@ class _profilePageState extends State<profilePage> {
               } else {
                 userSettings.status = value;
               }
+              dataManager.saveSettings();
             },
             decoration: InputDecoration(
               hintText: hintText,
@@ -170,6 +169,7 @@ class _profilePageState extends State<profilePage> {
             setState(() {
               userSettings.selectedSpeed = speedValue;
             });
+            dataManager.saveSettings();
           },
           style: ButtonStyle(
             shape: MaterialStateProperty.all<CircleBorder>(
@@ -211,18 +211,10 @@ class _profilePageState extends State<profilePage> {
     );
   }
 
-  Widget _buildPrivacyButton(String label) {
-    return TextButton(
-      onPressed: () {},
-      child: Text(label),
-    );
-  }
-
   @override
   void dispose() {
     _nicknameController.dispose();
     _statusController.dispose();
     super.dispose();
   }
-
 }

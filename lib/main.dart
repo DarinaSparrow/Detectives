@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:detectives/sceletonOfApp.dart';
+import 'package:detectives/chatManager.dart';
+import 'dataManager.dart';
 
-void main() => runApp(const App());
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  dataManager.loadSettings();
+  conversationManager.initializeConversations();
+  conversationManager.initializeMessages();
+  runApp(const App());
+}
 
 class App extends StatelessWidget {
   const App({super.key});
