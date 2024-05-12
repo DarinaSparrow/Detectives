@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'userSettings.dart';
-import 'package:path_provider/path_provider.dart'; // Импортируем пакет
+import 'package:path_provider/path_provider.dart';
 
 class dataManager {
   static late String _settingsFilePath;
@@ -13,7 +13,7 @@ class dataManager {
 
   static Future<void> loadSettings() async {
     try {
-      await _initFilePath(); // Инициализируем путь к файлу
+      await _initFilePath();
       final File file = File(_settingsFilePath);
       if (await file.exists()) {
         final String content = await file.readAsString();
@@ -33,7 +33,7 @@ class dataManager {
 
   static Future<void> saveSettings() async {
     try {
-      await _initFilePath(); // Инициализируем путь к файлу
+      await _initFilePath();
       final Map<String, dynamic> settingsMap = {
         'vibration': userSettings.vibration,
         'sound': userSettings.sound,
