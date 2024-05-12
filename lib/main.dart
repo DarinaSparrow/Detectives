@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:detectives/sceletonOfApp.dart';
 import 'package:detectives/chatManager.dart';
 import 'dataManager.dart';
+import 'appService.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   dataManager.loadSettings();
+  appService.initialize();
   conversationManager.initializeConversations();
   conversationManager.initializeMessages();
   runApp(const App());
