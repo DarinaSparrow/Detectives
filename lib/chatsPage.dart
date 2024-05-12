@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'gameProcess.dart';
 import 'chatManager.dart';
 
 class chatsPage extends StatefulWidget {
@@ -18,6 +19,7 @@ class _chatsPageState extends State<chatsPage> {
         itemBuilder: (context, index) {
           return GestureDetector(
             onTap: () {
+              gameProcess.changeCurrentChat(conversationManager.conversations[index].id);
               Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -99,7 +101,29 @@ class detailedChatPage extends StatefulWidget {
 
 class _detailedChatPageState extends State<detailedChatPage> {
 
+  static final List<Message> _localMessages = [];
   bool _isAnswersVisible = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    for (var message in conversationManager.messages) {
+      if (message.id == widget.chatsId) {
+        _localMessages.add(message);
+      }
+
+      //if (_localMessages.length >= gameProcess.countOfOpenedMessages) {
+      // break;
+      // }
+    }
+  }
+
+  void addMessageToList(Message message) {
+    _localMessages.add(message);
+
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -134,6 +158,7 @@ class _detailedChatPageState extends State<detailedChatPage> {
                       Text(conversationManager.getNameById(widget.chatsId) ,style: const TextStyle( fontSize: 16, fontWeight: FontWeight.w600),),
                       const SizedBox(height: 3,),
                       if (conversationManager.getTypeById(widget.chatsId) == 2)
+                        Text(conversationManager.getIsOnlineById(widget.chatsId) ? 'Онлайн' : 'Офлайн', style: const TextStyle(fontSize: 13),),
                     ],
                   ),
                 ),
@@ -154,6 +179,7 @@ class _detailedChatPageState extends State<detailedChatPage> {
               itemCount: _localMessages.length,
               padding: EdgeInsets.only(top: 10,bottom: _isAnswersVisible ? MediaQuery.of(context).size.height * 1 / 3 + 10 : 70),
               itemBuilder: (context, index) {
+                MainAxisAlignment alignment = _localMessages[index].status == 1 ? MainAxisAlignment.start : MainAxisAlignment.end;
                 CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.start;
                 return Container(
                   padding: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
@@ -179,18 +205,15 @@ class _detailedChatPageState extends State<detailedChatPage> {
                               padding: const EdgeInsets.all(16),
                               child: Column(
                                 crossAxisAlignment: _localMessages[index].status == 1  ? CrossAxisAlignment.start : CrossAxisAlignment.end,
+                                children: [
                                   if ((conversationManager.getTypeById(widget.chatsId) == 1) && (_localMessages[index].status == 1))
                                     Text(_localMessages[index].name, style: const TextStyle(fontSize: 10)),
                                   if ((conversationManager.getTypeById(widget.chatsId) == 1) && (_localMessages[index].status == 1))
+                                    const SizedBox(height: 5),
                                   Text(_localMessages[index].message, style: const TextStyle(fontSize: 15)),
                                 ],
                               ),
                             ),
-                            padding: const EdgeInsets.all(16),
-                            child: Column(
-                              crossAxisAlignment: conversationManager.messages[index].status == 1  ? CrossAxisAlignment.start : CrossAxisAlignment.end,
-                              children: [
-                                if ((conversationManager.getTypeById(widget.chatsId) == 1) && (conversationManager.messages[index].status == 1))
                           if (_localMessages[index].content == 3)
                             Image.asset(
                               _localMessages[index].message,
@@ -202,6 +225,8 @@ class _detailedChatPageState extends State<detailedChatPage> {
                               children: [
                                 const SizedBox(width: 5),
                                 Text(_localMessages[index].time, style: const TextStyle(fontSize: 12, color: Colors.black)),
+                                const SizedBox(width: 5),
+                              ]
                           ),
                         ],
                       ),
