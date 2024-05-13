@@ -33,9 +33,9 @@ class gameProcess
         conversationManager.setIsOnlineById(conversationManager.messages[countOfOpenedMessages + 1].id);
       }
 
-      //if (conversationManager.messages[countOfOpenedMessages - 1].id == currentChat) {
+      if (conversationManager.messages[countOfOpenedMessages - 1].id == currentChat) {
         //обновление открытого чата
-       // ; _detailedChatPageState.addMessageToList(conversationManager.messages[countOfOpenedMessages - 1]); }
+        //_detailedChatPageState.addMessageToList(conversationManager.messages[countOfOpenedMessages - 1]); }
       //else {
         // меняем последнее отправленное сообщение в списке чатов
         // фильтруем список чатов

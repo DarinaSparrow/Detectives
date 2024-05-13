@@ -1,0 +1,39 @@
+{
+  "profiles": [
+    {
+      "image": "assets/Дарина",
+      "name": "Дарина",
+      "status": "",
+      "firstLink": "https://vk.com/crazy_vorobyshek",
+      "secondLink": ""
+    },
+    {
+      "image": "assets/Аня",
+      "name": "Аня",
+      "status": "",
+      "firstLink": "https://vk.com/lune_du_marais",
+      "secondLink": ""
+    },
+    {
+      "image": "assets/Кирилл",
+      "name": "Кирилл",
+      "status": "",
+      "firstLink": "https://vk.com/id252536987",
+      "secondLink": ""
+    },
+    {
+      "image": "assets/Даня",
+      "name": "Даня",
+      "status": "",
+      "firstLink": "https://vk.com/danyuk_r2d2",
+      "secondLink": ""
+    },
+    {
+      "image": "assets/Чайлдфри",
+      "name": "",
+      "status": "",
+      "firstLink": "",
+      "secondLink": ""
+    }
+  ]
+}
