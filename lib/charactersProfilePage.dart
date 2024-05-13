@@ -1,7 +1,8 @@
+import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-//import 'package:detectives/chatManager.dart';
+import 'package:detectives/chatManager.dart';
 
 class charactersProfilePage extends StatelessWidget {
   const charactersProfilePage({super.key, required this.profileImage});
@@ -27,78 +28,82 @@ class charactersProfilePage extends StatelessWidget {
       body: Stack(
         children: [
           Container(
-            color: Colors.blueGrey, // Серый цвет фона
+            color: Colors.blue[200],
             height: sectionDivider,
           ),
           Container(
             color: Colors.white, // Белый цвет фона
             height: MediaQuery.of(context).size.height, // Высота второго контейнера (весь экран)
             margin: EdgeInsets.only(top: sectionDivider), // Отступ сверху (равен высоте первого контейнера)
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  SizedBox(height: sectionDivider),
-                  Text(
-                    'Name',
-                    //conversationManager.getNameByImage(profileImage),
-                    style: TextStyle(fontSize: largeFontSize, fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    'Status',
-                    //conversationManager.getStatusByImage(profileImage),
-                    style: TextStyle(fontSize: middleFontSize, color: Colors.grey[700]),
-                  ),
-                  const SizedBox(height: 20),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      IconButton(
-                        icon: const Icon(Icons.add_a_photo),
-                        onPressed: () {
-                          // Действие при нажатии на ссылку Instagram
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: <Widget>[
+                SizedBox(height: sectionDivider),
+                Text(conversationManager.getNameByImage(profileImage),
+                  style: TextStyle(fontSize: largeFontSize, fontWeight: FontWeight.bold),
+                ),
+                Text(conversationManager.getStatusByImage(profileImage),
+                  style: TextStyle(fontSize: middleFontSize, color: Colors.grey[700]),
+                ),
+                const SizedBox(height: 20),
+                if (profileImage != "assets/Чайлдфри.jpg")
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      icon: const Icon(Icons.add_a_photo),
+                      onPressed: () {
+                        // Действие при нажатии на ссылку Instagram
+                      },
+                    ),
+                    GestureDetector(
+                        onTap: () async {
+                          String url = conversationManager.getFirstLinkByImage(profileImage);
+                          if (await canLaunch(url)) await launch(url);
                         },
-                      ),
-                      Text(
-                        'firstLink',
-                        //'Я Вконтакте: ${conversationManager.getFirstLinkByImage(profileImage)}',
-                        style: TextStyle(fontSize: smallFontSize),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      IconButton(
-                        icon: const Icon(Icons.videogame_asset),
-                        onPressed: () {
-                          // Действие при нажатии на ссылку игры
+                        child: Text('Напиши мне Вконтакте', style: TextStyle(decoration: TextDecoration.underline, fontSize: smallFontSize))
+                    )
+                  ],
+                ),
+                if (profileImage != "assets/Чайлдфри.jpg")
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      icon: const Icon(Icons.videogame_asset),
+                      onPressed: () {
+                        // Действие при нажатии на ссылку игры
+                      },
+                    ),
+                    GestureDetector(
+                        onTap: () async {
+                          String url = conversationManager.getSecondLinkByImage(profileImage);
+                          if (await canLaunch(url)) await launch(url);
                         },
-                      ),
-                      Text(
-                        'secondLink',
-                        //'Я не Вконтакте: ${conversationManager.getFirstLinkByImage(profileImage)}',
-                        style: TextStyle(fontSize: smallFontSize),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      IconButton(
-                        icon: const Icon(Icons.playlist_play),
-                        onPressed: () {
-                          // Действие при нажатии на альтернативный плейлист
+                        child: Text('Узнай меня получше', style: TextStyle(decoration: TextDecoration.underline, fontSize: smallFontSize))
+                    )
+                  ],
+                ),
+                if (profileImage != "assets/Чайлдфри.jpg")
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      icon: const Icon(Icons.playlist_play),
+                      onPressed: () {
+                        // Действие при нажатии на альтернативный плейлист
+                      },
+                    ),
+                    GestureDetector(
+                        onTap: () async {
+                          String url = conversationManager.getThirdLinkByImage(profileImage);
+                          if (await canLaunch(url)) await launch(url);
                         },
-                      ),
-                      Text(
-                        'Альтернативный плейлист - лучшее',
-                        style: TextStyle(fontSize: smallFontSize),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+                        child: Text('Послушаем вместе музыку)))', style: TextStyle(decoration: TextDecoration.underline, fontSize: smallFontSize))
+                    )
+                  ],
+                ),
+              ],
             ),
           ),
           Positioned(

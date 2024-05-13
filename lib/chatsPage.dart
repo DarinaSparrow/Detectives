@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'gameProcess.dart';
 import 'chatManager.dart';
+import 'charactersProfilePage.dart';
 
 class chatsPage extends StatefulWidget {
   const chatsPage({super.key});
@@ -38,9 +39,19 @@ class _chatsPageState extends State<chatsPage> {
                   ),
                   Row(
                     children: [
-                      CircleAvatar(
-                        radius: 20,
-                        backgroundImage: AssetImage(conversationManager.conversations[index].image),
+                      GestureDetector(
+                        onTap: () {
+                          if (conversationManager.conversations[index].id != 1) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => charactersProfilePage(profileImage: conversationManager.conversations[index].image)),
+                            );
+                          }
+                        },
+                        child: CircleAvatar(
+                          radius: 20,
+                          backgroundImage: AssetImage(conversationManager.conversations[index].image),
+                        ),
                       ),
                       const SizedBox(width: 10),
                       Expanded(
@@ -108,6 +119,8 @@ class _detailedChatPageState extends State<detailedChatPage> {
   void initState() {
     super.initState();
 
+    gameProcess.changeCurrentChat(widget.chatsId);
+
     for (var message in conversationManager.messages) {
       if (message.id == widget.chatsId) {
         _localMessages.add(message);
@@ -140,14 +153,25 @@ class _detailedChatPageState extends State<detailedChatPage> {
                 const SizedBox(width: 12,),
                 IconButton(
                   onPressed: (){
+                    gameProcess.changeCurrentChat(0);
                     Navigator.pop(context);
                   },
                   icon: const Icon(Icons.arrow_back_ios,color: Colors.black,),
                 ),
                 const SizedBox(width: 8,),
-                CircleAvatar(
-                  backgroundImage: AssetImage(conversationManager.getImageById(widget.chatsId)),
-                  maxRadius: 20,
+                GestureDetector(
+                  onTap: () {
+                    if (widget.chatsId != 1) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => charactersProfilePage(profileImage: conversationManager.getImageById(widget.chatsId))),
+                      );
+                    }
+                  },
+                  child: CircleAvatar(
+                    backgroundImage: AssetImage(conversationManager.getImageById(widget.chatsId)),
+                    maxRadius: 20,
+                  ),
                 ),
                 const SizedBox(width: 12,),
                 Expanded(
@@ -178,63 +202,89 @@ class _detailedChatPageState extends State<detailedChatPage> {
             child: ListView.builder(
               itemCount: _localMessages.length,
               padding: EdgeInsets.only(top: 10,bottom: _isAnswersVisible ? MediaQuery.of(context).size.height * 1 / 3 + 10 : 70),
-              itemBuilder: (context, index) {
-                MainAxisAlignment alignment = _localMessages[index].status == 1 ? MainAxisAlignment.start : MainAxisAlignment.end;
-                CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.start;
-                return Container(
-                  padding: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
-                  child: Row(
-                    mainAxisAlignment: alignment,
-                    crossAxisAlignment: crossAxisAlignment,
-                    children: [
-                      if ((conversationManager.getTypeById(widget.chatsId) == 1) && (_localMessages[index].status == 1))
-                        CircleAvatar(
-                          radius: 20,
-                          backgroundImage: AssetImage(_localMessages[index].image),
-                        ),
-                      if ((conversationManager.getTypeById(widget.chatsId) == 1) && (_localMessages[index].status == 1))
-                      const SizedBox(width: 10),
-                      Column(
-                        crossAxisAlignment: _localMessages[index].status == 1  ? CrossAxisAlignment.start : CrossAxisAlignment.end,
-                          children: [
-                          if (_localMessages[index].content != 3)
-                            Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                color: _localMessages[index].status == 1 ? Colors.blue[400] : Colors.blue[500],
-                              ),
-                              padding: const EdgeInsets.all(16),
-                              child: Column(
-                                crossAxisAlignment: _localMessages[index].status == 1  ? CrossAxisAlignment.start : CrossAxisAlignment.end,
-                                children: [
-                                  if ((conversationManager.getTypeById(widget.chatsId) == 1) && (_localMessages[index].status == 1))
-                                    Text(_localMessages[index].name, style: const TextStyle(fontSize: 10)),
-                                  if ((conversationManager.getTypeById(widget.chatsId) == 1) && (_localMessages[index].status == 1))
-                                    const SizedBox(height: 5),
-                                  Text(_localMessages[index].message, style: const TextStyle(fontSize: 15)),
-                                ],
+                itemBuilder: (context, index) {
+                  if (_localMessages[index].status != 3) {
+                    MainAxisAlignment alignment = _localMessages[index].status == 1 ? MainAxisAlignment.start : MainAxisAlignment.end;
+                    CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.start;
+                    return Container(
+                      padding: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
+                      child: Row(
+                        mainAxisAlignment: alignment,
+                        crossAxisAlignment: crossAxisAlignment,
+                        children: [
+                          if ((conversationManager.getTypeById(widget.chatsId) == 1) && (_localMessages[index].status == 1))
+                            GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => charactersProfilePage(profileImage: _localMessages[index].image)),
+                                );
+                              },
+                              child: CircleAvatar(
+                                radius: 20,
+                                backgroundImage: AssetImage(_localMessages[index].image),
                               ),
                             ),
-                          if (_localMessages[index].content == 3)
-                            Image.asset(
-                              _localMessages[index].message,
-                              width: MediaQuery.of(context).size.width * 1 / 3,
-                              height: MediaQuery.of(context).size.width * 1 / 3,
-                            ),
-                          const SizedBox(height: 5),
-                          Row (
-                              children: [
-                                const SizedBox(width: 5),
-                                Text(_localMessages[index].time, style: const TextStyle(fontSize: 12, color: Colors.black)),
-                                const SizedBox(width: 5),
-                              ]
+                          if ((conversationManager.getTypeById(widget.chatsId) == 1) && (_localMessages[index].status == 1))
+                            const SizedBox(width: 10),
+                          Expanded(
+                         child: Column(
+                            crossAxisAlignment: _localMessages[index].status == 1 ? CrossAxisAlignment.start : CrossAxisAlignment.end,
+                            children: [
+                              if (_localMessages[index].content != 3)
+                                Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: _localMessages[index].status == 1 ? Colors.blue[400] : Colors.blue[500],
+                                  ),
+                                  padding: const EdgeInsets.all(16),
+                                  child: Column(
+                                    crossAxisAlignment: _localMessages[index].status == 1 ? CrossAxisAlignment.start : CrossAxisAlignment.end,
+                                    children: [
+                                      if ((conversationManager.getTypeById(widget.chatsId) == 1) && (_localMessages[index].status == 1))
+                                        GestureDetector(
+                                          onTap: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(builder: (context) => charactersProfilePage(profileImage: _localMessages[index].image)),
+                                            );
+                                          },
+                                          child: Text(_localMessages[index].name, style: const TextStyle(fontSize: 10)),
+                                        ),
+                                      if ((conversationManager.getTypeById(widget.chatsId) == 1) && (_localMessages[index].status == 1))
+                                        const SizedBox(height: 5),
+                                      Text(_localMessages[index].message[0], style: const TextStyle(fontSize: 15)),
+                                    ],
+                                  ),
+                                ),
+                              if (_localMessages[index].content == 3)
+                                Image.asset(_localMessages[index].message[0],
+                                  width: MediaQuery.of(context).size.width * 1 / 3,
+                                  height: MediaQuery.of(context).size.width * 1 / 3,
+                                ),
+                              const SizedBox(height: 5),
+                              Row(
+                                  children: [
+                                    const SizedBox(width: 5),
+                                    Text(_localMessages[index].time, style: const TextStyle(fontSize: 12, color: Colors.black)),
+                                    const SizedBox(width: 5),
+                                  ]
+                              ),
+                            ],
                           ),
+                  )
                         ],
                       ),
-                    ],
-                  ),
-                );
-              },
+                    );
+                  }
+                  else {
+                    return Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                      child: Text(_localMessages[index].message[0], textAlign: TextAlign.center, style: const TextStyle(fontSize: 15),
+                      ),
+                    );
+                  }
+                }
             ),
           ),
           Align(
@@ -382,6 +432,8 @@ class _detailedChatPageState extends State<detailedChatPage> {
 
   @override
   void dispose() {
+    gameProcess.changeCurrentChat(0);
+
     _localMessages.clear();
     super.dispose();
   }

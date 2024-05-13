@@ -4,7 +4,7 @@ import 'package:detectives/chatManager.dart';
 
 class gameProcess {
   static int countOfOpenedMessages = 0;
-  static int currentChat = -1;
+  static int currentChat = 0;
   static int time = 3000;
   static bool plotDevelopment = true;
 

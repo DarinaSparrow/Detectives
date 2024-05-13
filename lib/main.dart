@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:detectives/sceletonOfApp.dart';
 import 'package:detectives/chatManager.dart';
 import 'package:flutter/services.dart';
-import 'package:detectives/charactersProfilePage.dart';
 import 'dataManager.dart';
 import 'appService.dart';
 
@@ -31,7 +30,7 @@ class App extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlue),
         useMaterial3: true,
       ),
-      home: const charactersProfilePage(profileImage: 'assets/Дарина.jpg'),
+      home: const sceletonOfApp(),
     );
   }
 }
