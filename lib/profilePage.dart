@@ -26,16 +26,13 @@ class _profilePageState extends State<profilePage> {
         physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
         children: [
           Padding(
-            padding: const EdgeInsets.all(20.0),
+            padding: EdgeInsets.all(MediaQuery.of(context).size.height * 0.02),
             child: Center(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  _buildSectionTitle('Расскажи друзьям о себе'),
-                  _buildDivider(),
-                  _buildProfileField('Ник', 'Введите имя', _nicknameController),
-                  _buildDivider(),
-                  _buildProfileField('Статус', 'Введите статус', _statusController),
+                  _buildProfileAvatar('assets/Женя.jpg'),
+                  _buildProfileInfo('Женя', 'Да что вы опять смеетесь?'),
                   _buildDivider(),
                   _buildSectionTitle('Настройки'),
                   _buildDivider(),
@@ -56,17 +53,7 @@ class _profilePageState extends State<profilePage> {
                     dataManager.saveSettings();
                   }),
                   _buildDivider(),
-                  _buildSettingSwitch('Музыка', userSettings.music, (newValue) {
-                    setState(() {
-                      userSettings.music = newValue;
-                    });
-                    dataManager.saveSettings();
-                  }),
-                  _buildDivider(),
-                  _buildSectionTitle('Сохраненная игра'),
-                  _buildDivider(),
                   _buildSettingButton('Перезапустить историю'),
-                  _buildDivider(),
                 ],
               ),
             ),
@@ -76,12 +63,53 @@ class _profilePageState extends State<profilePage> {
     );
   }
 
+  Widget _buildProfileAvatar(String profileImage) {
+    double avatarRadius = MediaQuery.of(context).size.width * 0.2;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: <Widget>[
+        CircleAvatar(
+          radius: avatarRadius,
+          backgroundImage: AssetImage(profileImage),
+        ),
+      ]
+    );
+  }
+
+  Widget _buildProfileInfo(String name, String status) {
+    double largeFontSize = MediaQuery.of(context).size.height * 0.03;
+    double middleFontSize = MediaQuery.of(context).size.height * 0.025;
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        SizedBox(height: largeFontSize,),
+        Text(
+          name,
+          style: TextStyle(
+              fontSize: largeFontSize,
+              fontWeight: FontWeight.bold
+          ),
+        ),
+        Text(
+          status,
+          style: TextStyle(
+              fontSize: middleFontSize,
+              fontWeight: FontWeight.bold,
+              color: Colors.grey[700]
+          ),
+        ),
+        SizedBox(height: largeFontSize,),
+      ],
+    );
+  }
+
   Widget _buildSectionTitle(String title) {
+    double middleFontSize = MediaQuery.of(context).size.height * 0.025;
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10.0),
+      padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.01),
       child: Text(
         title,
-        style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        style: TextStyle(fontSize: middleFontSize, fontWeight: FontWeight.bold),
       ),
     );
   }
@@ -97,7 +125,7 @@ class _profilePageState extends State<profilePage> {
             style: const TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
-        const SizedBox(width: 20),
+        //const SizedBox(width: 20),
         Expanded(
           flex: 3,
           child: TextField(
@@ -147,7 +175,6 @@ class _profilePageState extends State<profilePage> {
             style: TextStyle(fontWeight: FontWeight.bold),
           ),
         ),
-        const SizedBox(width: 20),
         Expanded(
           flex: 3,
           child: Row(
@@ -184,7 +211,7 @@ class _profilePageState extends State<profilePage> {
               return Colors.grey;
             }),
           ),
-          child: Icon(icon, size: 20),
+          child: Icon(icon,),
         ),
       ],
     );

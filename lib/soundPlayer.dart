@@ -1,4 +1,5 @@
 import 'package:audioplayers/audioplayers.dart';
+import 'package:detectives/userSettings.dart';
 
 class SoundPlayer {
   final AudioPlayer _audioPlayer = AudioPlayer();
@@ -11,17 +12,21 @@ class SoundPlayer {
   SoundPlayer._internal();
 
   Future<void> playSound(String assetPath, {bool loop = false}) async {
-    if (loop) {
-      _audioPlayer.setReleaseMode(ReleaseMode.loop);
+    if(userSettings.sound == true) {
+      if (loop) {
+        _audioPlayer.setReleaseMode(ReleaseMode.loop);
+      }
+      else {
+        _audioPlayer.setReleaseMode(ReleaseMode.stop);
+      }
+      await _audioPlayer.play(AssetSource('audio/$assetPath'));
     }
-    else {
-      _audioPlayer.setReleaseMode(ReleaseMode.stop);
-    }
-    await _audioPlayer.play(AssetSource('audio/$assetPath'));
   }
 
   Future<void> resumeSound() async {
-    await _audioPlayer.resume();
+    if (userSettings.sound == true) {
+      await _audioPlayer.resume();
+    }
   }
 
   Future<void> stopSound() async {
