@@ -1,14 +1,24 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+//import 'package:detectives/chatManager.dart';
 
 class charactersProfilePage extends StatelessWidget {
-  const charactersProfilePage({super.key});
+  const charactersProfilePage({super.key, required this.profileImage});
+
+  final String profileImage;
 
   @override
   Widget build(BuildContext context) {
+    double avatarRadius = MediaQuery.of(context).size.width * 0.2;
+    double sectionDivider = MediaQuery.of(context).size.height * 0.15;
+    double largeFontSize = MediaQuery.of(context).size.height * 0.03;
+    double middleFontSize = MediaQuery.of(context).size.height * 0.025;
+    double smallFontSize = MediaQuery.of(context).size.height * 0.02;
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -18,38 +28,41 @@ class charactersProfilePage extends StatelessWidget {
         children: [
           Container(
             color: Colors.blueGrey, // Серый цвет фона
-            height: MediaQuery.of(context).size.height * 0.2, // Высота первого контейнера (половина экрана)
+            height: sectionDivider,
           ),
           Container(
             color: Colors.white, // Белый цвет фона
             height: MediaQuery.of(context).size.height, // Высота второго контейнера (весь экран)
-            margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.2), // Отступ сверху (равен высоте первого контейнера)
+            margin: EdgeInsets.only(top: sectionDivider), // Отступ сверху (равен высоте первого контейнера)
             child: Center(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
-                  SizedBox(height: 30),
+                  SizedBox(height: sectionDivider),
                   Text(
-                    'Имя пользователя',
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    'Name',
+                    //conversationManager.getNameByImage(profileImage),
+                    style: TextStyle(fontSize: largeFontSize, fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    'Статус пользователя',
-                    style: TextStyle(fontSize: 18, color: Colors.grey[700]),
+                    'Status',
+                    //conversationManager.getStatusByImage(profileImage),
+                    style: TextStyle(fontSize: middleFontSize, color: Colors.grey[700]),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       IconButton(
-                        icon: Icon(Icons.add_a_photo),
+                        icon: const Icon(Icons.add_a_photo),
                         onPressed: () {
                           // Действие при нажатии на ссылку Instagram
                         },
                       ),
                       Text(
-                        'Подпишитесь на меня в Instagram',
-                        style: TextStyle(fontSize: 16),
+                        'firstLink',
+                        //'Я Вконтакте: ${conversationManager.getFirstLinkByImage(profileImage)}',
+                        style: TextStyle(fontSize: smallFontSize),
                       ),
                     ],
                   ),
@@ -57,14 +70,15 @@ class charactersProfilePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       IconButton(
-                        icon: Icon(Icons.videogame_asset),
+                        icon: const Icon(Icons.videogame_asset),
                         onPressed: () {
                           // Действие при нажатии на ссылку игры
                         },
                       ),
                       Text(
-                        'Я в игре!',
-                        style: TextStyle(fontSize: 16),
+                        'secondLink',
+                        //'Я не Вконтакте: ${conversationManager.getFirstLinkByImage(profileImage)}',
+                        style: TextStyle(fontSize: smallFontSize),
                       ),
                     ],
                   ),
@@ -72,14 +86,14 @@ class charactersProfilePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       IconButton(
-                        icon: Icon(Icons.playlist_play),
+                        icon: const Icon(Icons.playlist_play),
                         onPressed: () {
                           // Действие при нажатии на альтернативный плейлист
                         },
                       ),
                       Text(
                         'Альтернативный плейлист - лучшее',
-                        style: TextStyle(fontSize: 16),
+                        style: TextStyle(fontSize: smallFontSize),
                       ),
                     ],
                   ),
@@ -88,12 +102,12 @@ class charactersProfilePage extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: MediaQuery.of(context).size.height * 0.2 - 50, // Положение аватара по вертикали (половина экрана - половина размера аватара)
-            left: MediaQuery.of(context).size.width * 0.5 - 50, // Положение аватара по горизонтали (половина экрана - половина размера аватара)
+            top: sectionDivider - avatarRadius, // Положение аватара по вертикали (половина экрана - половина размера аватара)
+            left: MediaQuery.of(context).size.width * 0.5 - avatarRadius, // Положение аватара по горизонтали (половина экрана - половина размера аватара)
             child: CircleAvatar(
-              radius: 50,
-              backgroundImage: NetworkImage(
-                  'https://i.pinimg.com/564x/1b/35/f4/1b35f423b1f9b3e10b69ae47692bd81c.jpg'),
+              radius: avatarRadius,
+              backgroundImage: AssetImage(
+                  profileImage, ),
             ),
           ),
         ],

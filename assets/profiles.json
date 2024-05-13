@@ -3,37 +3,42 @@
     {
       "image": "assets/Дарина",
       "name": "Дарина",
-      "status": "",
+      "status": "Любитель хорроров, но до смерти боюсь Демидова",
       "firstLink": "https://vk.com/crazy_vorobyshek",
-      "secondLink": ""
+      "secondLink": "",
+      "thirdLink": ""
     },
     {
       "image": "assets/Аня",
       "name": "Аня",
-      "status": "",
+      "status": "Эта жизнь мне уже абсолютно понятна, я староста целого стада",
       "firstLink": "https://vk.com/lune_du_marais",
-      "secondLink": ""
+      "secondLink": "",
+      "thirdLink": ""
     },
     {
       "image": "assets/Кирилл",
       "name": "Кирилл",
-      "status": "",
+      "status": "Была бы жизнь слаще, если б вместо шоколада мне все время не подсовывали говно",
       "firstLink": "https://vk.com/id252536987",
-      "secondLink": ""
+      "secondLink": "",
+      "thirdLink": ""
     },
     {
       "image": "assets/Даня",
       "name": "Даня",
-      "status": "",
+      "status": "Не часто играю в Доту, но часто слышу про самую популярную комбинацию клавиш от туда, как их там SVO",
       "firstLink": "https://vk.com/danyuk_r2d2",
-      "secondLink": ""
+      "secondLink": "",
+      "thirdLink": ""
     },
     {
       "image": "assets/Чайлдфри",
-      "name": "",
-      "status": "",
+      "name": "???",
+      "status": "???",
       "firstLink": "",
-      "secondLink": ""
+      "secondLink": "",
+      "thirdLink": ""
     }
   ]
 }
