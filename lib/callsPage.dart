@@ -27,13 +27,7 @@ class _callsPageState extends State<callsPage> {
     '*': [' ', ' ', ' ', ' '],
     '#': [' ', ' ', ' ', ' '],
   };
-
-  @override
-  void dispose() {
-    _soundPlayer.dispose();
-    super.dispose();
-  }
-
+  
   void addToNumber(String digit) {
     _soundPlayer.playSound('dialing.mp3');
     if (userSettings.phoneNumber.length < 11) {
