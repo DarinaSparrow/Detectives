@@ -28,10 +28,21 @@ class Message {
   Message({required this.id, required this.status, required this.image, required this.name, required this.content, required this.message, required this.time, required this.flag, required this.answers, required this.indexOfAnswer, required this.display});
 }
 
+class Profile {
+  String image;
+  String name;
+  String status;
+  String firstLink;
+  String secondLink;
+
+  Profile({required this.image, required this.name, required this.status, required this.firstLink, required this.secondLink});
+}
+
 class conversationManager
 {
   static List<Conversation> conversations = [];
   static List<Message> messages = [];
+  static List<Profile> profiles = [];
 
   static void initializeConversations() {
     conversations = [
@@ -44,11 +55,11 @@ class conversationManager
   static void initializeMessages() {
     messages = [
       Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "Кейт Бланшет", content: 3, message: "assets/Женя.jpg", time: "12:52", flag: 1, answers: [], indexOfAnswer: -1, display: true),
-      Message(id: 1, status: 2, image: 'assets/Женя.jpg', name: "кто-то", content: 1, message: "Лохи", time: "12:52", flag: 1, answers: [], indexOfAnswer: -1, display: true),
-      Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "Хелена Боннем Картер", content: 1, message: "Лохи", time: "12:52", flag: 1, answers: [], indexOfAnswer: -1, display: true),
+      Message(id: 1, status: 2, image: 'assets/Женя.jpg', name: "кто-то", content: 1, message: "Так, это наша рабочая беседа по проектам. Давайте поработаем хорошо и желательно вместе, чтобы не было несуразиц и просрочек", time: "12:52", flag: 1, answers: [], indexOfAnswer: -1, display: true),
+      Message(id: 1, status: 3, image: 'assets/Женя.jpg', name: "Хелена Боннем Картер", content: 1, message: "Лохи", time: "12:52", flag: 1, answers: [], indexOfAnswer: -1, display: true),
       Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "Кейт Бланшет", content: 1, message: "Лохи", time: "12:52", flag: 1, answers: [], indexOfAnswer: -1, display: true),
       Message(id: 1, status: 2, image: 'assets/Женя.jpg', name: "кто-то", content: 1, message: "Лохи", time: "12:52", flag: 1, answers: [], indexOfAnswer: -1, display: true),
-      Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "Хелена Боннем Картер", content: 1, message: "Лохи", time: "12:52", flag: 1, answers: [], indexOfAnswer: -1, display: true),
+      Message(id: 1, status: 3, image: 'assets/Женя.jpg', name: "Хелена Боннем Картер", content: 1, message: "Лохи", time: "12:52", flag: 1, answers: [], indexOfAnswer: -1, display: true),
       Message(id: 2, status: 1, image: 'assets/Женя.jpg', name: "Кейт Бланшет", content: 1, message: "Лохи", time: "12:52", flag: 1, answers: [], indexOfAnswer: -1, display: true),
       Message(id: 2, status: 2, image: 'assets/Женя.jpg', name: "кто-то", content: 1, message: "Лохи", time: "12:52", flag: 1, answers: [], indexOfAnswer: -1, display: true),
       Message(id: 2, status: 1, image: 'assets/Женя.jpg', name: "Кейт Бланшет", content: 1, message: "Лохи", time: "12:52", flag: 1, answers: [], indexOfAnswer: -1, display: true),
@@ -57,6 +68,16 @@ class conversationManager
       Message(id: 3, status: 2, image: 'assets/Женя.jpg', name: "кто-то", content: 3, message: "assets/Женя.jpeg", time: "12:52", flag: 1, answers: [], indexOfAnswer: -1, display: true),
       Message(id: 3, status: 1, image: 'assets/Женя.jpg', name: "Кейт Бланшет", content: 1, message: "Лохи", time: "12:52", flag: 1, answers: [], indexOfAnswer: -1, display: true),
       Message(id: 3, status: 2, image: 'assets/Женя.jpg', name: "кто-то", content: 1, message: "Лохи", time: "12:52", flag: 1, answers: [], indexOfAnswer: -1, display: true),
+    ];
+  }
+
+  static void initializeProfiles() {
+    profiles = [
+      Profile(image: 'assets/Дарина.jpg', name: "Дарина", status: "AAAAA", firstLink: "AAAA", secondLink: "AAAA"),
+      Profile(image: 'assets/Аня.jpg', name: "Аня", status: "AAAAA", firstLink: "AAAA", secondLink: "AAAA"),
+      Profile(image: 'assets/Кирилл.jpg', name: "Кирилл", status: "AAAAA", firstLink: "AAAA", secondLink: "AAAA"),
+      Profile(image: 'assets/Даня.jpg', name: "Даня", status: "AAAAA", firstLink: "AAAA", secondLink: "AAAA"),
+      Profile(image: 'assets/Чайлдфри.jpg', name: "Чайлдфри", status: "AAAAA", firstLink: "AAAA", secondLink: "AAAA"),
     ];
   }
 
@@ -90,5 +111,25 @@ class conversationManager
         conversation.isOnline = false;
       }
     }
+  }
+
+  static String getNameByImage(String image) {
+    Profile? profile = profiles.firstWhere((profile) => profile.image == image);
+    return profile.name;
+  }
+
+  static String getStatusByImage(String image) {
+    Profile? profile = profiles.firstWhere((profile) => profile.image == image);
+    return profile.status;
+  }
+
+  static String getFirstLinkByImage(String image) {
+    Profile? profile = profiles.firstWhere((profile) => profile.image == image);
+    return profile.firstLink;
+  }
+
+  static String getSecondLinkByImage(String image) {
+    Profile? profile = profiles.firstWhere((profile) => profile.image == image);
+    return profile.secondLink;
   }
 }
