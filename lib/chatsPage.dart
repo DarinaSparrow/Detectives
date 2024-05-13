@@ -227,8 +227,7 @@ class _detailedChatPageState extends State<detailedChatPage> {
                             ),
                           if ((conversationManager.getTypeById(widget.chatsId) == 1) && (_localMessages[index].status == 1))
                             const SizedBox(width: 10),
-                          Expanded(
-                         child: Column(
+                          Column(
                             crossAxisAlignment: _localMessages[index].status == 1 ? CrossAxisAlignment.start : CrossAxisAlignment.end,
                             children: [
                               if (_localMessages[index].content != 3)
@@ -272,7 +271,6 @@ class _detailedChatPageState extends State<detailedChatPage> {
                               ),
                             ],
                           ),
-                  )
                         ],
                       ),
                     );
