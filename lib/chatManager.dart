@@ -21,11 +21,11 @@ class Message {
   String message;
   String time;
   int flag;
-  bool display;
-  String answers;
+  List<String> answers;
   int indexOfAnswer;
+  bool display;
 
-  Message({required this.id, required this.status, required this.image, required this.name, required this.content, required this.message, required this.time, required this.flag, required this.display, required this.answers, required this.indexOfAnswer});
+  Message({required this.id, required this.status, required this.image, required this.name, required this.content, required this.message, required this.time, required this.flag, required this.answers, required this.indexOfAnswer, required this.display});
 }
 
 class conversationManager
@@ -43,20 +43,20 @@ class conversationManager
 
   static void initializeMessages() {
     messages = [
-      Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "Кейт Бланшет", content: 3, message: "assets/Женя.jpg", time: "12:52", flag: 1, ),
-      Message(id: 1, status: 2, image: 'assets/Женя.jpg', name: "кто-то", content: 1, message: "Лохи", time: "12:52", flag: 1),
-      Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "Хелена Боннем Картер", content: 1, message: "Лохи", time: "12:52", flag: 1),
-      Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "Кейт Бланшет", content: 1, message: "Лохи", time: "12:52", flag: 1),
-      Message(id: 1, status: 2, image: 'assets/Женя.jpg', name: "кто-то", content: 1, message: "Лохи", time: "12:52", flag: 1),
-      Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "Хелена Боннем Картер", content: 1, message: "Лохи", time: "12:52", flag: 1),
-      Message(id: 2, status: 1, image: 'assets/Женя.jpg', name: "Кейт Бланшет", content: 1, message: "Лохи", time: "12:52", flag: 1),
-      Message(id: 2, status: 2, image: 'assets/Женя.jpg', name: "кто-то", content: 1, message: "Лохи", time: "12:52", flag: 1),
-      Message(id: 2, status: 1, image: 'assets/Женя.jpg', name: "Кейт Бланшет", content: 1, message: "Лохи", time: "12:52", flag: 1),
-      Message(id: 2, status: 2, image: 'assets/Женя.jpg', name: "кто-то", content: 1, message: "Лохи", time: "12:52", flag: 1),
-      Message(id: 3, status: 1, image: 'assets/Женя.jpg', name: "Кейт Бланшет", content: 1, message: "Лохи", time: "12:52", flag: 1),
-      Message(id: 3, status: 2, image: 'assets/Женя.jpg', name: "кто-то", content: 3, message: "assets/Женя.jpeg", time: "12:52", flag: 1),
-      Message(id: 3, status: 1, image: 'assets/Женя.jpg', name: "Кейт Бланшет", content: 1, message: "Лохи", time: "12:52", flag: 1),
-      Message(id: 3, status: 2, image: 'assets/Женя.jpg', name: "кто-то", content: 1, message: "Лохи", time: "12:52", flag: 1),
+      Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "Кейт Бланшет", content: 3, message: "assets/Женя.jpg", time: "12:52", flag: 1, answers: [], indexOfAnswer: -1, display: true),
+      Message(id: 1, status: 2, image: 'assets/Женя.jpg', name: "кто-то", content: 1, message: "Лохи", time: "12:52", flag: 1, answers: [], indexOfAnswer: -1, display: true),
+      Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "Хелена Боннем Картер", content: 1, message: "Лохи", time: "12:52", flag: 1, answers: [], indexOfAnswer: -1, display: true),
+      Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "Кейт Бланшет", content: 1, message: "Лохи", time: "12:52", flag: 1, answers: [], indexOfAnswer: -1, display: true),
+      Message(id: 1, status: 2, image: 'assets/Женя.jpg', name: "кто-то", content: 1, message: "Лохи", time: "12:52", flag: 1, answers: [], indexOfAnswer: -1, display: true),
+      Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "Хелена Боннем Картер", content: 1, message: "Лохи", time: "12:52", flag: 1, answers: [], indexOfAnswer: -1, display: true),
+      Message(id: 2, status: 1, image: 'assets/Женя.jpg', name: "Кейт Бланшет", content: 1, message: "Лохи", time: "12:52", flag: 1, answers: [], indexOfAnswer: -1, display: true),
+      Message(id: 2, status: 2, image: 'assets/Женя.jpg', name: "кто-то", content: 1, message: "Лохи", time: "12:52", flag: 1, answers: [], indexOfAnswer: -1, display: true),
+      Message(id: 2, status: 1, image: 'assets/Женя.jpg', name: "Кейт Бланшет", content: 1, message: "Лохи", time: "12:52", flag: 1, answers: [], indexOfAnswer: -1, display: true),
+      Message(id: 2, status: 2, image: 'assets/Женя.jpg', name: "кто-то", content: 1, message: "Лохи", time: "12:52", flag: 1, answers: [], indexOfAnswer: -1, display: true),
+      Message(id: 3, status: 1, image: 'assets/Женя.jpg', name: "Кейт Бланшет", content: 1, message: "Лохи", time: "12:52", flag: 1, answers: [], indexOfAnswer: -1, display: true),
+      Message(id: 3, status: 2, image: 'assets/Женя.jpg', name: "кто-то", content: 3, message: "assets/Женя.jpeg", time: "12:52", flag: 1, answers: [], indexOfAnswer: -1, display: true),
+      Message(id: 3, status: 1, image: 'assets/Женя.jpg', name: "Кейт Бланшет", content: 1, message: "Лохи", time: "12:52", flag: 1, answers: [], indexOfAnswer: -1, display: true),
+      Message(id: 3, status: 2, image: 'assets/Женя.jpg', name: "кто-то", content: 1, message: "Лохи", time: "12:52", flag: 1, answers: [], indexOfAnswer: -1, display: true),
     ];
   }
 
