@@ -192,10 +192,11 @@ class _detailedChatPageState extends State<detailedChatPage> {
                           radius: 20,
                           backgroundImage: AssetImage(_localMessages[index].image),
                         ),
+                      if ((conversationManager.getTypeById(widget.chatsId) == 1) && (_localMessages[index].status == 1))
                       const SizedBox(width: 10),
                       Column(
                         crossAxisAlignment: _localMessages[index].status == 1  ? CrossAxisAlignment.start : CrossAxisAlignment.end,
-                        children: [
+                          children: [
                           if (_localMessages[index].content != 3)
                             Container(
                               decoration: BoxDecoration(
@@ -218,7 +219,7 @@ class _detailedChatPageState extends State<detailedChatPage> {
                             Image.asset(
                               _localMessages[index].message,
                               width: MediaQuery.of(context).size.width * 1 / 3,
-                              height: MediaQuery.of(context).size.height * 1 / 3,
+                              height: MediaQuery.of(context).size.width * 1 / 3,
                             ),
                           const SizedBox(height: 5),
                           Row (
