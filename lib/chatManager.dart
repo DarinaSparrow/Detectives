@@ -9,7 +9,45 @@ class Conversation {
   bool isOnline;
   int countOfOpenedMessages;
 
-  Conversation({required this.id, required this.type, required this.image, required this.name, required this.lastMessage, required this.time, required this.isMessageRead, required this.isOnline, required this.countOfOpenedMessages});
+  Conversation({
+    required this.id,
+    required this.type,
+    required this.image,
+    required this.name,
+    required this.lastMessage,
+    required this.time,
+    required this.isMessageRead,
+    required this.isOnline,
+    required this.countOfOpenedMessages,
+  });
+
+  factory Conversation.fromJson(Map<String, dynamic> json) {
+    return Conversation(
+      id: json['id'],
+      type: json['type'],
+      image: json['image'],
+      name: json['name'],
+      lastMessage: json['lastMessage'],
+      time: json['time'],
+      isMessageRead: json['isMessageRead'],
+      isOnline: json['isOnline'],
+      countOfOpenedMessages: json['countOfOpenedMessages'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'type': type,
+      'image': image,
+      'name': name,
+      'lastMessage': lastMessage,
+      'time': time,
+      'isMessageRead': isMessageRead,
+      'isOnline': isOnline,
+      'countOfOpenedMessages': countOfOpenedMessages,
+    };
+  }
 }
 
 class Message {
@@ -25,7 +63,51 @@ class Message {
   int indexOfAnswer;
   bool display;
 
-  Message({required this.id, required this.status, required this.image, required this.name, required this.content, required this.message, required this.time, required this.flag, required this.answers, required this.indexOfAnswer, required this.display});
+  Message({
+    required this.id,
+    required this.status,
+    required this.image,
+    required this.name,
+    required this.content,
+    required this.message,
+    required this.time,
+    required this.flag,
+    required this.answers,
+    required this.indexOfAnswer,
+    required this.display,
+  });
+
+  factory Message.fromJson(Map<String, dynamic> json) {
+    return Message(
+      id: json['id'],
+      status: json['status'],
+      image: json['image'],
+      name: json['name'],
+      content: json['content'],
+      message: List<String>.from(json['message']),
+      time: json['time'],
+      flag: json['flag'],
+      answers: List<String>.from(json['answers']),
+      indexOfAnswer: json['indexOfAnswer'],
+      display: json['display'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'status': status,
+      'image': image,
+      'name': name,
+      'content': content,
+      'message': message,
+      'time': time,
+      'flag': flag,
+      'answers': answers,
+      'indexOfAnswer': indexOfAnswer,
+      'display': display,
+    };
+  }
 }
 
 class Profile {
@@ -36,7 +118,36 @@ class Profile {
   String secondLink;
   String thirdLink;
 
-  Profile({required this.image, required this.name, required this.status, required this.firstLink, required this.secondLink, required this.thirdLink});
+  Profile({
+    required this.image,
+    required this.name,
+    required this.status,
+    required this.firstLink,
+    required this.secondLink,
+    required this.thirdLink,
+  });
+
+  factory Profile.fromJson(Map<String, dynamic> json) {
+    return Profile(
+      image: json['image'],
+      name: json['name'],
+      status: json['status'],
+      firstLink: json['firstLink'],
+      secondLink: json['secondLink'],
+      thirdLink: json['thirdLink'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'image': image,
+      'name': name,
+      'status': status,
+      'firstLink': firstLink,
+      'secondLink': secondLink,
+      'thirdLink': thirdLink,
+    };
+  }
 }
 
 class conversationManager

@@ -1,4 +1,3 @@
-import 'dart:isolate';
 import 'package:detectives/gameProcess.dart';
 import 'package:flutter/material.dart';
 import 'package:detectives/sceletonOfApp.dart';
@@ -19,19 +18,8 @@ void main() {
   conversationManager.initializeMessages();
   conversationManager.initializeProfiles();
 
-  runInIsolate();
+  gameProcess.runGameLoop();
   runApp(const App());
-}
-
-void runInIsolate() async {
-  ReceivePort receivePort = ReceivePort();
-  SendPort sendPort = receivePort.sendPort;
-
-  await Isolate.spawn((sendPort) {gameProcess.runGameLoop(sendPort: sendPort);},
-      sendPort);
-  receivePort.listen((message) {
-    print(message);
-  });
 }
 
 class App extends StatelessWidget {
