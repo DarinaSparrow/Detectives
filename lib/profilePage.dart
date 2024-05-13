@@ -1,3 +1,4 @@
+import 'package:detectives/appService.dart';
 import 'package:detectives/dataManager.dart';
 import 'package:flutter/material.dart';
 import 'userSettings.dart';
@@ -45,6 +46,7 @@ class _profilePageState extends State<profilePage> {
                       userSettings.vibration = newValue;
                     });
                     dataManager.saveSettings();
+                    appService.vibrate();
                   }),
                   _buildDivider(),
                   _buildSettingSwitch('Звук', userSettings.sound, (newValue) {
@@ -182,7 +184,7 @@ class _profilePageState extends State<profilePage> {
               return Colors.grey;
             }),
           ),
-          child: Icon(icon, size: 30),
+          child: Icon(icon, size: 20),
         ),
       ],
     );
