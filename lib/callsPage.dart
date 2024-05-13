@@ -1,5 +1,7 @@
+import 'package:detectives/userSettings.dart';
 import 'package:flutter/material.dart';
-import 'userSettings.dart';
+import 'package:detectives/soundPlayer.dart';
+
 
 class callsPage extends StatefulWidget {
   const callsPage({super.key});
@@ -9,6 +11,7 @@ class callsPage extends StatefulWidget {
 }
 
 class _callsPageState extends State<callsPage> {
+  final SoundPlayer _soundPlayer = SoundPlayer();
   Map<String, List<String>> letterMap = {
     '1': [' ', ' ', ' ', ' '],
     '2': ['A', 'B', 'C'],
@@ -24,15 +27,24 @@ class _callsPageState extends State<callsPage> {
     '#': [' ', ' ', ' ', ' '],
   };
 
+  @override
+  void dispose() {
+    _soundPlayer.dispose();
+    super.dispose();
+  }
+
   void addToNumber(String digit) {
+    _soundPlayer.playSound('dialing.mp3');
     if (userSettings.phoneNumber.length < 11) {
       setState(() {
+
         userSettings.phoneNumber += digit;
       });
     }
   }
 
   void removeLastDigit() {
+    _soundPlayer.playSound('tap.mp3');
     setState(() {
       if (userSettings.phoneNumber.isNotEmpty) {
         userSettings.phoneNumber = userSettings.phoneNumber.substring(0, userSettings.phoneNumber.length - 1);
@@ -99,16 +111,16 @@ class _callsPageState extends State<callsPage> {
                 _actionButton(icon: Icons.call, onPressed: dialNumber),
                 if (userSettings.phoneNumber.isNotEmpty)
                   Padding(
-                    padding: const EdgeInsets.all(4.0),
+                    padding: const EdgeInsets.all(8.0),
                     child: TextButton(
                       onPressed: removeLastDigit,
                       style: ButtonStyle(
                         shape: MaterialStateProperty.all(const CircleBorder()),
-                        minimumSize: MaterialStateProperty.all(const Size.fromRadius(35.0)),
+                        minimumSize: MaterialStateProperty.all(const Size.fromRadius(45.0)),
                       ),
                       child: const Icon(
                         Icons.backspace_outlined,
-                        size: 25,
+                        size: 35,
                       ),
                     ),
                   ),
@@ -124,10 +136,10 @@ class _callsPageState extends State<callsPage> {
 
   Widget _voidButton() {
     return Padding(
-      padding: const EdgeInsets.all(4.0),
+      padding: const EdgeInsets.all(8.0),
       child: Container(
-        height: 70,
-        width: 70,
+        height: 90,
+        width: 90,
         decoration: const BoxDecoration(
           shape: BoxShape.circle,
         ),
@@ -137,12 +149,12 @@ class _callsPageState extends State<callsPage> {
 
   Widget _dialerButton({required String number, required List<String> letters}) {
     return Padding(
-      padding: const EdgeInsets.all(4.0),
+      padding: const EdgeInsets.all(8.0),
       child: OutlinedButton(
         onPressed: () => addToNumber(number),
         style: ButtonStyle(
           shape: MaterialStateProperty.all(const CircleBorder()),
-          minimumSize: MaterialStateProperty.all(const Size.fromRadius(35.0)),
+          minimumSize: MaterialStateProperty.all(const Size.fromRadius(45.0)),
           //padding: MaterialStateProperty.all(const EdgeInsets.all(30))),
         ),
         child: Column(
@@ -151,7 +163,7 @@ class _callsPageState extends State<callsPage> {
             Text(
               number,
               style: const TextStyle(
-                fontSize: 20.0,
+                fontSize: 24.0,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
               ),
@@ -160,7 +172,7 @@ class _callsPageState extends State<callsPage> {
               Text(
                 letters.join(),
                 style: const TextStyle(
-                  fontSize: 7.0,
+                  fontSize: 12.0,
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
                 ),
@@ -173,13 +185,12 @@ class _callsPageState extends State<callsPage> {
 
   Widget _dialerSingleButton({required String number}) {
     return Padding(
-      padding: const EdgeInsets.all(4.0),
+      padding: const EdgeInsets.all(8.0),
       child: OutlinedButton(
         onPressed: () => addToNumber(number),
         style: ButtonStyle(
           shape: MaterialStateProperty.all(const CircleBorder()),
-          minimumSize: MaterialStateProperty.all(const Size.fromRadius(35.0)),
-          //padding: MaterialStateProperty.all(const EdgeInsets.all(30))),
+          minimumSize: MaterialStateProperty.all(const Size.fromRadius(45.0)),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -187,7 +198,7 @@ class _callsPageState extends State<callsPage> {
             Text(
               number,
               style: const TextStyle(
-                fontSize: 25.0,
+                fontSize: 35.0,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
               ),
@@ -200,12 +211,12 @@ class _callsPageState extends State<callsPage> {
 
   Widget _actionButton({required IconData icon, required VoidCallback onPressed}) {
     return Padding(
-      padding: const EdgeInsets.all(4.0),
+      padding: const EdgeInsets.all(8.0),
       child: OutlinedButton(
         onPressed: onPressed,
         style: ButtonStyle(
           shape: MaterialStateProperty.all(const CircleBorder()),
-          minimumSize: MaterialStateProperty.all(const Size.fromRadius(35.0)),
+          minimumSize: MaterialStateProperty.all(const Size.fromRadius(45.0)),
           backgroundColor: MaterialStateProperty.all(Colors.green),
           foregroundColor: MaterialStateProperty.all(Colors.white),
         ),
@@ -214,7 +225,7 @@ class _callsPageState extends State<callsPage> {
           children: <Widget>[
             Icon(
               icon,
-              size: 25,
+              size: 35,
             ),
           ],
         ),
@@ -228,6 +239,8 @@ class lastCallPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final SoundPlayer soundPlayer = SoundPlayer();
+    soundPlayer.playSound('beeps.mp3', loop: true);
     return Scaffold(
       backgroundColor: Colors.grey[850],
       body: Center(
@@ -241,7 +254,7 @@ class lastCallPage extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
-            const SizedBox(height: 70),
+            const SizedBox(height: 90),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -264,11 +277,12 @@ class lastCallPage extends StatelessWidget {
                     icon: Icons.keyboard_alt_outlined, label: 'Клавиатура'),
               ],
             ),
-            const SizedBox(height: 70,),
+            const SizedBox(height: 90,),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 _actionButton(icon: Icons.call_end, onPressed: () {
+                  soundPlayer.stopSound();
                   Navigator.pop(context);
                 }),
               ],
@@ -281,7 +295,7 @@ class lastCallPage extends StatelessWidget {
 
   Widget _interactionButton({required IconData icon, required String label}) {
     return Padding(
-      padding: const EdgeInsets.all(4.0),
+      padding: const EdgeInsets.all(8.0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -290,7 +304,7 @@ class lastCallPage extends StatelessWidget {
             style: ButtonStyle(
               shape: MaterialStateProperty.all(const CircleBorder()),
               minimumSize: MaterialStateProperty.all(
-                  const Size.fromRadius(35.0)),
+                  const Size.fromRadius(45.0)),
               backgroundColor: MaterialStateProperty.all(Colors.grey[600]),
               foregroundColor: MaterialStateProperty.all(Colors.white),
             ),
@@ -298,7 +312,7 @@ class lastCallPage extends StatelessWidget {
               child: Icon(
                 icon,
                 color: Colors.white,
-                size: 25,
+                size: 35,
               ),
             ),
           ),
@@ -306,7 +320,7 @@ class lastCallPage extends StatelessWidget {
             label,
             style: const TextStyle(
               color: Colors.white,
-              fontSize: 10.0,
+              fontSize: 12.0,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -318,12 +332,12 @@ class lastCallPage extends StatelessWidget {
   Widget _actionButton(
       {required IconData icon, required VoidCallback onPressed}) {
     return Padding(
-      padding: const EdgeInsets.all(4.0),
+      padding: const EdgeInsets.all(8.0),
       child: OutlinedButton(
         onPressed: onPressed,
         style: ButtonStyle(
           shape: MaterialStateProperty.all(const CircleBorder()),
-          minimumSize: MaterialStateProperty.all(const Size.fromRadius(35.0)),
+          minimumSize: MaterialStateProperty.all(const Size.fromRadius(45.0)),
           backgroundColor: MaterialStateProperty.all(Colors.red),
           foregroundColor: MaterialStateProperty.all(Colors.white),
         ),
