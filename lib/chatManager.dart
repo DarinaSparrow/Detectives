@@ -1,3 +1,5 @@
+import 'package:intl/intl.dart';
+
 import 'gameProcess.dart';
 
 class Conversation {
@@ -172,19 +174,19 @@ class conversationManager
     messages = [
       Message(id: 1, status: 3, image: 'assets/Женя.jpg', name: "Кейт Бланшет", content: 1, message: ["0"], time: " ", flag: 1, answers: [], indexOfAnswer: 0, display: true),
       Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "Кейт Бланшет", content: 1, message: ["1"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
-      Message(id: 1, status: 2, image: 'assets/Женя.jpg', name: "кто-то", content: 1, message: ["2"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
-      Message(id: 1, status: 3, image: 'assets/Женя.jpg', name: "Хелена Боннем Картер", content: 1, message: ["3"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
-      Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "Кейт Бланшет", content: 1, message: ["4"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
-      Message(id: 1, status: 2, image: 'assets/Женя.jpg', name: "кто-то", content: 1, message: ["5"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
-      Message(id: 2, status: 1, image: 'assets/Женя.jpg', name: "Кейт Бланшет", content: 1, message: ["6"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
-      Message(id: 2, status: 2, image: 'assets/Женя.jpg', name: "кто-то", content: 1, message: ["7"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
-      Message(id: 2, status: 3, image: 'assets/Женя.jpg', name: "Хелена Боннем Картер", content: 1, message: ["8"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
+      Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "кто-то", content: 1, message: ["2"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
+      Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "Хелена Боннем Картер", content: 1, message: ["3"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
+      Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "Кейт Бланшет", content: 1, message: ["4"], time: "---", flag: 2, answers: ["123", "456", "789"], indexOfAnswer: 0, display: true),
+      Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "кто-то", content: 1, message: ["5"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
+      Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "Кейт Бланшет", content: 1, message: ["6"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
+      Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "кто-то", content: 1, message: ["7"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
+      Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "Хелена Боннем Картер", content: 1, message: ["8"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
       Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "Кейт Бланшет", content: 1, message: ["9"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
-      Message(id: 1, status: 2, image: 'assets/Женя.jpg', name: "кто-то", content: 1, message: ["10"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
+      Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "кто-то", content: 1, message: ["10"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
       Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "Кейт Бланшет", content: 1, message: ["11"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
-      Message(id: 1, status: 2, image: 'assets/Женя.jpg', name: "кто-то", content: 1, message: ["12"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
-      Message(id: 1, status: 3, image: 'assets/Женя.jpg', name: "Хелена Боннем Картер", content: 1, message: ["13"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
-      Message(id: 2, status: 2, image: 'assets/Женя.jpg', name: "кто-то", content: 1, message: ["14"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
+      Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "кто-то", content: 1, message: ["12"], time: "---", flag: 3, answers: [], indexOfAnswer: 0, display: true),
+      Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "Хелена Боннем Картер", content: 1, message: ["13"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
+      Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "кто-то", content: 1, message: ["14"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
     ];
   }
 
@@ -236,8 +238,7 @@ class conversationManager
     }
   }
 
-  static void updateChats(int id, String lastMessage, String time)
-  {
+  static void updateChats(int id, String lastMessage, String time) {
     int index = conversations.indexWhere((conversation) => conversation.id == id);
 
     conversations[index].lastMessage = lastMessage;
@@ -247,6 +248,15 @@ class conversationManager
     Conversation conversation = conversations[index];
     conversations.removeAt(index);
     conversations.insert(0, conversation);
+  }
+
+  static void saveAnswer(int answer, int id, String message) {
+    if ((gameProcess.countOfOpenedMessages + 1 < messages.length) && (messages[gameProcess.countOfOpenedMessages + 1].message.length > 1)) messages[gameProcess.countOfOpenedMessages + 1].indexOfAnswer = answer;
+
+    DateTime now = DateTime.now();
+    Message newMessage = Message(id: id, status: 2, image: 'assets/Женя.jpg', name: "Женя", content: 1, message: [], time: DateFormat('HH:mm').format(now), flag: 1, answers: [], indexOfAnswer: 0, display: true);
+    newMessage.message.insert(0, message);
+    messages.insert(gameProcess.countOfOpenedMessages + 1, newMessage);
   }
 
   static String getNameByImage(String image) {

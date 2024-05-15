@@ -342,9 +342,12 @@ class _detailedChatPageState extends State<detailedChatPage> {
                     Expanded(
                       child: ElevatedButton(
                         onPressed: () {
+                          conversationManager.saveAnswer(0, widget.chatsId, _localMessages[_localMessages.length - 1].answers[0]);
                           setState(() {
-                            _isAnswersVisible = !_isAnswersVisible;
+                            _isAnswersVisible = false;
                           });
+                          gameProcess.changeChatWithOpenAnswers();
+                          gameProcess.runPlot();
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
@@ -354,11 +357,12 @@ class _detailedChatPageState extends State<detailedChatPage> {
                             borderRadius: BorderRadius.circular(10),
                           ),
                         ),
-                        child: Container(
+                        child:
+                        Container(
                           alignment: Alignment.centerLeft,
                           padding: const EdgeInsets.symmetric(horizontal: 16),
-                          child: const Text( "Первый вариант сообщения",
-                            style: TextStyle(color: Colors.black),
+                          child: Text(((_localMessages.isNotEmpty) && (_localMessages[_localMessages.length - 1].answers.length > 1)) ? _localMessages[_localMessages.length - 1].answers[0] : " ",
+                            style: const TextStyle(color: Colors.black),
                             textAlign: TextAlign.left,
                           ),
                         ),
@@ -368,9 +372,12 @@ class _detailedChatPageState extends State<detailedChatPage> {
                     Expanded(
                       child: ElevatedButton(
                         onPressed: () {
+                          conversationManager.saveAnswer(1, widget.chatsId, _localMessages[_localMessages.length - 1].answers[1]);
                           setState(() {
-                            _isAnswersVisible = !_isAnswersVisible;
+                            _isAnswersVisible = false;
                           });
+                          gameProcess.changeChatWithOpenAnswers();
+                          gameProcess.runPlot();
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
@@ -383,8 +390,8 @@ class _detailedChatPageState extends State<detailedChatPage> {
                         child: Container(
                           alignment: Alignment.centerLeft,
                           padding: const EdgeInsets.symmetric(horizontal: 16),
-                          child: const Text( "Второй вариант сообщения",
-                            style: TextStyle(color: Colors.black),
+                          child: Text(((_localMessages.isNotEmpty) && (_localMessages[_localMessages.length - 1].answers.length > 1)) ? _localMessages[_localMessages.length - 1].answers[1] : " ",
+                            style: const TextStyle(color: Colors.black),
                             textAlign: TextAlign.left,
                           ),
                         ),
@@ -394,9 +401,12 @@ class _detailedChatPageState extends State<detailedChatPage> {
                     Expanded(
                       child: ElevatedButton(
                         onPressed: () {
+                          conversationManager.saveAnswer(2, widget.chatsId, _localMessages[_localMessages.length - 1].answers[2]);
                           setState(() {
-                            _isAnswersVisible = !_isAnswersVisible;
+                            _isAnswersVisible = false;
                           });
+                          gameProcess.changeChatWithOpenAnswers();
+                          gameProcess.runPlot();
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
@@ -409,8 +419,8 @@ class _detailedChatPageState extends State<detailedChatPage> {
                         child: Container(
                           alignment: Alignment.centerLeft,
                           padding: const EdgeInsets.symmetric(horizontal: 16),
-                          child: const Text( "Третий вариант сообщения",
-                            style: TextStyle(color: Colors.black),
+                          child: Text(((_localMessages.isNotEmpty) && (_localMessages[_localMessages.length - 1].answers.length > 1)) ? _localMessages[_localMessages.length - 1].answers[2] : " ",
+                            style: const TextStyle(color: Colors.black),
                             textAlign: TextAlign.left,
                           ),
                         ),
@@ -424,9 +434,11 @@ class _detailedChatPageState extends State<detailedChatPage> {
                     Expanded(
                       child: ElevatedButton(
                         onPressed: () {
-                          setState(() {
-                            _isAnswersVisible = !_isAnswersVisible;
+                          if (gameProcess.chatWithOpenAnswers == widget.chatsId) {
+                            setState(() {
+                            _isAnswersVisible = true;
                           });
+                          }
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
@@ -448,9 +460,11 @@ class _detailedChatPageState extends State<detailedChatPage> {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        setState(() {
-                          _isAnswersVisible = !_isAnswersVisible;
-                        });
+                        if (gameProcess.chatWithOpenAnswers == widget.chatsId) {
+                          setState(() {
+                            _isAnswersVisible = true;
+                          });
+                        }
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.lightBlue[500],
