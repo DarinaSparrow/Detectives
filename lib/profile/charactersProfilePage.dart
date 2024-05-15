@@ -39,16 +39,19 @@ class charactersProfilePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 SizedBox(height: sectionDivider),
-                FittedBox( // Обертка для масштабирования текста
-                  child: Text(
-                    conversationManager.getNameByImage(profileImage),
-                    style: TextStyle(fontSize: largeFontSize, fontWeight: FontWeight.bold),
-                  ),
+                Text(
+                  conversationManager.getNameByImage(profileImage),
+                  style: TextStyle(fontSize: largeFontSize, fontWeight: FontWeight.bold),
+                  textAlign: TextAlign.center,
+                  softWrap: true,
                 ),
-                FittedBox( // Обертка для масштабирования текста
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.1),
                   child: Text(
                     conversationManager.getStatusByImage(profileImage),
                     style: TextStyle(fontSize: middleFontSize, color: Colors.grey[700]),
+                    softWrap: true,
+                    textAlign: TextAlign.center,
                   ),
                 ),
                 const SizedBox(height: 20),
