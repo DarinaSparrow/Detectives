@@ -1,7 +1,7 @@
 import 'package:detectives/service/userSettings.dart';
 import 'package:flutter/material.dart';
 import 'package:detectives/service/soundPlayer.dart';
-
+import 'package:detectives/service/gameProcess.dart';
 
 class callsPage extends StatefulWidget {
   const callsPage({super.key});
@@ -238,7 +238,19 @@ class lastCallPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final SoundPlayer soundPlayer = SoundPlayer();
-    soundPlayer.playSound('beeps.mp3', loop: true);
+    if (userSettings.phoneNumber == '89996665544' && gameProcess.countOfOpenedMessages >= 5) {
+      soundPlayer.playSound('rickroll.mp3', onCompletion: () {
+        Navigator.pop(context);
+        if (gameProcess.countOfOpenedMessages == 5) {
+          gameProcess.runPlot();
+        }
+      });
+
+    }
+    else {
+      soundPlayer.playSound('beeps.mp3', loop: true);
+    }
+
     return Scaffold(
       backgroundColor: Colors.grey[850],
       body: Center(
