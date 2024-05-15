@@ -149,6 +149,7 @@ class detailedChatPage extends StatefulWidget {
 class _detailedChatPageState extends State<detailedChatPage> {
 
   static final List<Message> _localMessages = [];
+  final ScrollController _scrollController = ScrollController();
   bool _isAnswersVisible = false;
   Timer? _timer;
 
@@ -164,8 +165,21 @@ class _detailedChatPageState extends State<detailedChatPage> {
       }
     }
 
-      updateChat();
+
+    updateChat();
+    // Отложенная прокрутка вниз при инициализации
+    WidgetsBinding.instance.addPostFrameCallback((_) => _scrollToBottom());
+  }
+
+  void _scrollToBottom() {
+    if (_scrollController.hasClients) {
+      _scrollController.animateTo(
+        _scrollController.position.maxScrollExtent,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeOut,
+      );
     }
+  }
 
   Future<void> updateChat() async {
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
@@ -175,6 +189,8 @@ class _detailedChatPageState extends State<detailedChatPage> {
         _localMessages.add(conversationManager.messages[gameProcess.countOfOpenedMessages]);
 
         setState(() {});
+        // Отложенная прокрутка для учета нового сообщения
+        WidgetsBinding.instance.addPostFrameCallback((_) => _scrollToBottom());
       }
     }
     );
@@ -241,6 +257,7 @@ class _detailedChatPageState extends State<detailedChatPage> {
               });
             },
             child: ListView.builder(
+                controller: _scrollController, // контроллер прокрутки
                 itemCount: _localMessages.length,
                 padding: EdgeInsets.only(top: 10,bottom: _isAnswersVisible ? MediaQuery.of(context).size.height * 1 / 3 + 10 : 70),
                 itemBuilder: (context, index) {
@@ -469,7 +486,7 @@ class _detailedChatPageState extends State<detailedChatPage> {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.lightBlue[500],
                         shadowColor: Colors.transparent,
-                        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+                        //padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
                         shape: const CircleBorder(),
                       ),
                       child: const Icon(Icons.send, color: Colors.black, size: 24),
@@ -490,6 +507,7 @@ class _detailedChatPageState extends State<detailedChatPage> {
     gameProcess.changeCurrentChat(0);
 
     _localMessages.clear();
+    _scrollController.dispose();
     super.dispose();
   }
 }
