@@ -250,7 +250,7 @@ class conversationManager
     conversations.insert(0, conversation);
   }
 
-  static void saveAnswer(int answer, int id, String message) {
+  static saveAnswer(int answer, int id, String message) {
     if ((gameProcess.countOfOpenedMessages + 1 < messages.length) && (messages[gameProcess.countOfOpenedMessages + 1].message.length > 1)) messages[gameProcess.countOfOpenedMessages + 1].indexOfAnswer = answer;
 
     DateTime now = DateTime.now();
