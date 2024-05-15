@@ -6,11 +6,11 @@
       "image": "assets/Дарина.jpg",
       "name": "Дарина",
       "content": 1,
-      "message": "*Создана группа «Не хрусти на лекциях!»",
+      "message": ["*Создана группа «Не хрусти на лекциях!»"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -19,11 +19,11 @@
       "image": "assets/Дарина.jpg",
       "name": "Дарина",
       "content": 1,
-      "message": "*Дарина пригласила Даня, Аня, Кирилл, Женя",
+      "message": ["*Дарина пригласила Даня, Аня, Кирилл, Женя"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -32,11 +32,11 @@
       "image": "assets/Дарина.jpg",
       "name": "Дарина",
       "content": 1,
-      "message": "Так, это наша рабочая беседа по проектам. Давайте поработаем хорошо и желательно вместе, чтобы не было несуразиц и просрочек.",
+      "message": ["Так, это наша рабочая беседа по проектам. Давайте поработаем хорошо и желательно вместе, чтобы не было несуразиц и просрочек."],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -45,11 +45,11 @@
       "image": "assets/Дарина.jpg",
       "name": "Дарина",
       "content": 1,
-      "message": "Так, это наша рабочая беседа по проектам. Давайте поработаем хорошо и желательно вместе, чтобы не было несуразиц и просрочек.",
+      "message": ["Так, это наша рабочая беседа по проектам. Давайте поработаем хорошо и желательно вместе, чтобы не было несуразиц и просрочек."],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -58,11 +58,11 @@
       "image": "assets/Аня.jpg",
       "name": "Аня",
       "content": 1,
-      "message": "АХААХЗЫЪАЫЪАЗХЪАЫАХ",
+      "message": ["АХААХЗЫЪАЫЪАЗХЪАЫАХ"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -71,11 +71,11 @@
       "image": "assets/Аня.jpg",
       "name": "Аня",
       "content": 1,
-      "message": "Да, попробуем",
+      "message": ["Да, попробуем"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -84,11 +84,11 @@
       "image": "assets/Даня.jpg",
       "name": "Даня",
       "content": 1,
-      "message": "Женя, позвони мне на номер, срочно! 89999999999",
+      "message": ["Женя, позвони мне на номер, срочно! 89999999999"],
       "time": " ",
       "flag": 3,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -97,11 +97,11 @@
       "image": "assets/Даня.jpg",
       "name": "Даня",
       "content": 1,
-      "message": "Тебя затролили, жесткий пранк вышел",
+      "message": ["Тебя затролили, жесткий пранк вышел"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -110,11 +110,11 @@
       "image": "assets/Даня.jpg",
       "name": "Даня",
       "content": 2,
-      "message": "assets/png-transparent-internet-troll-trollface-rage-comic-youtube-internet-meme-youtube.png",
+      "message": ["assets/png-transparent-internet-troll-trollface-rage-comic-youtube-internet-meme-youtube.png"],
       "time": " ",
       "flag": 2,
       "answers": ["Да уж… ","Спасибо, Клим Саныч, старались, потраченного времени конечно жаль","Я в шоках, че за бред"],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -123,11 +123,11 @@
       "image": "assets/Даня.jpg",
       "name": "Даня",
       "content": 1,
-      "message": "Был спор с друзьями, ты мои первая несчастная жертва, не обращай внимания",
+      "message": ["Был спор с друзьями, ты мои первая несчастная жертва, не обращай внимания"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -136,11 +136,11 @@
       "image": "assets/Кирилл.jpg",
       "name": "Кирилл",
       "content": 1,
-      "message": "Евгений, завтра идешь на физру?",
+      "message": ["Евгений, завтра идешь на физру?"],
       "time": " ",
       "flag": 2,
       "answers": ["Да не, поспать охота ","А что говорил папа Антон, вообще что-то будет?","Естественно, на морду твою наглую посмотреть приду"],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -153,7 +153,7 @@
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -162,11 +162,11 @@
       "image": "assets/Даня.jpg",
       "name": "Даня",
       "content": 1,
-      "message": "кстати, а что насчет Чайлдфри, мы ее будем добавлять?",
+      "message": ["кстати, а что насчет Чайлдфри, мы ее будем добавлять?"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -175,11 +175,11 @@
       "image": "assets/Дарина.jpg",
       "name": "Дарина",
       "content": 1,
-      "message": "Ну я ей написала, если ответит, то может даже увидим ее",
+      "message": ["Ну я ей написала, если ответит, то может даже увидим ее"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -188,11 +188,11 @@
       "image": "assets/Даня.jpg",
       "name": "Даня",
       "content": 1,
-      "message": "Давно ее не было",
+      "message": ["Давно ее не было"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -201,11 +201,11 @@
       "image": "assets/Аня.jpg",
       "name": "Аня",
       "content": 1,
-      "message": "Я писала нашей звездочке, но ничего конкретного в ответ не получила, пока что не ясно, что с ней.",
+      "message": ["Я писала нашей звездочке, но ничего конкретного в ответ не получила, пока что не ясно, что с ней."],
       "time": " ",
       "flag": 2,
       "answers": ["Она уже легенда","А когда мы ее видели последний раз ?","Может её числанули?"],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -218,7 +218,7 @@
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -227,11 +227,11 @@
       "image": "assets/Кирилл.jpg",
       "name": "Кирилл",
       "content": 1,
-      "message": "А давайте тогда еще подумаем, что вообще могло произойти с ней",
+      "message": ["А давайте тогда еще подумаем, что вообще могло произойти с ней"],
       "time": " ",
       "flag": 2,
       "answers": ["Ууууу, начинается жуткая история о пропаже студентки ","Неужели вам не все равно, у нас есть и другие важные дела ","Я думаю, она просто забила"],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -244,7 +244,7 @@
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -253,11 +253,11 @@
       "image": "assets/Аня.jpg",
       "name": "Аня",
       "content": 1,
-      "message": "Однако, если так подумать, то мы о ней ничего не знаем.",
+      "message": ["Однако, если так подумать, то мы о ней ничего не знаем."],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -266,11 +266,11 @@
       "image": "assets/Дарина.jpg",
       "name": "Дарина",
       "content": 1,
-      "message": "и правда, она ни с кем не держит контактов, так что нельзя ничего утверждать.",
+      "message": ["и правда, она ни с кем не держит контактов, так что нельзя ничего утверждать."],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -279,11 +279,11 @@
       "image": "assets/Кирилл.jpg",
       "name": "Кирилл",
       "content": 1,
-      "message": "Я смотрю вы все решили поддержать этот бред, который я вкинул чисто для Евгения",
+      "message": ["Я смотрю вы все решили поддержать этот бред, который я вкинул чисто для Евгения"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -292,11 +292,11 @@
       "image": "assets/Даня.jpg",
       "name": "Даня",
       "content": 1,
-      "message": "Ну, а что ты хотел, теперь участвуй",
+      "message": ["Ну, а что ты хотел, теперь участвуй"],
       "time": " ",
       "flag": 2,
       "answers": ["Ох как мне нравится ваш энтузиазм","Кирилл, я проигнорирую твое сообщение.","Как так??!)"],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -309,7 +309,7 @@
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -318,11 +318,11 @@
       "image": "assets/Дарина.jpg",
       "name": "Дарина",
       "content": 1,
-      "message": "Ну раз пошла такая дискуссия давайте подумаем, как вообще происходило ее исчезновение.",
+      "message": ["Ну раз пошла такая дискуссия давайте подумаем, как вообще происходило ее исчезновение."],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -331,11 +331,11 @@
       "image": "assets/Дарина.jpg",
       "name": "Дарина",
       "content": 1,
-      "message": "Она пропала прямо после того, как ее успеваемость скатилась хуже некуда.",
+      "message": ["Она пропала прямо после того, как ее успеваемость скатилась хуже некуда."],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -344,11 +344,11 @@
       "image": "assets/Аня.jpg",
       "name": "Аня",
       "content": 1,
-      "message": "Но ты не забывай, она ж все равно ходила изредка на лекции",
+      "message": ["Но ты не забывай, она ж все равно ходила изредка на лекции"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -357,11 +357,11 @@
       "image": "assets/Даня.jpg",
       "name": "Даня",
       "content": 1,
-      "message": "ну еще на Философию",
+      "message": ["ну еще на Философию"],
       "time": " ",
       "flag": 2,
       "answers": ["А вдруг тут скрыт какой-то смысл ","Зачем вообще тогда ходила","А вот и зацепка, необычное поведение, ведь обычно люди забивают лекции"],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -374,7 +374,7 @@
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -383,11 +383,11 @@
       "image": "assets/Дарина.jpg",
       "name": "Дарина",
       "content": 1,
-      "message": "ну пусть побалуется человек",
+      "message": ["ну пусть побалуется человек"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -396,11 +396,11 @@
       "image": "assets/Даня.jpg",
       "name": "Даня",
       "content": 1,
-      "message": "Женя как обычно",
+      "message": ["Женя как обычно"],
       "time": " ",
       "flag": 2,
       "answers": ["…","да вы что… ","вы не понимаете, тут таакое может быть"],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -413,7 +413,7 @@
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -422,11 +422,11 @@
       "image": "assets/Аня.jpg",
       "name": "Аня",
       "content": 1,
-      "message": "Мы поддержим тебя в твоем театре абсурда",
+      "message": ["Мы поддержим тебя в твоем театре абсурда"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -435,11 +435,11 @@
       "image": "assets/Кирилл.jpg",
       "name": "Кирилл",
       "content": 1,
-      "message": "вот так вот, от бурятских мультиков уже все, поехал",
+      "message": ["вот так вот, от бурятских мультиков уже все, поехал"],
       "time": " ",
       "flag": 2,
       "answers": ["они не понимают","А что если тут и правда что-то необычное","И правда чем я занимаюсь"],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": false
     },
     {
@@ -448,11 +448,11 @@
       "image": "assets/Дарина.jpg",
       "name": "Дарина",
       "content": 1,
-      "message": "Хотя знаете, помню мне снился странный сон, где Чайлдфри резко начала учится, открылась всем и стала прям душой компании.",
+      "message": ["Хотя знаете, помню мне снился странный сон, где Чайлдфри резко начала учится, открылась всем и стала прям душой компании."],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -461,11 +461,11 @@
       "image": "assets/Аня.jpg",
       "name": "Аня",
       "content": 1,
-      "message": "странные же у тебя сны",
+      "message": ["странные же у тебя сны"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -474,11 +474,11 @@
       "image": "assets/Даня.jpg",
       "name": "Даня",
       "content": 1,
-      "message": "это точно",
+      "message": ["это точно"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -487,11 +487,11 @@
       "image": "assets/Кирилл.jpg",
       "name": "Кирилл",
       "content": 1,
-      "message": "а сон был не вещим? Во будет смешно",
+      "message": ["а сон был не вещим? Во будет смешно"],
       "time": " ",
       "flag": 2,
       "answers": ["Да это же просто невозможно ","Да уж, вот и вправду неожиданность","Прекол"],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -500,11 +500,11 @@
       "image": "assets/Аня.jpg",
       "name": "Аня",
       "content": 1,
-      "message": "Знаете я вот о чем подумала, вы вообще верите в мистику?",
+      "message": ["Знаете я вот о чем подумала, вы вообще верите в мистику?"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -513,11 +513,11 @@
       "image": "assets/Даня.jpg",
       "name": "Даня",
       "content": 1,
-      "message": "нет",
+      "message": ["нет"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -526,11 +526,11 @@
       "image": "assets/Дарина.jpg",
       "name": "Дарина",
       "content": 1,
-      "message": "50/50",
+      "message": ["50/50"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -539,11 +539,11 @@
       "image": "assets/Кирилл.jpg",
       "name": "Кирилл",
       "content": 1,
-      "message": "нет",
+      "message": ["нет"],
       "time": " ",
       "flag": 2,
       "answers": ["Да","Нет","50/50"],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -552,11 +552,11 @@
       "image": "assets/Аня.jpg",
       "name": "Аня",
       "content": 1,
-      "message": "Просто вы не замечали, что она такая отстраненная, закрытая.",
+      "message": ["Просто вы не замечали, что она такая отстраненная, закрытая."],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -565,11 +565,11 @@
       "image": "assets/Даня.jpg",
       "name": "Даня",
       "content": 1,
-      "message": "Ты еще скажи, что ее образ темный и она посланница дьявола",
+      "message": ["Ты еще скажи, что ее образ темный и она посланница дьявола"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -578,11 +578,11 @@
       "image": "assets/Кирилл.jpg",
       "name": "Кирилл",
       "content": 1,
-      "message": "Что за бред в чате пошел…",
+      "message": ["Что за бред в чате пошел…"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -591,11 +591,11 @@
       "image": "assets/Дарина.jpg",
       "name": "Дарина",
       "content": 1,
-      "message": "Ну почему бы не порассуждать об этом",
+      "message": ["Ну почему бы не порассуждать об этом"],
       "time": " ",
       "flag": 2,
       "answers": ["Ну в принципе Аня выражает интересную точку зрения ","Я вообще не особо понимаю к чему клонится разговор","Темные образы… куда пошел разговор?? Хотя можно и поразмышлять об этом, интересно ведь"],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -604,11 +604,11 @@
       "image": "assets/Аня.jpg",
       "name": "Аня",
       "content": 1,
-      "message": "Женя, ты разве не заметил, что все это странно",
+      "message": ["Женя, ты разве не заметил, что все это странно"],
       "time": " ",
       "flag": 2,
       "answers": ["Я не совсем уверен, к чему ты клонишь… ","Мб тебя слишком понесло с мистикой ","Возможно и правда что-то необычное было в ней"],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -617,11 +617,11 @@
       "image": "assets/Аня.jpg",
       "name": "Аня",
       "content": 1,
-      "message": "Наш мир не изучен, а что ,если это и правда что-то мистическое, ну карты таро для чего-то все-таки нужны. Гадание вполне хорошая опция",
+      "message": ["Наш мир не изучен, а что ,если это и правда что-то мистическое, ну карты таро для чего-то все-таки нужны. Гадание вполне хорошая опция"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -630,11 +630,11 @@
       "image": "assets/Аня.jpg",
       "name": "Аня",
       "content": 1,
-      "message": "Представь сколько всего необычного и необъяснимого происходит",
+      "message": ["Представь сколько всего необычного и необъяснимого происходит"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -643,11 +643,11 @@
       "image": "assets/Аня.jpg",
       "name": "Аня",
       "content": 1,
-      "message": "Ладно, давай вернемся к ребятам, вдруг они что-то интересное скажут",
+      "message": ["Ладно, давай вернемся к ребятам, вдруг они что-то интересное скажут"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -656,11 +656,11 @@
       "image": "assets/Дарина.jpg",
       "name": "Дарина",
       "content": 1,
-      "message": "Вот это мы выбрали мотив рассуждения конечно",
+      "message": ["Вот это мы выбрали мотив рассуждения конечно"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -669,11 +669,11 @@
       "image": "assets/Даня.jpg",
       "name": "Даня",
       "content": 1,
-      "message": "Да бред это все",
+      "message": ["Да бред это все"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -682,11 +682,11 @@
       "image": "assets/Кирилл.jpg",
       "name": "Кирилл",
       "content": 1,
-      "message": "Ну, я соглашусь с этим",
+      "message": ["Ну, я соглашусь с этим"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -695,11 +695,11 @@
       "image": "assets/Кирилл.jpg",
       "name": "Кирилл",
       "content": 1,
-      "message": "Ты работать вообще собираешься?",
+      "message": ["Ты работать вообще собираешься?"],
       "time": " ",
       "flag": 1,
       "answers": ["Кирилл, что-то нет в тебе интереса к истории","А что ты думаешь про это все?","Ты так слабенько ведешь диалог в нашей беседе, разве может быть сейчас что-то важнее "],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -712,7 +712,7 @@
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -721,11 +721,11 @@
       "image": "assets/Кирилл.jpg",
       "name": "Кирилл",
       "content": 1,
-      "message": "Я занят лабами",
+      "message": ["Я занят лабами"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -734,11 +734,11 @@
       "image": "assets/Кирилл.jpg",
       "name": "Кирилл",
       "content": 2,
-      "message": "assets/capybaras.jpg",
+      "message": ["assets/capybaras.jpg"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -747,11 +747,11 @@
       "image": "assets/Кирилл.jpg",
       "name": "Кирилл",
       "content": 1,
-      "message": "Вот сделаю все и буду как капибара кайфовать, а ты потом будешь жаловаться, что времени нет делать задания",
+      "message": ["Вот сделаю все и буду как капибара кайфовать, а ты потом будешь жаловаться, что времени нет делать задания"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -760,11 +760,11 @@
       "image": "assets/Кирилл.jpg",
       "name": "Кирилл",
       "content": 1,
-      "message": "Бесполезными делами занимаетесь",
+      "message": ["Бесполезными делами занимаетесь"],
       "time": " ",
       "flag": 2,
       "answers": ["Лабораторный наркоман ","Да хоть женись на своем компьютере","Кринжовый ты…"],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -773,11 +773,11 @@
       "image": "assets/Кирилл.jpg",
       "name": "Кирилл",
       "content": 2,
-      "message": "assets/Gosling.jpg",
+      "message": ["assets/Gosling.jpg"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -786,11 +786,11 @@
       "image": "assets/Кирилл.jpg",
       "name": "Кирилл",
       "content": 1,
-      "message": "Нет тут никакой мистики, просто она перестала ходить",
+      "message": ["Нет тут никакой мистики, просто она перестала ходить"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -799,11 +799,11 @@
       "image": "assets/Кирилл.jpg",
       "name": "Кирилл",
       "content": 1,
-      "message": "Еще посмотрим, как все выйдет",
+      "message": ["Еще посмотрим, как все выйдет"],
       "time": " ",
       "flag": 2,
       "answers": ["Нудный ты, пойду Дане напишу что ли…","Понятно все, лучше пообщаюсь с Даней","Нерд, Даня уж получше будет"],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -812,11 +812,11 @@
       "image": "assets/Кирилл.jpg",
       "name": "Кирилл",
       "content": 1,
-      "message": "Ага",
+      "message": ["Ага"],
       "time": " ",
       "flag": 2,
       "answers": ["Как-то ты не особо активничаешь, чтобы развить мысль ","Что-то ты все на нет сводишь","Тебе так страшно от нашей беседы, что ты лишь отписываешься?!?!?"],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -825,11 +825,11 @@
       "image": "assets/Даня.jpg",
       "name": "Даня",
       "content": 1,
-      "message": "Да не",
+      "message": ["Да не"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -838,11 +838,11 @@
       "image": "assets/Даня.jpg",
       "name": "Даня",
       "content": 1,
-      "message": "Просто вас понесло куда-то не в ту степь",
+      "message": ["Просто вас понесло куда-то не в ту степь"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -851,11 +851,11 @@
       "image": "assets/Даня.jpg",
       "name": "Даня",
       "content": 1,
-      "message": "Но вообще, мне просто надо уходить в зал, пойду к Илье в Samboy32",
+      "message": ["Но вообще, мне просто надо уходить в зал, пойду к Илье в Samboy32"],
       "time": " ",
       "flag": 2,
       "answers": ["пон","ок","пока"],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -864,11 +864,11 @@
       "image": "assets/Дарина.jpg",
       "name": "Дарина",
       "content": 1,
-      "message": "Как-то все притихли…",
+      "message": ["Как-то все притихли…"],
       "time": " ",
       "flag": 2,
       "answers": ["Согласен","Все просто ошарашены такими откровениями","Затишье перед бурей"],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -881,7 +881,7 @@
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -890,11 +890,11 @@
       "image": "assets/Дарина.jpg",
       "name": "Дарина",
       "content": 1,
-      "message": "Знаешь, я вот сейчас серьезно… послушай спокойно. Первое время, когда Чайлфри перестала ходить вообще, я пару раз краем глаза как будто видела Чайлдфри на практике по ООП.",
+      "message": ["Знаешь, я вот сейчас серьезно… послушай спокойно. Первое время, когда Чайлфри перестала ходить вообще, я пару раз краем глаза как будто видела Чайлдфри на практике по ООП."],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -903,11 +903,11 @@
       "image": "assets/Дарина.jpg",
       "name": "Дарина",
       "content": 1,
-      "message": "Она была как черный образ, который источает некую ауру вокруг, хотя, со временем я перестала обращать внимание и как-то прошло, но было очень странно",
+      "message": ["Она была как черный образ, который источает некую ауру вокруг, хотя, со временем я перестала обращать внимание и как-то прошло, но было очень странно"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -916,11 +916,11 @@
       "image": "assets/Дарина.jpg",
       "name": "Дарина",
       "content": 1,
-      "message": "Может мне, конечно, и казалось это все, но самое интересное, что Аня, подтвердила мои слова, я ей просто тоже сейчас по этому поводу писала, и она тоже что-то подобное видела, но в период, когда уже не видела я.",
+      "message": ["Может мне, конечно, и казалось это все, но самое интересное, что Аня, подтвердила мои слова, я ей просто тоже сейчас по этому поводу писала, и она тоже что-то подобное видела, но в период, когда уже не видела я."],
       "time": " ",
       "flag": 2,
       "answers": ["Что за бред!!?? ","Вот это приколы конечно, интересно","Не верится как-то"],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -933,7 +933,7 @@
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -942,11 +942,11 @@
       "image": "assets/Дарина.jpg",
       "name": "Дарина",
       "content": 1,
-      "message": "Так или иначе, ты сам то, что думаешь?",
+      "message": ["Так или иначе, ты сам то, что думаешь?"],
       "time": " ",
       "flag": 2,
       "answers": ["Ну после твоих слов странное ощущение, пока что не ясно ничего ","Ну, а почему бы не рассказать ребятам ","Круто конечно напридумывала, жутко аж стало"],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -959,7 +959,7 @@
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -968,11 +968,11 @@
       "image": "assets/Дарина.jpg",
       "name": "Дарина",
       "content": 1,
-      "message": "Ладно, давай вернемся к общему разговору, может все же получится развить хоть какую-то мысль",
+      "message": ["Ладно, давай вернемся к общему разговору, может все же получится развить хоть какую-то мысль"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -981,11 +981,11 @@
       "image": "assets/Дарина.jpg",
       "name": "Дарина",
       "content": 1,
-      "message": "Ребята, а задумайтесь, ведь правда есть кучу фильмов про мистику и всего такого подобного",
+      "message": ["Ребята, а задумайтесь, ведь правда есть кучу фильмов про мистику и всего такого подобного"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -994,11 +994,11 @@
       "image": "assets/Даня.jpg",
       "name": "Даня",
       "content": 1,
-      "message": "Вы все об этом",
+      "message": ["Вы все об этом"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -1007,11 +1007,11 @@
       "image": "assets/Кирилл.jpg",
       "name": "Кирилл",
       "content": 1,
-      "message": "Попусту трепемся я считаю, все это выдумка",
+      "message": ["Попусту трепемся я считаю, все это выдумка"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -1020,11 +1020,11 @@
       "image": "assets/Аня.jpg",
       "name": "Аня",
       "content": 1,
-      "message": "Ну мистика же неотъемлемая часть культуры почти любого народа, так почему же ей не место в нашем мире",
+      "message": ["Ну мистика же неотъемлемая часть культуры почти любого народа, так почему же ей не место в нашем мире"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -1033,11 +1033,11 @@
       "image": "assets/Аня.jpg",
       "name": "Аня",
       "content": 1,
-      "message": "Столько всего есть связанного с потусторонним, вера во что-то духовное или тот же народный фольклор",
+      "message": ["Столько всего есть связанного с потусторонним, вера во что-то духовное или тот же народный фольклор"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -1046,11 +1046,11 @@
       "image": "assets/Даня.jpg",
       "name": "Даня",
       "content": 1,
-      "message": "А может и правда так…",
+      "message": ["А может и правда так…"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -1059,11 +1059,11 @@
       "image": "assets/Даня.jpg",
       "name": "Даня",
       "content": 1,
-      "message": "Есть доля логики в словах Ани",
+      "message": ["Есть доля логики в словах Ани"],
       "time": " ",
       "flag": 2,
       "answers": ["Почему они так серьезно об этом заговорили сейчас?","А если так подумать, то можно и вправду начать воспринимать мистику как отражение взаимодействия людей с неизведанным… надо поразмышлять","Начинают нести уже какой-то бред, я думал мы шутки ради все это затеяли, да и не похоже вообще на правду"],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": false
     },
     {
@@ -1072,11 +1072,11 @@
       "image": "assets/Кирилл.jpg",
       "name": "Кирилл",
       "content": 1,
-      "message": "Я, конечно, очень во всем этом сомневаюсь, но если на чистоту, то есть вещи, которые нельзя будто бы объяснить рационально.",
+      "message": ["Я, конечно, очень во всем этом сомневаюсь, но если на чистоту, то есть вещи, которые нельзя будто бы объяснить рационально."],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -1085,11 +1085,11 @@
       "image": "assets/Дарина.jpg",
       "name": "Дарина",
       "content": 1,
-      "message": "Я, как фанат фильмов ужасов все же хотела бы верить во что-то сверхъестественное и необычное",
+      "message": ["Я, как фанат фильмов ужасов все же хотела бы верить во что-то сверхъестественное и необычное"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -1098,11 +1098,11 @@
       "image": "assets/Дарина.jpg",
       "name": "Дарина",
       "content": 1,
-      "message": "Не думаете ли вы, что Чайлдфри всегда была странной и не от мира сего… а может она и правда пропала не просто так…",
+      "message": ["Не думаете ли вы, что Чайлдфри всегда была странной и не от мира сего… а может она и правда пропала не просто так…"],
       "time": " ",
       "flag": 2,
       "answers": ["Ребятки, ну вы тут кончено загнули, чувствую уже цирк какой-то как будто начался","Действительно ли вы так думаете, что же тогда произошло?","Знаете, я с вами наверное соглашусь, если порассуждать, то можно прийти к странным выводам"],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -1115,7 +1115,7 @@
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -1124,11 +1124,11 @@
       "image": "assets/Дарина.jpg",
       "name": "Дарина",
       "content": 1,
-      "message": "Итак, давайте поделимся выводами, Женя, что ты думаешь?! Удиви нас первым",
+      "message": ["Итак, давайте поделимся выводами, Женя, что ты думаешь?! Удиви нас первым"],
       "time": " ",
       "flag": 2,
       "answers": ["Вы пытаетесь ломать комедию, а Чайлдфри пропала по нормальной причине ","Я так ничего и не понял, вы пудрите мне мозги, я сдаюсь, даже догадываться не буду, все.","Ну возможно, тут какая-то мистика, я не знаю, слишком все странно"],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -1141,7 +1141,7 @@
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -1150,11 +1150,11 @@
       "image": "assets/Дарина.jpg",
       "name": "Дарина",
       "content": 1,
-      "message": "Ладно, мы просто прикалывались, все мы сговорились, чтобы попытаться склонить тебя к странной версии, но и так понятно что мистики нет",
+      "message": ["Ладно, мы просто прикалывались, все мы сговорились, чтобы попытаться склонить тебя к странной версии, но и так понятно что мистики нет"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -1163,11 +1163,11 @@
       "image": "assets/Аня.jpg",
       "name": "Аня",
       "content": 1,
-      "message": "Дарина, здорово придумала",
+      "message": ["Дарина, здорово придумала"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -1176,11 +1176,11 @@
       "image": "assets/Кирилл.jpg",
       "name": "Кирилл",
       "content": 1,
-      "message": "Я сначала и не понял, но вышло не плохо, хехе",
+      "message": ["Я сначала и не понял, но вышло не плохо, хехе"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -1189,11 +1189,11 @@
       "image": "assets/Даня.jpg",
       "name": "Даня",
       "content": 1,
-      "message": "Да, в этот раз мы здорово повеселились над Женей, не часто так бывает.",
+      "message": ["Да, в этот раз мы здорово повеселились над Женей, не часто так бывает."],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -1202,11 +1202,11 @@
       "image": "assets/Дарина.jpg",
       "name": "Дарина",
       "content": 1,
-      "message": "Ну как тебе? Даже не думала, что получится реализовать такую спонтанную идею.",
+      "message": ["Ну как тебе? Даже не думала, что получится реализовать такую спонтанную идею."],
       "time": " ",
       "flag": 2,
       "answers": ["Неплохо вышло","Очень странно","Полная фигня"],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -1215,11 +1215,11 @@
       "image": "assets/Чайлдфри.jpg",
       "name": "Чайлдфри",
       "content": 1,
-      "message": "*новое подключение к чату: Чайлдфри",
+      "message": ["*новое подключение к чату: Чайлдфри"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     },
     {
@@ -1228,11 +1228,11 @@
       "image": "assets/Чайлдфри.jpg",
       "name": "Чайлдфри",
       "content": 1,
-      "message": "А кто сказал, что мистики не существует? А почему вы все сами решили))",
+      "message": ["А кто сказал, что мистики не существует? А почему вы все сами решили))"],
       "time": " ",
       "flag": 1,
       "answers": [],
-      "indexOfAnswer": -1,
+      "indexOfAnswer": 0,
       "display": true
     }
   ]
