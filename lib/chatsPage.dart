@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
 import 'gameProcess.dart';
 import 'chatManager.dart';
 import 'charactersProfilePage.dart';
@@ -12,91 +13,126 @@ class chatsPage extends StatefulWidget {
 
 class _chatsPageState extends State<chatsPage> {
 
+  Timer? _timer;
+
+  @override
+  void initState() {
+    super.initState();
+
+    updateChatsPage();
+  }
+
+  Future<void> updateChatsPage() async {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+
+      setState(() {});
+    }
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView.builder(
         itemCount: conversationManager.conversations.length,
         itemBuilder: (context, index) {
-          return GestureDetector(
-            onTap: () {
-              gameProcess.changeCurrentChat(conversationManager.conversations[index].id);
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => detailedChatPage(chatsId: conversationManager.conversations[index].id),
-                ),
-              );
-            },
-            child: Container(
-              padding: const EdgeInsets.all(10),
-              child: Stack(
-                children: [
-                  Positioned.fill(
-                    child: Container(
-                      color: Colors.transparent,
+          if (conversationManager.conversations[index].countOfOpenedMessages <= gameProcess.countOfOpenedMessages) {
+            return GestureDetector(
+              onTap: () {
+                conversationManager.setIsMessageReadById(conversationManager.conversations[index].id);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        detailedChatPage(
+                            chatsId: conversationManager.conversations[index].id),
+                  ),
+                );
+              },
+              child: Container(
+                padding: const EdgeInsets.all(10),
+                child: Stack(
+                  children: [
+                    Positioned.fill(
+                      child: Container(
+                        color: Colors.transparent,
+                      ),
                     ),
-                  ),
-                  Row(
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          if (conversationManager.conversations[index].id != 1) {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => charactersProfilePage(profileImage: conversationManager.conversations[index].image)),
-                            );
-                          }
-                        },
-                        child: CircleAvatar(
-                          radius: 20,
-                          backgroundImage: AssetImage(conversationManager.conversations[index].image),
+                    Row(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            if (conversationManager.conversations[index].id != 1) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) =>
+                                    charactersProfilePage(
+                                        profileImage: conversationManager
+                                            .conversations[index].image)),
+                              );
+                            }
+                          },
+                          child: CircleAvatar(
+                            radius: 20,
+                            backgroundImage: AssetImage(
+                                conversationManager.conversations[index].image),
+                          ),
                         ),
-                      ),
-                      const SizedBox(width: 10),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text(
-                              conversationManager.conversations[index].name,
-                              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-                            ),
-                            const SizedBox(height: 3,),
-                            Text(
-                              conversationManager.conversations[index].lastMessage,
-                              style: const TextStyle(fontSize: 13),
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(width: 10),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: <Widget>[
-                            if (!conversationManager.conversations[index].isMessageRead)
-                              CircleAvatar(
-                                radius: 5,
-                                backgroundColor: Colors.blue[600],
+                        const SizedBox(width: 10),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                conversationManager.conversations[index].name,
+                                style: const TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.w600),
                               ),
-                            const SizedBox(height: 3,),
-                            Text(
-                              conversationManager.conversations[index].time,
-                              style: const TextStyle(fontSize: 10),
-                            ),
-                          ],
+                              const SizedBox(height: 3,),
+                              Text(
+                                conversationManager.conversations[index]
+                                    .lastMessage,
+                                style: const TextStyle(fontSize: 13),
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                        const SizedBox(width: 10),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: <Widget>[
+                              if (!conversationManager.conversations[index]
+                                  .isMessageRead)
+                                CircleAvatar(
+                                  radius: 5,
+                                  backgroundColor: Colors.blue[600],
+                                ),
+                              const SizedBox(height: 3,),
+                              Text(
+                                conversationManager.conversations[index].time,
+                                style: const TextStyle(fontSize: 10),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-            ),
-          );
+            );
+          }
         },
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+
+    super.dispose();
   }
 }
 
@@ -114,6 +150,7 @@ class _detailedChatPageState extends State<detailedChatPage> {
 
   static final List<Message> _localMessages = [];
   bool _isAnswersVisible = false;
+  Timer? _timer;
 
   @override
   void initState() {
@@ -121,21 +158,26 @@ class _detailedChatPageState extends State<detailedChatPage> {
 
     gameProcess.changeCurrentChat(widget.chatsId);
 
-    for (var message in conversationManager.messages) {
-      if (message.id == widget.chatsId) {
-        _localMessages.add(message);
+    for (int i = 0; i <= gameProcess.countOfOpenedMessages; i++) {
+      if (conversationManager.messages[i].id == widget.chatsId) {
+        _localMessages.add(conversationManager.messages[i]);
       }
-
-      //if (_localMessages.length >= gameProcess.countOfOpenedMessages) {
-      // break;
-      // }
     }
-  }
 
-  void addMessageToList(Message message) {
-    _localMessages.add(message);
+      updateChat();
+    }
 
-    setState(() {});
+  Future<void> updateChat() async {
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+
+      if ((conversationManager.messages[gameProcess.countOfOpenedMessages].id == widget.chatsId)
+       && ((_localMessages.isEmpty) || (conversationManager.messages[gameProcess.countOfOpenedMessages].message != _localMessages[_localMessages.length - 1].message))) {
+        _localMessages.add(conversationManager.messages[gameProcess.countOfOpenedMessages]);
+
+        setState(() {});
+      }
+    }
+    );
   }
 
   @override
@@ -153,7 +195,6 @@ class _detailedChatPageState extends State<detailedChatPage> {
                 const SizedBox(width: 12,),
                 IconButton(
                   onPressed: (){
-                    gameProcess.changeCurrentChat(0);
                     Navigator.pop(context);
                   },
                   icon: const Icon(Icons.arrow_back_ios,color: Colors.black,),
@@ -200,8 +241,8 @@ class _detailedChatPageState extends State<detailedChatPage> {
               });
             },
             child: ListView.builder(
-              itemCount: _localMessages.length,
-              padding: EdgeInsets.only(top: 10,bottom: _isAnswersVisible ? MediaQuery.of(context).size.height * 1 / 3 + 10 : 70),
+                itemCount: _localMessages.length,
+                padding: EdgeInsets.only(top: 10,bottom: _isAnswersVisible ? MediaQuery.of(context).size.height * 1 / 3 + 10 : 70),
                 itemBuilder: (context, index) {
                   if (_localMessages[index].status != 3) {
                     MainAxisAlignment alignment = _localMessages[index].status == 1 ? MainAxisAlignment.start : MainAxisAlignment.end;
@@ -230,7 +271,7 @@ class _detailedChatPageState extends State<detailedChatPage> {
                           Column(
                             crossAxisAlignment: _localMessages[index].status == 1 ? CrossAxisAlignment.start : CrossAxisAlignment.end,
                             children: [
-                              if (_localMessages[index].content != 3)
+                              if (_localMessages[index].content == 1)
                                 Container(
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
@@ -252,12 +293,12 @@ class _detailedChatPageState extends State<detailedChatPage> {
                                         ),
                                       if ((conversationManager.getTypeById(widget.chatsId) == 1) && (_localMessages[index].status == 1))
                                         const SizedBox(height: 5),
-                                      Text(_localMessages[index].message[0], style: const TextStyle(fontSize: 15)),
+                                      Text(_localMessages[index].message[_localMessages[index].indexOfAnswer], style: const TextStyle(fontSize: 15)),
                                     ],
                                   ),
                                 ),
-                              if (_localMessages[index].content == 3)
-                                Image.asset(_localMessages[index].message[0],
+                              if (_localMessages[index].content == 2)
+                                Image.asset(_localMessages[index].message[_localMessages[index].indexOfAnswer],
                                   width: MediaQuery.of(context).size.width * 1 / 3,
                                   height: MediaQuery.of(context).size.width * 1 / 3,
                                 ),
@@ -278,7 +319,7 @@ class _detailedChatPageState extends State<detailedChatPage> {
                   else {
                     return Container(
                       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                      child: Text(_localMessages[index].message[0], textAlign: TextAlign.center, style: const TextStyle(fontSize: 15),
+                      child: Text(_localMessages[index].message[_localMessages[index].indexOfAnswer], textAlign: TextAlign.center, style: const TextStyle(fontSize: 15),
                       ),
                     );
                   }
@@ -430,6 +471,8 @@ class _detailedChatPageState extends State<detailedChatPage> {
 
   @override
   void dispose() {
+    _timer?.cancel();
+
     gameProcess.changeCurrentChat(0);
 
     _localMessages.clear();

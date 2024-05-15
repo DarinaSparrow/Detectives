@@ -1,3 +1,5 @@
+import 'gameProcess.dart';
+
 class Conversation {
   int id;
   int type;
@@ -158,19 +160,29 @@ class conversationManager
 
   static void initializeConversations() {
     conversations = [
-      Conversation(id: 1, type: 1, image: 'assets/group.png', name: "Неуловимые мстители", lastMessage: "Привет!", time: "12:50", isMessageRead: false, isOnline: true, countOfOpenedMessages: 0),
-      Conversation(id: 2, type: 2, image: 'assets/Чайлдфри.jpg', name: "Кейт Бланшет", lastMessage: "Привет!", time: "13:40", isMessageRead: true, isOnline: true, countOfOpenedMessages: 0),
-      Conversation(id: 3, type: 2, image: 'assets/Дарина.jpg', name: "Хелена Боннем Картер", lastMessage: "Привет!", time: "12:52", isMessageRead: false, isOnline: false, countOfOpenedMessages: 0),
+      Conversation(id: 1, type: 1, image: 'assets/group.png', name: "Неуловимые мстители", lastMessage: " ", time: " ", isMessageRead: false, isOnline: true, countOfOpenedMessages: 0),
+      Conversation(id: 2, type: 2, image: 'assets/Чайлдфри.jpg', name: "Кейт Бланшет", lastMessage: " ", time: " ", isMessageRead: true, isOnline: true, countOfOpenedMessages: 3),
+      Conversation(id: 3, type: 2, image: 'assets/Дарина.jpg', name: "Хелена Боннем Картер", lastMessage: " ", time: " ", isMessageRead: false, isOnline: false, countOfOpenedMessages: 5),
     ];
   }
 
   static void initializeMessages() {
     messages = [
-      Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "Кейт Бланшет", content: 3, message: ["assets/Женя.jpg"], time: "12:52", flag: 1, answers: [], indexOfAnswer: -1, display: true),
-      Message(id: 1, status: 2, image: 'assets/Женя.jpg', name: "кто-то", content: 1, message: ["Любитель хорроров, но до смерти боюсь Демидова"], time: "12:52", flag: 1, answers: [], indexOfAnswer: -1, display: true),
-      Message(id: 1, status: 3, image: 'assets/Женя.jpg', name: "Хелена Боннем Картер", content: 1, message: ["Любитель хорроров, но до смерти боюсь Демидова"], time: "12:52", flag: 1, answers: [], indexOfAnswer: -1, display: true),
-      Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "Кейт Бланшет", content: 1, message: ["Любитель хорроров, но до смерти боюсь Демидова"], time: "12:52", flag: 1, answers: [], indexOfAnswer: -1, display: true),
-      Message(id: 1, status: 2, image: 'assets/Женя.jpg', name: "кто-то", content: 1, message: ["Любитель хорроров, но до смерти боюсь Демидова"], time: "12:52", flag: 1, answers: [], indexOfAnswer: -1, display: true),
+      Message(id: 1, status: 3, image: 'assets/Женя.jpg', name: "Кейт Бланшет", content: 1, message: ["0"], time: " ", flag: 1, answers: [], indexOfAnswer: 0, display: true),
+      Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "Кейт Бланшет", content: 1, message: ["1"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
+      Message(id: 1, status: 2, image: 'assets/Женя.jpg', name: "кто-то", content: 1, message: ["2"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
+      Message(id: 1, status: 3, image: 'assets/Женя.jpg', name: "Хелена Боннем Картер", content: 1, message: ["3"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
+      Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "Кейт Бланшет", content: 1, message: ["4"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
+      Message(id: 1, status: 2, image: 'assets/Женя.jpg', name: "кто-то", content: 1, message: ["5"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
+      Message(id: 2, status: 1, image: 'assets/Женя.jpg', name: "Кейт Бланшет", content: 1, message: ["6"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
+      Message(id: 2, status: 2, image: 'assets/Женя.jpg', name: "кто-то", content: 1, message: ["7"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
+      Message(id: 2, status: 3, image: 'assets/Женя.jpg', name: "Хелена Боннем Картер", content: 1, message: ["8"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
+      Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "Кейт Бланшет", content: 1, message: ["9"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
+      Message(id: 1, status: 2, image: 'assets/Женя.jpg', name: "кто-то", content: 1, message: ["10"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
+      Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "Кейт Бланшет", content: 1, message: ["11"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
+      Message(id: 1, status: 2, image: 'assets/Женя.jpg', name: "кто-то", content: 1, message: ["12"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
+      Message(id: 1, status: 3, image: 'assets/Женя.jpg', name: "Хелена Боннем Картер", content: 1, message: ["13"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
+      Message(id: 2, status: 2, image: 'assets/Женя.jpg', name: "кто-то", content: 1, message: ["14"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
     ];
   }
 
@@ -205,6 +217,11 @@ class conversationManager
     return conversation.isOnline;
   }
 
+  static void setIsMessageReadById(int id) {
+    int index = conversations.indexWhere((conversation) => conversation.id == id);
+    conversations[index].isMessageRead = true;
+  }
+
   static void setIsOnlineById(int id) {
     for(var conversation in conversationManager.conversations) {
       if (conversation.id == id) {
@@ -214,6 +231,19 @@ class conversationManager
         conversation.isOnline = false;
       }
     }
+  }
+
+  static void updateChats(int id, String lastMessage, String time)
+  {
+    int index = conversations.indexWhere((conversation) => conversation.id == id);
+
+    conversations[index].lastMessage = lastMessage;
+    conversations[index].time = time;
+    if (id != gameProcess.currentChat) conversations[index].isMessageRead = false;
+
+    Conversation conversation = conversations[index];
+    conversations.removeAt(index);
+    conversations.insert(0, conversation);
   }
 
   static String getNameByImage(String image) {
