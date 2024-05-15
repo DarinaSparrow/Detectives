@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "type": 1,
+    "image": "assets/images/group.png",
+    "name": "Не хрусти на лекциях!",
+    "lastMessage": " ",
+    "time": " ",
+    "isMessageRead": true,
+    "isOnline": false,
+    "countOfOpenedMessages": 0
+  },
+  {
+    "id": 2,
+    "type": 2,
+    "image": "assets/images/Дарина.jpg",
+    "name": "Дарина",
+    "lastMessage": " ",
+    "time": " ",
+    "isMessageRead": true,
+    "isOnline": false,
+    "countOfOpenedMessages": 0
+  },
+  {
+    "id": 3,
+    "type": 2,
+    "image": "assets/images/Кирилл.jpg",
+    "name": "Кирилл",
+    "lastMessage": " ",
+    "time": " ",
+    "isMessageRead": true,
+    "isOnline": false,
+    "countOfOpenedMessages": 0
+  },
+  {
+    "id": 4,
+    "type": 2,
+    "image": "assets/images/Даня.jpg",
+    "name": "Даня",
+    "lastMessage": " ",
+    "time": " ",
+    "isMessageRead": true,
+    "isOnline": false,
+    "countOfOpenedMessages": 0
+  },
+  {
+    "id": 5,
+    "type": 2,
+    "image": "assets/images/Аня.jpg",
+    "name": "Аня",
+    "lastMessage": " ",
+    "time": " ",
+    "isMessageRead": true,
+    "isOnline": false,
+    "countOfOpenedMessages": 0
+  }
+]

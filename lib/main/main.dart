@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:detectives/splashScreen.dart';
+import 'package:detectives/main/splashScreen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

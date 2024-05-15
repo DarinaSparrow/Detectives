@@ -1,7 +1,7 @@
-import 'package:detectives/appService.dart';
-import 'package:detectives/dataManager.dart';
+import 'package:detectives/service/appService.dart';
+import 'package:detectives/service/dataManager.dart';
 import 'package:flutter/material.dart';
-import 'userSettings.dart';
+import '../service/userSettings.dart';
 
 class profilePage extends StatefulWidget {
   const profilePage({Key? key}) : super(key: key);
@@ -31,7 +31,7 @@ class _profilePageState extends State<profilePage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  _buildProfileAvatar('assets/Женя.jpg'),
+                  _buildProfileAvatar('assets/images/Женя.jpg'),
                   _buildProfileInfo('Женя', 'Да что вы опять смеетесь?'),
                   _buildDivider(),
                   _buildSectionTitle('Настройки'),
@@ -111,41 +111,6 @@ class _profilePageState extends State<profilePage> {
         title,
         style: TextStyle(fontSize: middleFontSize, fontWeight: FontWeight.bold),
       ),
-    );
-  }
-
-  Widget _buildProfileField(String label, String hintText, TextEditingController controller) {
-    controller.text = label == "Ник" ? userSettings.nickname : userSettings.status;
-    return Row(
-      children: [
-        Expanded(
-          flex: 1,
-          child: Text(
-            label,
-            style: const TextStyle(fontWeight: FontWeight.bold),
-          ),
-        ),
-        //const SizedBox(width: 20),
-        Expanded(
-          flex: 3,
-          child: TextField(
-            controller: controller,
-            onChanged: (value) {
-              if (label == "Ник") {
-                userSettings.nickname = value;
-              } else {
-                userSettings.status = value;
-              }
-              dataManager.saveSettings();
-            },
-            decoration: InputDecoration(
-              hintText: hintText,
-              hintStyle: TextStyle(color: Colors.grey[500]),
-              border: InputBorder.none,
-            ),
-          ),
-        ),
-      ],
     );
   }
 
@@ -235,7 +200,28 @@ class _profilePageState extends State<profilePage> {
 
   Widget _buildSettingButton(String label) {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: () => showDialog<String>(
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+          title: const Text('Подтверждение'),
+          content: const Text('Вы уверены, что хотите перезапустить историю?'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context, 'Нет');
+              },
+              child: const Text('Нет'),
+            ),
+            TextButton(
+              onPressed: () {
+                dataManager.resetGameProgress();
+                Navigator.pop(context, 'Да');
+              },
+              child: const Text('Да'),
+            ),
+          ],
+        ),
+      ),
       child: Text(label),
     );
   }

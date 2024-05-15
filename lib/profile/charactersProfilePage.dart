@@ -1,9 +1,8 @@
-import 'package:detectives/profilePage.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:detectives/chatManager.dart';
+import 'package:detectives/chat/chatManager.dart';
 
 class charactersProfilePage extends StatelessWidget {
   const charactersProfilePage({super.key, required this.profileImage});
