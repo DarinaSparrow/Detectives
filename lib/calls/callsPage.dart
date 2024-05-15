@@ -294,6 +294,9 @@ class lastCallPage extends StatelessWidget {
                 _actionButton(context, icon: Icons.call_end, onPressed: () {
                   soundPlayer.stopSound();
                   Navigator.pop(context);
+                  if (userSettings.phoneNumber == '89996665544' && gameProcess.countOfOpenedMessages == 5) {
+                    gameProcess.runPlot();
+                  }
                 }),
               ],
             ),
