@@ -98,23 +98,21 @@ class _chatsPageState extends State<chatsPage> {
                           ),
                         ),
                         const SizedBox(width: 10),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: <Widget>[
-                              if (!conversationManager.conversations[index]
-                                  .isMessageRead)
-                                CircleAvatar(
-                                  radius: 5,
-                                  backgroundColor: Colors.blue[600],
-                                ),
-                              const SizedBox(height: 3,),
-                              Text(
-                                conversationManager.conversations[index].time,
-                                style: const TextStyle(fontSize: 10),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: <Widget>[
+                            if (!conversationManager.conversations[index]
+                                .isMessageRead)
+                              CircleAvatar(
+                                radius: 5,
+                                backgroundColor: Colors.blue[600],
                               ),
-                            ],
-                          ),
+                            const SizedBox(height: 3,),
+                            Text(
+                              conversationManager.conversations[index].time,
+                              style: const TextStyle(fontSize: 10),
+                            ),
+                          ],
                         ),
                       ],
                     ),
@@ -268,9 +266,8 @@ class _detailedChatPageState extends State<detailedChatPage> {
                       CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.start;
                       return Container(
                         padding: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 10),
-                        child: Row(
-                          mainAxisAlignment: alignment,
-                          crossAxisAlignment: crossAxisAlignment,
+                        child: Wrap(
+                          alignment: WrapAlignment.start,
                           children: [
                             if ((conversationManager.getTypeById(widget.chatsId) == 1) && (_localMessages[index].status == 1))
                               GestureDetector(
@@ -287,49 +284,56 @@ class _detailedChatPageState extends State<detailedChatPage> {
                               ),
                             if ((conversationManager.getTypeById(widget.chatsId) == 1) && (_localMessages[index].status == 1))
                               const SizedBox(width: 10),
-                            Column(
-                              crossAxisAlignment: _localMessages[index].status == 1 ? CrossAxisAlignment.start : CrossAxisAlignment.end,
-                              children: [
-                                if (_localMessages[index].content == 1)
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                      color: _localMessages[index].status == 1 ? Colors.blue[400] : Colors.blue[500],
-                                    ),
-                                    padding: const EdgeInsets.all(16),
-                                    child: Column(
-                                      crossAxisAlignment: _localMessages[index].status == 1 ? CrossAxisAlignment.start : CrossAxisAlignment.end,
-                                      children: [
-                                        if ((conversationManager.getTypeById(widget.chatsId) == 1) && (_localMessages[index].status == 1))
-                                          GestureDetector(
-                                            onTap: () {
-                                              Navigator.push(
-                                                context,
-                                                MaterialPageRoute(builder: (context) => charactersProfilePage(profileImage: _localMessages[index].image)),
-                                              );
-                                            },
-                                            child: Text(_localMessages[index].name, style: const TextStyle(fontSize: 10)),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: _localMessages[index].status == 1 ? CrossAxisAlignment.start : CrossAxisAlignment.end,
+                                children: [
+                                  if (_localMessages[index].content == 1)
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(20),
+                                        color: _localMessages[index].status == 1 ? Colors.blue[400] : Colors.blue[500],
+                                      ),
+                                      padding: const EdgeInsets.all(16),
+                                      child: Column(
+                                        crossAxisAlignment: _localMessages[index].status == 1 ? CrossAxisAlignment.start : CrossAxisAlignment.end,
+                                        children: [
+                                          if ((conversationManager.getTypeById(widget.chatsId) == 1) && (_localMessages[index].status == 1))
+                                            GestureDetector(
+                                              onTap: () {
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(builder: (context) => charactersProfilePage(profileImage: _localMessages[index].image)),
+                                                );
+                                              },
+                                              child: Text(_localMessages[index].name, style: const TextStyle(fontSize: 10)),
+                                            ),
+                                          if ((conversationManager.getTypeById(widget.chatsId) == 1) && (_localMessages[index].status == 1))
+                                            const SizedBox(height: 5),
+                                          Text(
+                                            _localMessages[index].message[_localMessages[index].indexOfAnswer],
+                                            style: const TextStyle(fontSize: 15),
+                                            textAlign: TextAlign.left,
                                           ),
-                                        if ((conversationManager.getTypeById(widget.chatsId) == 1) && (_localMessages[index].status == 1))
-                                          const SizedBox(height: 5),
-                                        Text(_localMessages[index].message[_localMessages[index].indexOfAnswer], style: const TextStyle(fontSize: 15)),
-                                      ],
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                if (_localMessages[index].content == 2)
-                                  Image.asset(_localMessages[index].message[_localMessages[index].indexOfAnswer],
-                                    width: MediaQuery.of(context).size.width * 1 / 3,
-                                    height: MediaQuery.of(context).size.width * 1 / 3,
-                                  ),
-                                const SizedBox(height: 5),
-                                Row(
+                                  if (_localMessages[index].content == 2)
+                                    Image.asset(
+                                      _localMessages[index].message[_localMessages[index].indexOfAnswer],
+                                      width: MediaQuery.of(context).size.width * 1 / 3,
+                                      height: MediaQuery.of(context).size.width * 1 / 3,
+                                    ),
+                                  const SizedBox(height: 5),
+                                  Row(
                                     children: [
                                       const SizedBox(width: 5),
                                       Text(_localMessages[index].time, style: const TextStyle(fontSize: 12, color: Colors.black)),
                                       const SizedBox(width: 5),
-                                    ]
-                                ),
-                              ],
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                           ],
                         ),
@@ -471,8 +475,9 @@ class _detailedChatPageState extends State<detailedChatPage> {
                         child: Container(
                           alignment: Alignment.centerLeft,
                           padding: const EdgeInsets.symmetric(horizontal: 16),
-                          child: const Text( "Написать сообщение...",
-                            style: TextStyle(color: Colors.black),
+                          child:
+                          Text((gameProcess.chatWithOpenAnswers == widget.chatsId) ? "Написать сообщение..." : " ",
+                            style: const TextStyle(color: Colors.black),
                             textAlign: TextAlign.left,
                           ),
                         ),
