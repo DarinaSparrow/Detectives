@@ -1,6 +1,6 @@
 import 'package:intl/intl.dart';
 
-import 'gameProcess.dart';
+import '../service/gameProcess.dart';
 
 class Conversation {
   int id;

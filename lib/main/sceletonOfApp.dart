@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'callsPage.dart';
-import 'chatsPage.dart';
-import 'profilePage.dart';
+import '../calls/callsPage.dart';
+import '../chat/chatsPage.dart';
+import '../profile/profilePage.dart';
 
 final List<String> _appBarTitles = ['Звонки', 'Чаты', 'Профиль'];
 

@@ -1,6 +1,6 @@
-import 'package:detectives/userSettings.dart';
+import 'package:detectives/service/userSettings.dart';
 import 'package:flutter/material.dart';
-import 'package:detectives/soundPlayer.dart';
+import 'package:detectives/service/soundPlayer.dart';
 
 
 class callsPage extends StatefulWidget {

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:detectives/sceletonOfApp.dart';
-import 'package:detectives/gameProcess.dart';
-import 'package:detectives/chatManager.dart';
-import 'package:detectives/dataManager.dart';
-import 'package:detectives/appService.dart';
+import '../main/sceletonOfApp.dart';
+import '../service/gameProcess.dart';
+import '../service/dataManager.dart';
+import '../service/appService.dart';
 import 'dart:async';
 
 class splashScreen extends StatefulWidget {
@@ -34,7 +33,7 @@ class _splashScreenState extends State<splashScreen>
   }
 
   void _loading() async {
-    const loadingTimeInSeconds = 2; // Фиксированное время загрузки в секундах
+    const loadingTimeInSeconds = 3; // Фиксированное время загрузки в секундах
     const updateInterval = 50; // Интервал обновления прогресса в миллисекундах
 
     // Обновление прогресса каждый интервал updateInterval миллисекунд
@@ -62,11 +61,9 @@ class _splashScreenState extends State<splashScreen>
   Future<void> _loadResources() async {
     try {
       // Загрузка данных и ресурсов
-      await dataManager.loadSettings();
+      await dataManager.startFromAssets()
+      ;
       await appService.initialize();
-      await conversationManager.initializeConversations();
-      await conversationManager.initializeMessages();
-      await conversationManager.initializeProfiles();
     } catch (e) {
       print('Ошибка загрузки ресурсов: $e');
     }
@@ -82,7 +79,7 @@ class _splashScreenState extends State<splashScreen>
             height: double.infinity,
             child: Image(
               fit: BoxFit.fill,
-                image: AssetImage('assets/splashScreen.jpg'),
+                image: AssetImage('assets/images/splashScreen.jpg'),
             ),
           ),
           Align(

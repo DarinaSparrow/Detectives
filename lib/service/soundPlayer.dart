@@ -1,5 +1,5 @@
 import 'package:audioplayers/audioplayers.dart';
-import 'package:detectives/userSettings.dart';
+import 'package:detectives/service/userSettings.dart';
 
 class SoundPlayer {
   final AudioPlayer _audioPlayer = AudioPlayer();

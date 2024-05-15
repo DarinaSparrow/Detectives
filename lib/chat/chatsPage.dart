@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'gameProcess.dart';
+import '../service/gameProcess.dart';
 import 'chatManager.dart';
-import 'charactersProfilePage.dart';
+import '../profile/charactersProfilePage.dart';
 
 class chatsPage extends StatefulWidget {
   const chatsPage({super.key});
@@ -123,6 +123,7 @@ class _chatsPageState extends State<chatsPage> {
               ),
             );
           }
+          return null;
         },
       ),
     );

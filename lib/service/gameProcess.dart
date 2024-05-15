@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:intl/intl.dart';
-import 'package:detectives/chatManager.dart';
+import '../chat/chatManager.dart';
 import 'appService.dart';
 
 class gameProcess {
