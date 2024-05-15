@@ -1,24 +1,13 @@
-import 'package:detectives/gameProcess.dart';
 import 'package:flutter/material.dart';
-import 'package:detectives/sceletonOfApp.dart';
-import 'package:detectives/chatManager.dart';
 import 'package:flutter/services.dart';
-import 'dataManager.dart';
-import 'appService.dart';
+import 'package:detectives/splashScreen.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([
+  await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown
   ]);
-  dataManager.loadSettings();
-  appService.initialize();
-  conversationManager.initializeConversations();
-  conversationManager.initializeMessages();
-  conversationManager.initializeProfiles();
-
-  gameProcess.runGameLoop();
   runApp(const App());
 }
 
@@ -33,7 +22,7 @@ class App extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightBlue),
         useMaterial3: true,
       ),
-      home: const sceletonOfApp(),
+      home: const splashScreen(),
     );
   }
 }

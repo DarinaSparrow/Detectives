@@ -156,7 +156,8 @@ class conversationManager
   static List<Message> messages = [];
   static List<Profile> profiles = [];
 
-  static void initializeConversations() {
+  static Future<void> initializeConversations() async {
+    await Future.delayed(const Duration(milliseconds: 10));
     conversations = [
       Conversation(id: 1, type: 1, image: 'assets/group.png', name: "Неуловимые мстители", lastMessage: "Привет!", time: "12:50", isMessageRead: false, isOnline: true, countOfOpenedMessages: 0),
       Conversation(id: 2, type: 2, image: 'assets/Чайлдфри.jpg', name: "Кейт Бланшет", lastMessage: "Привет!", time: "13:40", isMessageRead: true, isOnline: true, countOfOpenedMessages: 0),
@@ -164,7 +165,8 @@ class conversationManager
     ];
   }
 
-  static void initializeMessages() {
+  static Future<void> initializeMessages() async {
+    await Future.delayed(const Duration(milliseconds: 10));
     messages = [
       Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "Кейт Бланшет", content: 3, message: ["assets/Женя.jpg"], time: "12:52", flag: 1, answers: [], indexOfAnswer: -1, display: true),
       Message(id: 1, status: 2, image: 'assets/Женя.jpg', name: "кто-то", content: 1, message: ["Любитель хорроров, но до смерти боюсь Демидова"], time: "12:52", flag: 1, answers: [], indexOfAnswer: -1, display: true),
@@ -174,7 +176,8 @@ class conversationManager
     ];
   }
 
-  static void initializeProfiles() {
+  static Future<void> initializeProfiles() async {
+    await Future.delayed(const Duration(milliseconds: 10));
     profiles = [
       Profile(image: 'assets/Дарина.jpg', name: "Дарина", status: "Любитель хорроров, но до смерти боюсь Демидова", firstLink: "https://vk.com/crazy_vorobyshek", secondLink: "https://www.kinopoisk.ru/lists/movies/top_100_horrors_by_best_horror_movies/genre--horror/?utm_referrer=yandex.ru", thirdLink:"https://music.yandex.ru/album/30826697"),
       Profile(image: 'assets/Аня.jpg', name: "Аня", status: "AAAAA", firstLink: "AAAA", secondLink: "AAAA", thirdLink:"AAAA"),
