@@ -19,7 +19,7 @@
     "time": " ",
     "isMessageRead": true,
     "isOnline": false,
-    "countOfOpenedMessages": 0
+    "countOfOpenedMessages": 85
   },
   {
     "id": 3,
@@ -30,7 +30,7 @@
     "time": " ",
     "isMessageRead": true,
     "isOnline": false,
-    "countOfOpenedMessages": 0
+    "countOfOpenedMessages": 63
   },
   {
     "id": 4,
@@ -41,7 +41,7 @@
     "time": " ",
     "isMessageRead": true,
     "isOnline": false,
-    "countOfOpenedMessages": 0
+    "countOfOpenedMessages": 4
   },
   {
     "id": 5,
@@ -52,6 +52,6 @@
     "time": " ",
     "isMessageRead": true,
     "isOnline": false,
-    "countOfOpenedMessages": 0
+    "countOfOpenedMessages": 55
   }
 ]

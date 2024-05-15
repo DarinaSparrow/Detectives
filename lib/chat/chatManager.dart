@@ -254,7 +254,7 @@ class conversationManager
     if ((gameProcess.countOfOpenedMessages + 1 < messages.length) && (messages[gameProcess.countOfOpenedMessages + 1].message.length > 1)) messages[gameProcess.countOfOpenedMessages + 1].indexOfAnswer = answer;
 
     DateTime now = DateTime.now();
-    Message newMessage = Message(id: id, status: 2, image: 'assets/Женя.jpg', name: "Женя", content: 1, message: [], time: DateFormat('HH:mm').format(now), flag: 1, answers: [], indexOfAnswer: 0, display: true);
+    Message newMessage = Message(id: id, status: 2, image: 'assets/Женя.jpg', name: "Женя", content: 1, message: [], time: DateFormat('HH:mm').format(now), flag: 1, answers: [], indexOfAnswer: 0, display: message[0].contains('"') ? false : true);
     newMessage.message.insert(0, message);
     messages.insert(gameProcess.countOfOpenedMessages + 1, newMessage);
   }
