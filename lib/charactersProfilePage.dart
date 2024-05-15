@@ -1,3 +1,4 @@
+import 'package:detectives/profilePage.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -32,75 +33,87 @@ class charactersProfilePage extends StatelessWidget {
             height: sectionDivider,
           ),
           Container(
-            color: Colors.white, // Белый цвет фона
-            height: MediaQuery.of(context).size.height, // Высота второго контейнера (весь экран)
-            margin: EdgeInsets.only(top: sectionDivider), // Отступ сверху (равен высоте первого контейнера)
+            color: Colors.white,
+            height: MediaQuery.of(context).size.height,
+            margin: EdgeInsets.only(top: sectionDivider),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 SizedBox(height: sectionDivider),
-                Text(conversationManager.getNameByImage(profileImage),
-                  style: TextStyle(fontSize: largeFontSize, fontWeight: FontWeight.bold),
+                FittedBox( // Обертка для масштабирования текста
+                  child: Text(
+                    conversationManager.getNameByImage(profileImage),
+                    style: TextStyle(fontSize: largeFontSize, fontWeight: FontWeight.bold),
+                  ),
                 ),
-                Text(conversationManager.getStatusByImage(profileImage),
-                  style: TextStyle(fontSize: middleFontSize, color: Colors.grey[700]),
+                FittedBox( // Обертка для масштабирования текста
+                  child: Text(
+                    conversationManager.getStatusByImage(profileImage),
+                    style: TextStyle(fontSize: middleFontSize, color: Colors.grey[700]),
+                  ),
                 ),
                 const SizedBox(height: 20),
-                if (profileImage != "assets/Чайлдфри.jpg")
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    IconButton(
-                      icon: const Icon(Icons.add_a_photo),
-                      onPressed: () {
-                        // Действие при нажатии на ссылку Instagram
-                      },
-                    ),
-                    GestureDetector(
-                        onTap: () async {
-                          String url = conversationManager.getFirstLinkByImage(profileImage);
-                          if (await canLaunch(url)) await launch(url);
+                    if (conversationManager.getNameByImage(profileImage) != "Чайлдфри")
+                      IconButton(
+                        icon: const Icon(Icons.add_a_photo),
+                        onPressed: () {
+                          // Действие при нажатии на ссылку Instagram
                         },
-                        child: Text('Напиши мне Вконтакте', style: TextStyle(decoration: TextDecoration.underline, fontSize: smallFontSize))
-                    )
+                      ),
+                    if (conversationManager.getNameByImage(profileImage) != "Чайлдфри")
+                      GestureDetector(
+                          onTap: () async {
+                            String url = conversationManager.getFirstLinkByImage(profileImage);
+                            if (await canLaunch(url)) await launch(url);
+                          },
+                          child: Text('Напиши мне Вконтакте', style: TextStyle(decoration: TextDecoration.underline, fontSize: smallFontSize))
+                      )
                   ],
                 ),
-                if (profileImage != "assets/Чайлдфри.jpg")
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    IconButton(
-                      icon: const Icon(Icons.videogame_asset),
-                      onPressed: () {
-                        // Действие при нажатии на ссылку игры
-                      },
-                    ),
-                    GestureDetector(
-                        onTap: () async {
-                          String url = conversationManager.getSecondLinkByImage(profileImage);
-                          if (await canLaunch(url)) await launch(url);
+                    if (conversationManager.getNameByImage(profileImage) != "Чайлдфри")
+                      IconButton(
+                        icon: const Icon(Icons.videogame_asset),
+                        onPressed: () {
+                          // Действие при нажатии на ссылку игры
                         },
-                        child: Text('Узнай меня получше', style: TextStyle(decoration: TextDecoration.underline, fontSize: smallFontSize))
-                    )
+                      ),
+                    if (conversationManager.getNameByImage(profileImage) != "Чайлдфри")
+                      GestureDetector(
+                          onTap: () async {
+                            String url = conversationManager.getSecondLinkByImage(profileImage);
+                            if (await canLaunch(url)) await launch(url);
+                          },
+                          child: Text('Узнай меня получше', style: TextStyle(decoration: TextDecoration.underline, fontSize: smallFontSize))
+                      )
                   ],
                 ),
-                if (profileImage != "assets/Чайлдфри.jpg")
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    IconButton(
-                      icon: const Icon(Icons.playlist_play),
-                      onPressed: () {
-                        // Действие при нажатии на альтернативный плейлист
-                      },
-                    ),
-                    GestureDetector(
-                        onTap: () async {
-                          String url = conversationManager.getThirdLinkByImage(profileImage);
-                          if (await canLaunch(url)) await launch(url);
+                    if (conversationManager.getNameByImage(profileImage) != "Чайлдфри")
+                      IconButton(
+                        icon: const Icon(Icons.playlist_play),
+                        onPressed: () {
+                          // Действие при нажатии на альтернативный плейлист
                         },
-                        child: Text('Послушаем вместе музыку)))', style: TextStyle(decoration: TextDecoration.underline, fontSize: smallFontSize))
-                    )
+                      ),
+                    if (conversationManager.getNameByImage(profileImage) != "Чайлдфри")
+                      GestureDetector(
+                          onTap: () async {
+                            String url = conversationManager.getThirdLinkByImage(profileImage);
+                            if (await canLaunch(url)) await launch(url);
+                          },
+                          child: Text('Послушаем вместе музыку)))', style: TextStyle(decoration: TextDecoration.underline, fontSize: smallFontSize))
+                      )
                   ],
                 ),
               ],
