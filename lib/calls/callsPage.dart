@@ -26,7 +26,7 @@ class _callsPageState extends State<callsPage> {
     '*': [' ', ' ', ' ', ' '],
     '#': [' ', ' ', ' ', ' '],
   };
-  
+
   void addToNumber(String digit) {
     SoundPlayer.instance.stopSound();
     SoundPlayer.instance.playSound('dialing.mp3');
@@ -126,6 +126,7 @@ class _callsPageState extends State<callsPage> {
                           ),
                           child: Icon(
                             Icons.backspace_outlined,
+                            color: Colors.teal.shade900,
                             size: MediaQuery.of(context).size.width * 0.08,
                           ),
                         ),
@@ -162,6 +163,12 @@ class _callsPageState extends State<callsPage> {
         style: ButtonStyle(
           shape: MaterialStateProperty.all(const CircleBorder()),
           minimumSize: MaterialStateProperty.all(Size.fromRadius(MediaQuery.of(context).size.width * 0.09)),
+          side: MaterialStateProperty.all(
+              BorderSide(
+                color: Colors.teal.shade900,
+              )
+          ),
+          backgroundColor: MaterialStateProperty.all(Colors.white),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -197,6 +204,12 @@ class _callsPageState extends State<callsPage> {
         style: ButtonStyle(
           shape: MaterialStateProperty.all(const CircleBorder()),
           minimumSize: MaterialStateProperty.all(Size.fromRadius(MediaQuery.of(context).size.width * 0.09)),
+          side: MaterialStateProperty.all(
+              BorderSide(
+                color: Colors.teal.shade900,
+              )
+          ),
+          backgroundColor: MaterialStateProperty.all(Colors.white),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -223,8 +236,13 @@ class _callsPageState extends State<callsPage> {
         style: ButtonStyle(
           shape: MaterialStateProperty.all(const CircleBorder()),
           minimumSize: MaterialStateProperty.all(Size.fromRadius(MediaQuery.of(context).size.width * 0.09)),
-          backgroundColor: MaterialStateProperty.all(Colors.green),
+          backgroundColor: MaterialStateProperty.all(Colors.tealAccent.shade700),
           foregroundColor: MaterialStateProperty.all(Colors.white),
+          side: MaterialStateProperty.all(
+              BorderSide(
+                color: Colors.teal.shade900,
+              )
+          ),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

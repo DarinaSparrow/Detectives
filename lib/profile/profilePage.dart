@@ -34,7 +34,7 @@ class _profilePageState extends State<profilePage> {
                 parent: AlwaysScrollableScrollPhysics()),
             children: [
               Padding(
-                padding: EdgeInsets.all(MediaQuery.of(context).size.height * 0.02),
+                padding: EdgeInsets.all(MediaQuery.of(context).size.height * 0.04),
                 child: Center(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -181,16 +181,25 @@ class _profilePageState extends State<profilePage> {
             shape: MaterialStateProperty.all<CircleBorder>(
               const CircleBorder(),
             ),
+            side: MaterialStateProperty.all(
+                BorderSide(
+                  color: Colors.grey.shade600,
+                  width: 2.0,
+                )
+            ),
             backgroundColor: MaterialStateProperty.resolveWith<Color>(
                 (Set<MaterialState> states) {
-              if (userSettings.selectedSpeed == speedValue) {
-                return Colors.blue;
-              }
-              return Colors.grey;
-            }),
+                  if (userSettings.selectedSpeed == speedValue) {
+                    return Colors.teal.shade800;
+                  }
+                  return Colors.white70;
+                }
+            ),
+
           ),
           child: Icon(
             icon,
+            color: userSettings.selectedSpeed == speedValue ? Colors.white : Colors.grey.shade600,
           ),
         ),
       ],
@@ -208,6 +217,8 @@ class _profilePageState extends State<profilePage> {
         ),
         Switch(
           value: value,
+          activeColor: Colors.white,
+          activeTrackColor: Colors.teal.shade700,
           onChanged: onChanged,
         ),
       ],
@@ -216,6 +227,14 @@ class _profilePageState extends State<profilePage> {
 
   Widget _buildSettingButton(String label) {
     return ElevatedButton(
+      style: ButtonStyle(
+        side: MaterialStateProperty.all(
+            BorderSide(
+              color: Colors.grey.shade600,
+              width: 2.0,
+            )
+        ),
+      ),
       onPressed: () {
         appService.vibrate();
         showDialog<String>(
@@ -244,7 +263,12 @@ class _profilePageState extends State<profilePage> {
           ),
         );
       },
-      child: Text(label),
+      child: Text(
+          label,
+          style: const TextStyle(
+            color: Colors.black,
+          ),
+      ),
     );
   }
 

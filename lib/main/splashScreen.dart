@@ -127,9 +127,14 @@ class _splashScreenState extends State<splashScreen>
                       width: MediaQuery.of(context).size.width * 0.65,
                       height: MediaQuery.of(context).size.width * 0.12,
                       child: ElevatedButton(
-                        // style: ButtonStyle(
-                        //   minimumSize: MaterialStateProperty.all(Size(MediaQuery.of(context).size.width * 0.2, MediaQuery.of(context).size.width * 0.1)),
-                        // ),
+                        style: ButtonStyle(
+                          side: MaterialStateProperty.all(
+                              BorderSide(
+                                color: Colors.grey.shade600,
+                                width: 2.0,
+                              )
+                          ),
+                        ),
                         onPressed: () {
                           appService.vibrate();
                           Navigator.pushReplacement(
@@ -142,9 +147,10 @@ class _splashScreenState extends State<splashScreen>
                         child: FittedBox(
                           fit: BoxFit.fill,
                           child: Text(
-                            'Открыть мессенждер',
+                            'Гоу ту мессенждер',
                             style: TextStyle(
                               fontSize: MediaQuery.of(context).size.width * 0.1,
+                              color: Colors.black,
                               // fontWeight: FontWeight.bold,
                               // fontStyle: FontStyle.italic,
                             ),

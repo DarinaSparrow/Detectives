@@ -97,7 +97,7 @@ class appService {
     }
   }
 
-  static Future<void> vibrate({int duration = 40, int amplitude = 50}) async {
+  static Future<void> vibrate({int duration = 20, int amplitude = 30}) async {
     if (userSettings.vibration == true) {
       final hasVibrator = await Vibration.hasVibrator();
       if (hasVibrator ?? false) {
