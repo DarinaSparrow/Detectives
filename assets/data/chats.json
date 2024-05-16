@@ -13,13 +13,13 @@
   {
     "id": 2,
     "type": 2,
-    "image": "assets/images/Дарина.jpg",
-    "name": "Дарина",
+    "image": "assets/images/Аня.jpg",
+    "name": "Аня",
     "lastMessage": "Печатает...",
     "time": " ",
     "isMessageRead": true,
     "isOnline": false,
-    "countOfOpenedMessages": 84
+    "countOfOpenedMessages": 56
   },
   {
     "id": 3,
@@ -30,7 +30,7 @@
     "time": " ",
     "isMessageRead": true,
     "isOnline": false,
-    "countOfOpenedMessages": 62
+    "countOfOpenedMessages": 64
   },
   {
     "id": 4,
@@ -46,12 +46,12 @@
   {
     "id": 5,
     "type": 2,
-    "image": "assets/images/Аня.jpg",
-    "name": "Аня",
+    "image": "assets/images/Дарина.jpg",
+    "name": "Дарина",
     "lastMessage": "Печатает...",
     "time": " ",
     "isMessageRead": true,
     "isOnline": false,
-    "countOfOpenedMessages": 45
+    "countOfOpenedMessages": 85
   }
 ]

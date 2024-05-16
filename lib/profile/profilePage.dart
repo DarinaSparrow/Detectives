@@ -257,6 +257,7 @@ class _profilePageState extends State<profilePage> {
                 onPressed: () {
                   appService.vibrate();
                   dataManager.resetGameProgress();
+                  gameProcess.restart();
                   Navigator.pop(context, 'Да');
                 },
                 child: const Text('Да'),

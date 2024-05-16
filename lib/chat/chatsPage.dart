@@ -197,10 +197,7 @@ class _detailedChatPageState extends State<detailedChatPage> {
         _localMessages.add(conversationManager.messages[gameProcess.countOfOpenedMessages]);
 
         updated = true;
-
-        if (_localMessages.length > 30){
-          _localMessages.removeAt(0);
-        }
+        WidgetsBinding.instance.addPostFrameCallback((_) => _scrollToBottom());
       }
 
       setState(() {});

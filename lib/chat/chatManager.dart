@@ -1,5 +1,4 @@
 import 'package:intl/intl.dart';
-
 import '../service/gameProcess.dart';
 
 class Conversation {
