@@ -33,32 +33,39 @@ class _chatsPageState extends State<chatsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView.builder(
-        itemCount: conversationManager.conversations.length,
-        itemBuilder: (context, index) {
-          if (conversationManager.conversations[index].countOfOpenedMessages <= gameProcess.countOfOpenedMessages) {
-            return GestureDetector(
-              onTap: () {
-                conversationManager.setIsMessageReadById(conversationManager.conversations[index].id);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) =>
-                        detailedChatPage(
-                            chatsId: conversationManager.conversations[index].id),
-                  ),
-                );
-              },
-              child: Container(
-                padding: const EdgeInsets.all(10),
-                child: Stack(
-                  children: [
-                    Positioned.fill(
-                      child: Container(
-                        color: Colors.transparent,
-                      ),
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/background1.jpg"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: ListView.builder(
+          itemCount: conversationManager.conversations.length,
+          itemBuilder: (context, index) {
+            if (conversationManager.conversations[index].countOfOpenedMessages <= gameProcess.countOfOpenedMessages) {
+              return GestureDetector(
+                onTap: () {
+                  conversationManager.setIsMessageReadById(conversationManager.conversations[index].id);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          detailedChatPage(
+                              chatsId: conversationManager.conversations[index].id),
                     ),
-                    Row(
+                  );
+                },
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 5),
+                  child: Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 5),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.teal[50],
+                    ),
+                    padding: const EdgeInsets.all(8),
+                    child: Row(
                       children: [
                         GestureDetector(
                           onTap: () {
@@ -73,7 +80,7 @@ class _chatsPageState extends State<chatsPage> {
                             }
                           },
                           child: CircleAvatar(
-                            radius: 20,
+                            radius: 25,
                             backgroundImage: AssetImage(
                                 conversationManager.conversations[index].image),
                           ),
@@ -86,18 +93,18 @@ class _chatsPageState extends State<chatsPage> {
                               Text(
                                 conversationManager.conversations[index].name,
                                 style: const TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.w600),
+                                    fontSize: 14, fontWeight: FontWeight.w600),
                               ),
-                              const SizedBox(height: 3,),
+                              const SizedBox(height: 2,),
                               Text(
                                 conversationManager.conversations[index]
                                     .lastMessage,
-                                style: const TextStyle(fontSize: 13),
+                                style: const TextStyle(fontSize: 12),
                               ),
                             ],
                           ),
                         ),
-                        const SizedBox(width: 10),
+                        const SizedBox(width: 5),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: <Widget>[
@@ -105,24 +112,25 @@ class _chatsPageState extends State<chatsPage> {
                                 .isMessageRead)
                               CircleAvatar(
                                 radius: 5,
-                                backgroundColor: Colors.blue[600],
+                                backgroundColor: Colors.teal[900],
                               ),
-                            const SizedBox(height: 3,),
+                            const SizedBox(height: 2,),
                             Text(
                               conversationManager.conversations[index].time,
                               style: const TextStyle(fontSize: 10),
+                              textAlign: TextAlign.center,
                             ),
                           ],
                         ),
                       ],
                     ),
-                  ],
+                  ),
                 ),
-              ),
-            );
-          }
-          return null;
-        },
+              );
+            }
+            return SizedBox.shrink();
+          },
+        ),
       ),
     );
   }

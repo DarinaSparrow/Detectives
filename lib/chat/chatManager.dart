@@ -238,13 +238,17 @@ class conversationManager
     }
   }
 
-  static void updateChats(int id, String lastMessage, String time) {
+  static void updateChats(int id, int content, String lastMessage, String time) {
     int index = conversations.indexWhere((conversation) => conversation.id == id);
 
-    if (lastMessage.length > 32) {
-      conversations[index].lastMessage = "${lastMessage.substring(0, 32)}...";
+    if (content == 2) {
+      conversations[index].lastMessage = "Изображение";
     } else {
-      conversations[index].lastMessage = lastMessage;
+      if (lastMessage.length > 27) {
+        conversations[index].lastMessage = "${lastMessage.substring(0, 27)}...";
+      } else {
+        conversations[index].lastMessage = lastMessage;
+      }
     }
     conversations[index].time = time;
     if (id != gameProcess.currentChat) conversations[index].isMessageRead = false;

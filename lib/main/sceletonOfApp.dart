@@ -45,11 +45,12 @@ class _sceletonOfAppState
           style: const TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 36.0,
+            color: Colors.white,
           ),
         ),
         centerTitle: true,
-        backgroundColor: Colors.blue[200],
-        toolbarHeight: 100,
+        backgroundColor: Colors.teal,
+        toolbarHeight: 75,
       ),
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
@@ -59,9 +60,9 @@ class _sceletonOfAppState
           BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Профиль'),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blue[900],
+        selectedItemColor: Colors.white,
         onTap: _onItemTapped,
-        backgroundColor: Colors.blue[200],
+        backgroundColor: Colors.teal,
       ),
     );
   }

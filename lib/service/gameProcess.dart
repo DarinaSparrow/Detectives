@@ -32,6 +32,7 @@ class gameProcess {
         } else {
           conversationManager.updateChats(
               conversationManager.messages[countOfOpenedMessages].id,
+              conversationManager.messages[countOfOpenedMessages].content,
               conversationManager.messages[countOfOpenedMessages]
                   .message[conversationManager.messages[countOfOpenedMessages]
                   .indexOfAnswer],
