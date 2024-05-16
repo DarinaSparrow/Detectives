@@ -22,17 +22,21 @@ class sceletonOfApp extends StatefulWidget {
 
 class _sceletonOfAppState
     extends State<sceletonOfApp> {
-
-  final SoundPlayer _soundPlayer = SoundPlayer();
   int _selectedIndex = 1;
 
   void _onItemTapped(int index) {
-    _soundPlayer.stopSound();
-    _soundPlayer.playSound('tap.mp3');
+    SoundPlayer.instance.stopSound();
+    SoundPlayer.instance.playSound('tap.mp3');
     appService.vibrate();
     setState(() {
       _selectedIndex = index;
     });
+  }
+
+  @override
+  void dispose() {
+    SoundPlayer.disposeInstance();
+    super.dispose();
   }
 
   @override
@@ -50,7 +54,7 @@ class _sceletonOfAppState
         ),
         centerTitle: true,
         backgroundColor: Colors.teal,
-        toolbarHeight: 75,
+        //toolbarHeight: 75,
       ),
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(

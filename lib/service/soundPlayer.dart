@@ -9,10 +9,7 @@ class SoundPlayer {
   final AudioPlayer _audioPlayer = AudioPlayer();
   static final SoundPlayer _instance = SoundPlayer._internal();
 
-  factory SoundPlayer() {
-    return _instance;
-  }
-
+  // Приватный конструктор
   SoundPlayer._internal() {
     // Слушаем событие завершения проигрывания
     _audioPlayer.onPlayerComplete.listen((event) {
@@ -20,6 +17,9 @@ class SoundPlayer {
       _onCompletion = null; // Очищаем callback после вызова
     });
   }
+
+  // Статический метод для получения единственного экземпляра класса
+  static SoundPlayer get instance => _instance;
 
   Function()? _onCompletion; // Тип колбэка должен быть Function
 
@@ -47,5 +47,10 @@ class SoundPlayer {
 
   void dispose() {
     _audioPlayer.dispose();
+  }
+
+  // Статический метод для освобождения ресурсов
+  static void disposeInstance() {
+    _instance.dispose();
   }
 }

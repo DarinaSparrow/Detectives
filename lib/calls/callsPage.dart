@@ -12,8 +12,6 @@ class callsPage extends StatefulWidget {
 }
 
 class _callsPageState extends State<callsPage> {
-  final SoundPlayer _soundPlayer = SoundPlayer();
-
   Map<String, List<String>> letterMap = {
     '1': [' ', ' ', ' ', ' '],
     '2': ['A', 'B', 'C'],
@@ -30,8 +28,8 @@ class _callsPageState extends State<callsPage> {
   };
   
   void addToNumber(String digit) {
-    _soundPlayer.stopSound();
-    _soundPlayer.playSound('dialing.mp3');
+    SoundPlayer.instance.stopSound();
+    SoundPlayer.instance.playSound('dialing.mp3');
     appService.vibrate();
     if (userSettings.phoneNumber.length < 11) {
       setState(() {
@@ -42,8 +40,8 @@ class _callsPageState extends State<callsPage> {
   }
 
   void removeLastDigit() {
-    _soundPlayer.stopSound();
-    _soundPlayer.playSound('tap.mp3');
+    SoundPlayer.instance.stopSound();
+    SoundPlayer.instance.playSound('tap.mp3');
     appService.vibrate();
     setState(() {
       if (userSettings.phoneNumber.isNotEmpty) {
@@ -243,9 +241,8 @@ class lastCallPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final SoundPlayer soundPlayer = SoundPlayer();
     if (userSettings.phoneNumber == '89996665544' && gameProcess.countOfOpenedMessages >= 5) {
-      soundPlayer.playSound('rickroll.mp3', onCompletion: () {
+      SoundPlayer.instance.playSound('rickroll.mp3', onCompletion: () {
         Navigator.pop(context);
         if (gameProcess.countOfOpenedMessages == 5) {
           gameProcess.runPlot();
@@ -254,7 +251,7 @@ class lastCallPage extends StatelessWidget {
 
     }
     else {
-      soundPlayer.playSound('beeps.mp3', loop: true);
+      SoundPlayer.instance.playSound('beeps.mp3', loop: true);
     }
 
     return Scaffold(
@@ -299,7 +296,7 @@ class lastCallPage extends StatelessWidget {
               children: [
                 _actionButton(context, icon: Icons.call_end, onPressed: () {
                   appService.vibrate();
-                  soundPlayer.stopSound();
+                  SoundPlayer.instance.stopSound();
                   Navigator.pop(context);
                   if (userSettings.phoneNumber == '89996665544' && gameProcess.countOfOpenedMessages == 5) {
                     gameProcess.runPlot();
