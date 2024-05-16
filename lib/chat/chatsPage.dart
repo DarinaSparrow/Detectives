@@ -93,13 +93,13 @@ class _chatsPageState extends State<chatsPage> {
                               Text(
                                 conversationManager.conversations[index].name,
                                 style: const TextStyle(
-                                    fontSize: 14, fontWeight: FontWeight.w600),
+                                    fontSize: 16, fontWeight: FontWeight.w600),
                               ),
                               const SizedBox(height: 2,),
                               Text(
                                 conversationManager.conversations[index]
                                     .lastMessage,
-                                style: const TextStyle(fontSize: 12),
+                                style: const TextStyle(fontSize: 13),
                               ),
                             ],
                           ),
@@ -117,7 +117,7 @@ class _chatsPageState extends State<chatsPage> {
                             const SizedBox(height: 2,),
                             Text(
                               conversationManager.conversations[index].time,
-                              style: const TextStyle(fontSize: 10),
+                              style: const TextStyle(fontSize: 12),
                               textAlign: TextAlign.center,
                             ),
                           ],
@@ -173,7 +173,7 @@ class _detailedChatPageState extends State<detailedChatPage> {
     }
 
     updateChat();
-    // Отложенная прокрутка вниз при инициализации
+
     WidgetsBinding.instance.addPostFrameCallback((_) => _scrollToBottom());
   }
 
@@ -192,12 +192,12 @@ class _detailedChatPageState extends State<detailedChatPage> {
 
       if ((conversationManager.messages[gameProcess.countOfOpenedMessages].id == widget.chatsId)
           && ((_localMessages.isEmpty) || (conversationManager.messages[gameProcess.countOfOpenedMessages].message != _localMessages[_localMessages.length - 1].message))) {
-        _localMessages.add(conversationManager.messages[gameProcess.countOfOpenedMessages]); }
+        _localMessages.add(conversationManager.messages[gameProcess.countOfOpenedMessages]);
+
+        WidgetsBinding.instance.addPostFrameCallback((_) => _scrollToBottom());
+      }
 
       setState(() {});
-
-      // Отложенная прокрутка для учета нового сообщения
-      WidgetsBinding.instance.addPostFrameCallback((_) => _scrollToBottom());
     }
     );
   }
@@ -208,7 +208,7 @@ class _detailedChatPageState extends State<detailedChatPage> {
       appBar: AppBar(
         elevation: 0,
         automaticallyImplyLeading: false,
-        backgroundColor: Colors.blue[200],
+        backgroundColor: Colors.cyan[600],
         flexibleSpace: SafeArea(
           child: Container(
             padding: const EdgeInsets.only(right: 16),
@@ -245,7 +245,7 @@ class _detailedChatPageState extends State<detailedChatPage> {
                       Text(conversationManager.getNameById(widget.chatsId) ,style: const TextStyle( fontSize: 16, fontWeight: FontWeight.w600),),
                       const SizedBox(height: 3,),
                       if (conversationManager.getTypeById(widget.chatsId) == 2)
-                        Text(conversationManager.getIsOnlineById(widget.chatsId) ? 'Онлайн' : 'Офлайн', style: const TextStyle(fontSize: 13),),
+                        Text(conversationManager.getIsOnlineById(widget.chatsId) ? 'Онлайн' : 'Офлайн', style: const TextStyle(fontSize: 14),),
                     ],
                   ),
                 ),
@@ -254,7 +254,14 @@ class _detailedChatPageState extends State<detailedChatPage> {
           ),
         ),
       ),
-      body: Stack(
+      body: Container(
+    decoration: const BoxDecoration(
+    image: DecorationImage(
+    image: AssetImage("assets/images/backgroundforchat.jpg"),
+    fit: BoxFit.cover,
+    ),
+    ),
+      child:      Stack(
         children: <Widget>[
           GestureDetector(
             onTap: () {
@@ -263,7 +270,7 @@ class _detailedChatPageState extends State<detailedChatPage> {
               });
             },
             child: ListView.builder(
-                controller: _scrollController, // контроллер прокрутки
+                controller: _scrollController,
                 itemCount: _localMessages.length,
                 padding: EdgeInsets.only(top: 10,bottom: _isAnswersVisible ? MediaQuery.of(context).size.height * 1 / 3 + 10 : 70),
                 itemBuilder: (context, index) {
@@ -299,7 +306,7 @@ class _detailedChatPageState extends State<detailedChatPage> {
                                     Container(
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(20),
-                                        color: _localMessages[index].status == 1 ? Colors.blue[400] : Colors.blue[500],
+                                        color: _localMessages[index].status == 1 ? Colors.cyan[50] : Colors.cyan[200],
                                       ),
                                       padding: const EdgeInsets.all(16),
                                       child: Column(
@@ -313,7 +320,7 @@ class _detailedChatPageState extends State<detailedChatPage> {
                                                   MaterialPageRoute(builder: (context) => charactersProfilePage(profileImage: _localMessages[index].image)),
                                                 );
                                               },
-                                              child: Text(_localMessages[index].name, style: const TextStyle(fontSize: 10)),
+                                              child: Text(_localMessages[index].name, style: const TextStyle(fontSize: 12)),
                                             ),
                                           if ((conversationManager.getTypeById(widget.chatsId) == 1) && (_localMessages[index].status == 1))
                                             const SizedBox(height: 5),
@@ -335,7 +342,7 @@ class _detailedChatPageState extends State<detailedChatPage> {
                                   Row(
                                     children: [
                                       const SizedBox(width: 5),
-                                      Text(_localMessages[index].time, style: const TextStyle(fontSize: 12, color: Colors.black)),
+                                      Text(_localMessages[index].time, style: const TextStyle(fontSize: 12, color: Colors.white)),
                                       const SizedBox(width: 5),
                                     ],
                                   ),
@@ -349,7 +356,7 @@ class _detailedChatPageState extends State<detailedChatPage> {
                     else {
                       return Container(
                         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                        child: Text(_localMessages[index].message[_localMessages[index].indexOfAnswer], textAlign: TextAlign.center, style: const TextStyle(fontSize: 15),
+                        child: Text(_localMessages[index].message[_localMessages[index].indexOfAnswer], textAlign: TextAlign.center, style: const TextStyle(fontSize: 15, color: Colors.white),
                         ),
                       );
                     }
@@ -366,7 +373,7 @@ class _detailedChatPageState extends State<detailedChatPage> {
                 padding: const EdgeInsets.only(left: 10,bottom: 10,top: 10, right: 10),
                 height: _isAnswersVisible ? MediaQuery.of(context).size.height * 1 / 3 : 60,
                 width: double.infinity,
-                color: Colors.blue[200],
+                color: Colors.cyan[600],
                 child: _isAnswersVisible ? Column(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -381,7 +388,7 @@ class _detailedChatPageState extends State<detailedChatPage> {
                           gameProcess.runPlot();
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.white,
+                          backgroundColor: Colors.cyan[50],
                           shadowColor: Colors.transparent,
                           padding: EdgeInsets.zero,
                           shape: RoundedRectangleBorder(
@@ -411,7 +418,7 @@ class _detailedChatPageState extends State<detailedChatPage> {
                           gameProcess.runPlot();
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.white,
+                          backgroundColor: Colors.cyan[50],
                           shadowColor: Colors.transparent,
                           padding: EdgeInsets.zero,
                           shape: RoundedRectangleBorder(
@@ -440,7 +447,7 @@ class _detailedChatPageState extends State<detailedChatPage> {
                           gameProcess.runPlot();
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.white,
+                          backgroundColor: Colors.cyan[50],
                           shadowColor: Colors.transparent,
                           padding: EdgeInsets.zero,
                           shape: RoundedRectangleBorder(
@@ -472,7 +479,7 @@ class _detailedChatPageState extends State<detailedChatPage> {
                           }
                         },
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.white,
+                          backgroundColor: Colors.cyan[50],
                           shadowColor: Colors.transparent,
                           padding: EdgeInsets.zero,
                           shape: RoundedRectangleBorder(
@@ -499,12 +506,12 @@ class _detailedChatPageState extends State<detailedChatPage> {
                         }
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.lightBlue[500],
+                        backgroundColor: Colors.cyan[800],
                         shadowColor: Colors.transparent,
                         //padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
                         shape: const CircleBorder(),
                       ),
-                      child: const Icon(Icons.send, color: Colors.black, size: 24),
+                      child: const Icon(Icons.send, color: Colors.white, size: 24),
                     ),
                   ],
                 )
@@ -512,6 +519,7 @@ class _detailedChatPageState extends State<detailedChatPage> {
           ),
         ],
       ),
+      )
     );
   }
 
