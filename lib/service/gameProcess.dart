@@ -1,14 +1,32 @@
 import 'dart:async';
+import 'package:detectives/service/userSettings.dart';
 import 'package:intl/intl.dart';
 import '../chat/chatManager.dart';
 import 'appService.dart';
 
 class gameProcess {
-  static int countOfOpenedMessages = 30;
+  static int countOfOpenedMessages = 0;
   static int currentChat = 0;
   static int chatWithOpenAnswers = 0;
   static bool plotDevelopment = true;
   static bool stop = true;
+  static int duration = 3;
+  static bool resetTimer = false;
+
+  static void updateDuration(){
+    switch(userSettings.selectedSpeed){
+      case 1:
+        gameProcess.duration = 6;
+        break;
+      case 2:
+        gameProcess.duration = 3;
+        break;
+      case 3:
+        gameProcess.duration = 1;
+        break;
+    }
+    resetTimer = true;
+  }
 
   static void changeCurrentChat(int newChatIndex) {
     currentChat = newChatIndex;
@@ -24,7 +42,7 @@ class gameProcess {
   }
 
   static Future<void> runGameLoop() async {
-    Timer.periodic(const Duration(seconds: 3), (timer) {
+    Timer.periodic(Duration(seconds: duration), (timer) {
       if (plotDevelopment) {
         if (countOfOpenedMessages == conversationManager.messages.length) {
           countOfOpenedMessages--;
@@ -80,6 +98,11 @@ class gameProcess {
             plotDevelopment = false;
           }
         }
+      }
+      if (resetTimer){
+        resetTimer = false;
+        timer.cancel();
+        runGameLoop();
       }
     });
   }
