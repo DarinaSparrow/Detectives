@@ -61,75 +61,83 @@ class _callsPageState extends State<callsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              userSettings.phoneNumber,
-              style: TextStyle(fontSize: MediaQuery.of(context).size.width * 0.11),
+        body: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/backgroundforcallsandprofile.jpg"),
+              fit: BoxFit.cover,
             ),
-            SizedBox(height: MediaQuery.of(context).size.width * 0.05),
-            Row(
+          ),
+          child: Center(
+            child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                _dialerButton(number: '1', letters: letterMap['1'] ?? []),
-                _dialerButton(number: '2', letters: letterMap['2'] ?? []),
-                _dialerButton(number: '3', letters: letterMap['3'] ?? []),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _dialerButton(number: '4', letters: letterMap['4'] ?? []),
-                _dialerButton(number: '5', letters: letterMap['5'] ?? []),
-                _dialerButton(number: '6', letters: letterMap['6'] ?? []),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _dialerButton(number: '7', letters: letterMap['7'] ?? []),
-                _dialerButton(number: '8', letters: letterMap['8'] ?? []),
-                _dialerButton(number: '9', letters: letterMap['9'] ?? []),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _dialerSingleButton(number: '*'),
-                _dialerButton(number: '0', letters: letterMap['0'] ?? []),
-                _dialerSingleButton(number: '#'),
-              ],
-            ),
-            SizedBox(height: MediaQuery.of(context).size.width * 0.02),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _voidButton(),
-                _actionButton(icon: Icons.call, onPressed: dialNumber),
-                if (userSettings.phoneNumber.isNotEmpty)
-                  Padding(
-                    padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.015),
-                    child: TextButton(
-                      onPressed: removeLastDigit,
-                      style: ButtonStyle(
-                        shape: MaterialStateProperty.all(const CircleBorder()),
-                        minimumSize: MaterialStateProperty.all(Size.fromRadius(MediaQuery.of(context).size.width * 0.09)),
+                Text(
+                  userSettings.phoneNumber,
+                  style: TextStyle(fontSize: MediaQuery.of(context).size.width * 0.11),
+                ),
+                SizedBox(height: MediaQuery.of(context).size.width * 0.05),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    _dialerButton(number: '1', letters: letterMap['1'] ?? []),
+                    _dialerButton(number: '2', letters: letterMap['2'] ?? []),
+                    _dialerButton(number: '3', letters: letterMap['3'] ?? []),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    _dialerButton(number: '4', letters: letterMap['4'] ?? []),
+                    _dialerButton(number: '5', letters: letterMap['5'] ?? []),
+                    _dialerButton(number: '6', letters: letterMap['6'] ?? []),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    _dialerButton(number: '7', letters: letterMap['7'] ?? []),
+                    _dialerButton(number: '8', letters: letterMap['8'] ?? []),
+                    _dialerButton(number: '9', letters: letterMap['9'] ?? []),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    _dialerSingleButton(number: '*'),
+                    _dialerButton(number: '0', letters: letterMap['0'] ?? []),
+                    _dialerSingleButton(number: '#'),
+                  ],
+                ),
+                SizedBox(height: MediaQuery.of(context).size.width * 0.02),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    _voidButton(),
+                    _actionButton(icon: Icons.call, onPressed: dialNumber),
+                    if (userSettings.phoneNumber.isNotEmpty)
+                      Padding(
+                        padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.015),
+                        child: TextButton(
+                          onPressed: removeLastDigit,
+                          style: ButtonStyle(
+                            shape: MaterialStateProperty.all(const CircleBorder()),
+                            minimumSize: MaterialStateProperty.all(Size.fromRadius(MediaQuery.of(context).size.width * 0.09)),
+                          ),
+                          child: Icon(
+                            Icons.backspace_outlined,
+                            size: MediaQuery.of(context).size.width * 0.08,
+                          ),
+                        ),
                       ),
-                      child: Icon(
-                        Icons.backspace_outlined,
-                        size: MediaQuery.of(context).size.width * 0.08,
-                      ),
-                    ),
-                  ),
-                if(userSettings.phoneNumber.isEmpty)
-                  _voidButton(),
+                    if(userSettings.phoneNumber.isEmpty)
+                      _voidButton(),
+                  ],
+                ),
               ],
             ),
-          ],
-        ),
-      ),
+          ),
+        )
     );
   }
 
@@ -149,7 +157,7 @@ class _callsPageState extends State<callsPage> {
   Widget _dialerButton({required String number, required List<String> letters}) {
     return Padding(
       padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.015),
-      child: OutlinedButton(
+      child: ElevatedButton(
         onPressed: () => addToNumber(number),
         style: ButtonStyle(
           shape: MaterialStateProperty.all(const CircleBorder()),

@@ -22,46 +22,54 @@ class _profilePageState extends State<profilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        physics: const BouncingScrollPhysics(
-            parent: AlwaysScrollableScrollPhysics()),
-        children: [
-          Padding(
-            padding: EdgeInsets.all(MediaQuery.of(context).size.height * 0.02),
-            child: Center(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  _buildProfileAvatar('assets/images/Женя.jpg'),
-                  _buildProfileInfo('Женя', 'Да что вы опять смеетесь?'),
-                  _buildDivider(),
-                  _buildSectionTitle('Настройки'),
-                  _buildDivider(),
-                  _buildSettingItem('Скорость сообщения', _buildSpeedOptions()),
-                  _buildDivider(),
-                  _buildSettingSwitch('Вибрация', userSettings.vibration,
-                      (newValue) {
-                    setState(() {
-                      userSettings.vibration = newValue;
-                    });
-                    dataManager.saveSettings();
-                    appService.vibrate(duration: 300, amplitude: 100);
-                  }),
-                  _buildDivider(),
-                  _buildSettingSwitch('Звук', userSettings.sound, (newValue) {
-                    setState(() {
-                      userSettings.sound = newValue;
-                    });
-                    dataManager.saveSettings();
-                  }),
-                  _buildDivider(),
-                  _buildSettingButton('Перезапустить историю'),
-                ],
-              ),
+        body: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/backgroundforcallsandprofile.jpg"),
+              fit: BoxFit.cover,
             ),
           ),
-        ],
-      ),
+          child: ListView(
+            physics: const BouncingScrollPhysics(
+                parent: AlwaysScrollableScrollPhysics()),
+            children: [
+              Padding(
+                padding: EdgeInsets.all(MediaQuery.of(context).size.height * 0.02),
+                child: Center(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      _buildProfileAvatar('assets/images/Женя.jpg'),
+                      _buildProfileInfo('Женя', 'Да что вы опять смеетесь?'),
+                      _buildDivider(),
+                      _buildSectionTitle('Настройки'),
+                      _buildDivider(),
+                      _buildSettingItem('Скорость сообщения', _buildSpeedOptions()),
+                      _buildDivider(),
+                      _buildSettingSwitch('Вибрация', userSettings.vibration,
+                              (newValue) {
+                            setState(() {
+                              userSettings.vibration = newValue;
+                            });
+                            dataManager.saveSettings();
+                            appService.vibrate(duration: 300, amplitude: 100);
+                          }),
+                      _buildDivider(),
+                      _buildSettingSwitch('Звук', userSettings.sound, (newValue) {
+                        setState(() {
+                          userSettings.sound = newValue;
+                        });
+                        dataManager.saveSettings();
+                      }),
+                      _buildDivider(),
+                      _buildSettingButton('Перезапустить историю'),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        )
     );
   }
 

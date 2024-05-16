@@ -48,13 +48,12 @@ class _sceletonOfAppState
           textAlign: TextAlign.center,
           style: const TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 36.0,
+            fontSize: 40.0,
             color: Colors.white,
           ),
         ),
         centerTitle: true,
         backgroundColor: Colors.teal,
-        //toolbarHeight: 75,
       ),
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
