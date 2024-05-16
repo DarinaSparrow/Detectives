@@ -8,6 +8,7 @@ class gameProcess {
   static int currentChat = 0;
   static int chatWithOpenAnswers = 0;
   static bool plotDevelopment = true;
+  static bool stop = true;
 
   static void changeCurrentChat(int newChatIndex) {
     currentChat = newChatIndex;
@@ -19,7 +20,7 @@ class gameProcess {
 
   static void runPlot() {
     plotDevelopment = true;
-    countOfOpenedMessages ++;
+    if (conversationManager.messages[countOfOpenedMessages].flag == 3) countOfOpenedMessages++;
   }
 
   static Future<void> runGameLoop() async {
@@ -68,8 +69,12 @@ class gameProcess {
           }
           else
           if (conversationManager.messages[countOfOpenedMessages].flag == 2) {
-            chatWithOpenAnswers = conversationManager.messages[countOfOpenedMessages + 1].id;
-            plotDevelopment = false;
+            stop = !stop;
+            if (stop) { countOfOpenedMessages ++;
+            } else {
+              chatWithOpenAnswers = conversationManager.messages[countOfOpenedMessages + 1].id;
+              plotDevelopment = false;
+            }
           }
           else {
             plotDevelopment = false;
