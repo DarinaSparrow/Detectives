@@ -36,7 +36,7 @@ class _chatsPageState extends State<chatsPage> {
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/images/background1.jpg"),
+            image: AssetImage("assets/images/backgroundforchatslist.jpg"),
             fit: BoxFit.cover,
           ),
         ),
@@ -172,7 +172,6 @@ class _detailedChatPageState extends State<detailedChatPage> {
       }
     }
 
-
     updateChat();
     // Отложенная прокрутка вниз при инициализации
     WidgetsBinding.instance.addPostFrameCallback((_) => _scrollToBottom());
@@ -192,13 +191,13 @@ class _detailedChatPageState extends State<detailedChatPage> {
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
 
       if ((conversationManager.messages[gameProcess.countOfOpenedMessages].id == widget.chatsId)
-       && ((_localMessages.isEmpty) || (conversationManager.messages[gameProcess.countOfOpenedMessages].message != _localMessages[_localMessages.length - 1].message))) {
-        _localMessages.add(conversationManager.messages[gameProcess.countOfOpenedMessages]);
+          && ((_localMessages.isEmpty) || (conversationManager.messages[gameProcess.countOfOpenedMessages].message != _localMessages[_localMessages.length - 1].message))) {
+        _localMessages.add(conversationManager.messages[gameProcess.countOfOpenedMessages]); }
 
-        setState(() {});
-        // Отложенная прокрутка для учета нового сообщения
-        WidgetsBinding.instance.addPostFrameCallback((_) => _scrollToBottom());
-      }
+      setState(() {});
+
+      // Отложенная прокрутка для учета нового сообщения
+      WidgetsBinding.instance.addPostFrameCallback((_) => _scrollToBottom());
     }
     );
   }
