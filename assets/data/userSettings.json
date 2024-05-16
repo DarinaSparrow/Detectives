@@ -1,9 +1,5 @@
 {
-  "vibration": true,
   "sound": true,
-  "music": true,
   "selectedSpeed": 1,
-  "nickname": "",
-  "status": "",
   "phoneNumber": ""
 }
