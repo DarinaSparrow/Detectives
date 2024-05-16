@@ -61,8 +61,7 @@ class _splashScreenState extends State<splashScreen>
   Future<void> _loadResources() async {
     try {
       // Загрузка данных и ресурсов
-      await dataManager.startFromAssets()
-      ;
+      await dataManager.startFromAssets();
       await appService.initialize();
     } catch (e) {
       print('Ошибка загрузки ресурсов: $e');
@@ -142,6 +141,7 @@ class _splashScreenState extends State<splashScreen>
                             MaterialPageRoute(
                                 builder: (context) => const sceletonOfApp()),
                           );
+                          gameProcess.updateDuration();
                           gameProcess.runGameLoop();
                         },
                         child: FittedBox(

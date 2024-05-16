@@ -1,4 +1,5 @@
 import 'package:detectives/service/dataManager.dart';
+import 'package:detectives/service/gameProcess.dart';
 import 'package:flutter/material.dart';
 import '../service/userSettings.dart';
 import '../service/appService.dart';
@@ -174,6 +175,7 @@ class _profilePageState extends State<profilePage> {
             appService.vibrate();
             setState(() {
               userSettings.selectedSpeed = speedValue;
+              gameProcess.updateDuration();
             });
             dataManager.saveSettings();
           },

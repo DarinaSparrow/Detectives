@@ -19,7 +19,7 @@
     "time": " ",
     "isMessageRead": true,
     "isOnline": false,
-    "countOfOpenedMessages": 85
+    "countOfOpenedMessages": 84
   },
   {
     "id": 3,
@@ -30,7 +30,7 @@
     "time": " ",
     "isMessageRead": true,
     "isOnline": false,
-    "countOfOpenedMessages": 63
+    "countOfOpenedMessages": 62
   },
   {
     "id": 4,
@@ -52,6 +52,6 @@
     "time": " ",
     "isMessageRead": true,
     "isOnline": false,
-    "countOfOpenedMessages": 55
+    "countOfOpenedMessages": 45
   }
 ]

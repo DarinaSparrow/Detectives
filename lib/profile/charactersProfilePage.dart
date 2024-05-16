@@ -28,11 +28,16 @@ class charactersProfilePage extends StatelessWidget {
       body: Stack(
         children: [
           Container(
-            color: Colors.blue[200],
+            color: Color(0xFFBCDEFB),
             height: sectionDivider,
           ),
           Container(
-            color: Colors.white,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/background.jpg'),
+                fit: BoxFit.cover, // Растягиваем изображение на весь контейнер
+              ),
+            ),
             height: MediaQuery.of(context).size.height,
             margin: EdgeInsets.only(top: sectionDivider),
             child: Column(
