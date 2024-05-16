@@ -174,7 +174,9 @@ class _detailedChatPageState extends State<detailedChatPage> {
 
     updateChat();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _scrollToBottom();
+      if (_scrollController.hasClients) {
+        _scrollController.jumpTo(_scrollController.position.maxScrollExtent);
+      }
     });
   }
 
@@ -205,7 +207,9 @@ class _detailedChatPageState extends State<detailedChatPage> {
 
       setState(() {});
       if (updated == true) {
-        WidgetsBinding.instance.addPostFrameCallback((_) => _scrollToBottom());
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          _scrollToBottom();
+        });
       }
     }
     );
