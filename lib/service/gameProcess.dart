@@ -13,6 +13,28 @@ class gameProcess {
   static int duration = 3;
   static bool resetTimer = false;
 
+  static fromJson(Map<String, dynamic> json) {
+    countOfOpenedMessages = json['countOfOpenedMessages'];
+    currentChat = json['currentChat'];
+    chatWithOpenAnswers = json['chatWithOpenAnswers'];
+    plotDevelopment = json['plotDevelopment'];
+    stop = json['stop'];
+    duration = json['duration'];
+    resetTimer = json['resetTimer'];
+  }
+
+  static Map<String, dynamic> toJson() {
+    return {
+      'countOfOpenedMessages': countOfOpenedMessages,
+      'currentChat': currentChat,
+      'chatWithOpenAnswers': chatWithOpenAnswers,
+      'plotDevelopment': plotDevelopment,
+      'stop': stop,
+      'duration': duration,
+      'resetTimer': resetTimer,
+    };
+  }
+
   static void updateDuration(){
     switch(userSettings.selectedSpeed){
       case 1:
@@ -38,7 +60,6 @@ class gameProcess {
 
   static void runPlot() {
     plotDevelopment = true;
-    if (conversationManager.messages[countOfOpenedMessages].flag == 3) countOfOpenedMessages++;
   }
 
   static Future<void> runGameLoop() async {
@@ -49,6 +70,12 @@ class gameProcess {
           conversationManager.setIsOnlineById(0);
           timer.cancel();
         } else {
+          if (countOfOpenedMessages != 0) countOfOpenedMessages++;
+
+          DateTime now = DateTime.now();
+          conversationManager.messages[countOfOpenedMessages + 1].time =
+              DateFormat('HH:mm').format(now);
+
           conversationManager.updateChats(
               conversationManager.messages[countOfOpenedMessages].id,
               conversationManager.messages[countOfOpenedMessages].content,
@@ -73,26 +100,17 @@ class gameProcess {
           }
 
           if (conversationManager.messages[countOfOpenedMessages].flag == 1) {
-            if (countOfOpenedMessages <
-                conversationManager.messages.length - 1) {
-              DateTime now = DateTime.now();
-              conversationManager.messages[countOfOpenedMessages + 1].time =
-                  DateFormat('HH:mm').format(now);
-
+            if (countOfOpenedMessages < conversationManager.messages.length - 1) {
               conversationManager.setIsOnlineById(
                   conversationManager.messages[countOfOpenedMessages + 1].id);
             }
 
-            countOfOpenedMessages++;
+            if (countOfOpenedMessages == 0) countOfOpenedMessages++;
           }
           else
           if (conversationManager.messages[countOfOpenedMessages].flag == 2) {
-            stop = !stop;
-            if (stop) { countOfOpenedMessages ++;
-            } else {
-              chatWithOpenAnswers = conversationManager.messages[countOfOpenedMessages].id;
-              plotDevelopment = false;
-            }
+            chatWithOpenAnswers = conversationManager.messages[countOfOpenedMessages].id;
+            plotDevelopment = false;
           }
           else {
             plotDevelopment = false;
@@ -105,5 +123,15 @@ class gameProcess {
         runGameLoop();
       }
     });
+  }
+
+  static void restart() {
+    countOfOpenedMessages = 0;
+    currentChat = 0;
+    chatWithOpenAnswers = 0;
+    plotDevelopment = true;
+    stop = true;
+    duration = 3;
+    resetTimer = false;
   }
 }

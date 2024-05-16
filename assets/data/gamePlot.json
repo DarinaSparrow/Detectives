@@ -1,0 +1,9 @@
+{
+  "countOfOpenedMessages": 0,
+  "currentChat": 0,
+  "chatWithOpenAnswers": 0,
+  "plotDevelopment": true,
+  "stop": true,
+  "duration": 3,
+  "resetTimer": false
+}
