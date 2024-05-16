@@ -1,7 +1,7 @@
-import 'package:detectives/service/appService.dart';
 import 'package:detectives/service/dataManager.dart';
 import 'package:flutter/material.dart';
 import '../service/userSettings.dart';
+import '../service/appService.dart';
 
 class profilePage extends StatefulWidget {
   const profilePage({Key? key}) : super(key: key);
@@ -53,7 +53,6 @@ class _profilePageState extends State<profilePage> {
                       userSettings.sound = newValue;
                     });
                     dataManager.saveSettings();
-                    appService.vibrate();
                   }),
                   _buildDivider(),
                   _buildSettingButton('Перезапустить историю'),
