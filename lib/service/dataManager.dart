@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import '../chat/chatManager.dart';
+import '../service/gameProcess.dart';
 import 'userSettings.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/services.dart';
@@ -12,6 +13,8 @@ class dataManager {
   static late String _chatsFilePathDevice;
   static const String _messagesFilePathAssets = 'assets/data/messages.json';
   static late String _messagesFilePathDevice;
+  static const String _gameProcessFilePathAssets = 'assets/data/gamePlot.json';
+  static late String _gameProcessFilePathDevice;
   static const String _profilesFilePathAssets = 'assets/data/profiles.json';
 
   static Future<void> _initFilePath() async {
@@ -19,6 +22,7 @@ class dataManager {
     _settingsFilePathDevice = '${directory.path}/userSettings.json';
     _chatsFilePathDevice = '${directory.path}/chats.json';
     _messagesFilePathDevice = '${directory.path}/messages.json';
+    _gameProcessFilePathDevice = '${directory.path}/gamePlot.json';
   }
 
   // Запуск приложения с устройства
@@ -28,6 +32,7 @@ class dataManager {
     await _loadConversationsFromDevice();
     await _loadMessagesFromDevice();
     await _loadProfiles();
+    await _loadGameProcessFromDevice();
   }
 
   // Запуск приложения из assets
@@ -36,6 +41,7 @@ class dataManager {
     await _loadConversationsFromAssets();
     await _loadMessagesFromAssets();
     await _loadProfiles();
+    await _loadGameProcessFromAssets();
   }
 
   // Сброс игрового прогресса
@@ -133,6 +139,32 @@ class dataManager {
     }
   }
 
+  static Future<void> _loadGameProcessFromDevice() async {
+    try {
+      final File file = File(_gameProcessFilePathDevice);
+      if (await file.exists()) {
+        final String content = await file.readAsString();
+        final Map<String, dynamic> gameProcessMap = json.decode(content);
+        gameProcess.fromJson(gameProcessMap);
+      } else {
+        await _loadGameProcessFromAssets();
+      }
+    } catch (e) {
+      print('Error loading game process from device: $e');
+    }
+  }
+
+  static Future<void> _loadGameProcessFromAssets() async {
+    try {
+      final jsonString = await _loadJsonFromAssets(_gameProcessFilePathAssets);
+      final Map<String, dynamic> gameProcessMap = json.decode(jsonString);
+      gameProcess.fromJson(gameProcessMap);
+      await saveGameProcess();
+    } catch (e) {
+      print('Error loading game process from assets: $e');
+    }
+  }
+
   static Future<void> saveSettings() async {
     try {
       await _initFilePath();
@@ -166,6 +198,18 @@ class dataManager {
       await file.writeAsString(jsonString);
     } catch (e) {
       print('Error saving messages: $e');
+    }
+  }
+
+  static Future<void> saveGameProcess() async {
+    try {
+      await _initFilePath();
+      final Map<String, dynamic> gameProcessMap = gameProcess.toJson();
+      final String jsonString = json.encode(gameProcessMap);
+      final File file = File(_gameProcessFilePathDevice);
+      await file.writeAsString(jsonString);
+    } catch (e) {
+      print('Error saving game process: $e');
     }
   }
 

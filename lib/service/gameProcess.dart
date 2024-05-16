@@ -13,6 +13,28 @@ class gameProcess {
   static int duration = 3;
   static bool resetTimer = false;
 
+  static fromJson(Map<String, dynamic> json) {
+    countOfOpenedMessages = json['countOfOpenedMessages'];
+    currentChat = json['currentChat'];
+    chatWithOpenAnswers = json['chatWithOpenAnswers'];
+    plotDevelopment = json['plotDevelopment'];
+    stop = json['stop'];
+    duration = json['duration'];
+    resetTimer = json['resetTimer'];
+  }
+
+  static Map<String, dynamic> toJson() {
+    return {
+      'countOfOpenedMessages': countOfOpenedMessages,
+      'currentChat': currentChat,
+      'chatWithOpenAnswers': chatWithOpenAnswers,
+      'plotDevelopment': plotDevelopment,
+      'stop': stop,
+      'duration': duration,
+      'resetTimer': resetTimer,
+    };
+  }
+
   static void updateDuration(){
     switch(userSettings.selectedSpeed){
       case 1:
