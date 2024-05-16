@@ -23,18 +23,20 @@ class charactersProfilePage extends StatelessWidget {
           onPressed: () {
             Navigator.pop(context);
           },
+          color: Colors.black,
         ),
+        backgroundColor: Colors.green[200],
       ),
       body: Stack(
         children: [
           Container(
-            color: Color(0xFFBCDEFB),
+            color: Colors.green[200],
             height: sectionDivider,
           ),
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/background.jpg'),
+                image: AssetImage('assets/images/1.jpg'),
                 fit: BoxFit.cover, // Растягиваем изображение на весь контейнер
               ),
             ),

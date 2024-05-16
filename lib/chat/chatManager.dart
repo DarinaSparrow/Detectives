@@ -159,47 +159,6 @@ class conversationManager
   static List<Message> messages = [];
   static List<Profile> profiles = [];
 
-  static Future<void> initializeConversations() async {
-    await Future.delayed(const Duration(milliseconds: 10));
-    conversations = [
-      Conversation(id: 1, type: 1, image: 'assets/group.png', name: "Неуловимые мстители", lastMessage: " ", time: " ", isMessageRead: false, isOnline: true, countOfOpenedMessages: 0),
-      Conversation(id: 2, type: 2, image: 'assets/Чайлдфри.jpg', name: "Кейт Бланшет", lastMessage: " ", time: " ", isMessageRead: true, isOnline: true, countOfOpenedMessages: 3),
-      Conversation(id: 3, type: 2, image: 'assets/Дарина.jpg', name: "Хелена Боннем Картер", lastMessage: " ", time: " ", isMessageRead: false, isOnline: false, countOfOpenedMessages: 5),
-    ];
-  }
-
-  static Future<void> initializeMessages() async {
-    await Future.delayed(const Duration(milliseconds: 10));
-    messages = [
-      Message(id: 1, status: 3, image: 'assets/Женя.jpg', name: "Кейт Бланшет", content: 1, message: ["0"], time: " ", flag: 1, answers: [], indexOfAnswer: 0, display: true),
-      Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "Кейт Бланшет", content: 1, message: ["1"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
-      Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "кто-то", content: 1, message: ["2"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
-      Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "Хелена Боннем Картер", content: 1, message: ["3"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
-      Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "Кейт Бланшет", content: 1, message: ["4"], time: "---", flag: 2, answers: ["123", "456", "789"], indexOfAnswer: 0, display: true),
-      Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "кто-то", content: 1, message: ["5"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
-      Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "Кейт Бланшет", content: 1, message: ["6"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
-      Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "кто-то", content: 1, message: ["7"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
-      Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "Хелена Боннем Картер", content: 1, message: ["8"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
-      Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "Кейт Бланшет", content: 1, message: ["9"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
-      Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "кто-то", content: 1, message: ["10"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
-      Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "Кейт Бланшет", content: 1, message: ["11"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
-      Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "кто-то", content: 1, message: ["12"], time: "---", flag: 3, answers: [], indexOfAnswer: 0, display: true),
-      Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "Хелена Боннем Картер", content: 1, message: ["13"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
-      Message(id: 1, status: 1, image: 'assets/Женя.jpg', name: "кто-то", content: 1, message: ["14"], time: "---", flag: 1, answers: [], indexOfAnswer: 0, display: true),
-    ];
-  }
-
-  static Future<void> initializeProfiles() async {
-    await Future.delayed(const Duration(milliseconds: 10));
-    profiles = [
-      Profile(image: 'assets/Дарина.jpg', name: "Дарина", status: "Любитель хорроров, но до смерти боюсь Демидова", firstLink: "https://vk.com/crazy_vorobyshek", secondLink: "https://www.kinopoisk.ru/lists/movies/top_100_horrors_by_best_horror_movies/genre--horror/?utm_referrer=yandex.ru", thirdLink:"https://music.yandex.ru/album/30826697"),
-      Profile(image: 'assets/Аня.jpg', name: "Аня", status: "AAAAA", firstLink: "AAAA", secondLink: "AAAA", thirdLink:"AAAA"),
-      Profile(image: 'assets/Кирилл.jpg', name: "Кирилл", status: "AAAAA", firstLink: "AAAA", secondLink: "AAAA", thirdLink:"AAAA"),
-      Profile(image: 'assets/Даня.jpg', name: "Даня", status: "AAAAA", firstLink: "AAAA", secondLink: "AAAA", thirdLink:"AAAA"),
-      Profile(image: 'assets/Чайлдфри.jpg', name: "Чайлдфри", status: "AAAAA", firstLink: "AAAA", secondLink: "AAAA", thirdLink:"AAAA"),
-    ];
-  }
-
   static int getTypeById(int id) {
     Conversation? conversation = conversations.firstWhere((
         conversation) => conversation.id == id);
