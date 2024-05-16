@@ -90,7 +90,7 @@ class gameProcess {
             stop = !stop;
             if (stop) { countOfOpenedMessages ++;
             } else {
-              chatWithOpenAnswers = conversationManager.messages[countOfOpenedMessages + 1].id;
+              chatWithOpenAnswers = conversationManager.messages[countOfOpenedMessages].id;
               plotDevelopment = false;
             }
           }
