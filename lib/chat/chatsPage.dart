@@ -173,8 +173,9 @@ class _detailedChatPageState extends State<detailedChatPage> {
     }
 
     updateChat();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => _scrollToBottom());
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _scrollToBottom();
+    });
   }
 
   void _scrollToBottom() {
@@ -190,14 +191,18 @@ class _detailedChatPageState extends State<detailedChatPage> {
   Future<void> updateChat() async {
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
 
+      bool updated = false;
       if ((conversationManager.messages[gameProcess.countOfOpenedMessages].id == widget.chatsId)
           && ((_localMessages.isEmpty) || (conversationManager.messages[gameProcess.countOfOpenedMessages].message != _localMessages[_localMessages.length - 1].message))) {
         _localMessages.add(conversationManager.messages[gameProcess.countOfOpenedMessages]);
 
-        WidgetsBinding.instance.addPostFrameCallback((_) => _scrollToBottom());
+        updated = true;
       }
 
       setState(() {});
+      if (updated == true) {
+        WidgetsBinding.instance.addPostFrameCallback((_) => _scrollToBottom());
+      }
     }
     );
   }
@@ -255,13 +260,13 @@ class _detailedChatPageState extends State<detailedChatPage> {
         ),
       ),
       body: Container(
-    decoration: const BoxDecoration(
-    image: DecorationImage(
-    image: AssetImage("assets/images/backgroundforchat.jpg"),
-    fit: BoxFit.cover,
-    ),
-    ),
-      child:      Stack(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/backgroundforchat.jpg"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Stack(
         children: <Widget>[
           GestureDetector(
             onTap: () {
@@ -533,6 +538,7 @@ class _detailedChatPageState extends State<detailedChatPage> {
     gameProcess.changeCurrentChat(0);
 
     _localMessages.clear();
+
     _scrollController.dispose();
     super.dispose();
   }
