@@ -4,7 +4,7 @@ import '../chat/chatManager.dart';
 import 'appService.dart';
 
 class gameProcess {
-  static int countOfOpenedMessages = 0;
+  static int countOfOpenedMessages = 30;
   static int currentChat = 0;
   static int chatWithOpenAnswers = 0;
   static bool plotDevelopment = true;

@@ -361,6 +361,9 @@ class _detailedChatPageState extends State<detailedChatPage> {
                       );
                     }
                   }
+                  if (!_localMessages[index].display){
+                    return const SizedBox.shrink();
+                  }
                 }
             ),
           ),
