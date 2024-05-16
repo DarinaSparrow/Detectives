@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../calls/callsPage.dart';
 import '../chat/chatsPage.dart';
 import '../profile/profilePage.dart';
+import 'package:detectives/service/soundPlayer.dart';
+import 'package:detectives/service/appService.dart';
 
 final List<String> _appBarTitles = ['Звонки', 'Чаты', 'Профиль'];
 
@@ -21,9 +23,13 @@ class sceletonOfApp extends StatefulWidget {
 class _sceletonOfAppState
     extends State<sceletonOfApp> {
 
+  final SoundPlayer _soundPlayer = SoundPlayer();
   int _selectedIndex = 1;
 
   void _onItemTapped(int index) {
+    _soundPlayer.stopSound();
+    _soundPlayer.playSound('tap.mp3');
+    appService.vibrate();
     setState(() {
       _selectedIndex = index;
     });

@@ -131,6 +131,7 @@ class _splashScreenState extends State<splashScreen>
                         //   minimumSize: MaterialStateProperty.all(Size(MediaQuery.of(context).size.width * 0.2, MediaQuery.of(context).size.width * 0.1)),
                         // ),
                         onPressed: () {
+                          appService.vibrate();
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(

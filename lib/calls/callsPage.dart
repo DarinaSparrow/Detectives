@@ -1,3 +1,4 @@
+import 'package:detectives/service/appService.dart';
 import 'package:detectives/service/userSettings.dart';
 import 'package:flutter/material.dart';
 import 'package:detectives/service/soundPlayer.dart';
@@ -29,7 +30,9 @@ class _callsPageState extends State<callsPage> {
   };
   
   void addToNumber(String digit) {
+    _soundPlayer.stopSound();
     _soundPlayer.playSound('dialing.mp3');
+    appService.vibrate();
     if (userSettings.phoneNumber.length < 11) {
       setState(() {
 
@@ -39,7 +42,9 @@ class _callsPageState extends State<callsPage> {
   }
 
   void removeLastDigit() {
+    _soundPlayer.stopSound();
     _soundPlayer.playSound('tap.mp3');
+    appService.vibrate();
     setState(() {
       if (userSettings.phoneNumber.isNotEmpty) {
         userSettings.phoneNumber = userSettings.phoneNumber.substring(0, userSettings.phoneNumber.length - 1);
@@ -48,6 +53,7 @@ class _callsPageState extends State<callsPage> {
   }
 
   void dialNumber() {
+    appService.vibrate();
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => const lastCallPage()),
@@ -292,6 +298,7 @@ class lastCallPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 _actionButton(context, icon: Icons.call_end, onPressed: () {
+                  appService.vibrate();
                   soundPlayer.stopSound();
                   Navigator.pop(context);
                   if (userSettings.phoneNumber == '89996665544' && gameProcess.countOfOpenedMessages == 5) {
@@ -313,7 +320,7 @@ class lastCallPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           OutlinedButton(
-            onPressed: null,
+            onPressed: () {appService.vibrate();},
             style: ButtonStyle(
               shape: MaterialStateProperty.all(const CircleBorder()),
               minimumSize: MaterialStateProperty.all(Size.fromRadius(MediaQuery.of(context).size.width * 0.09)),

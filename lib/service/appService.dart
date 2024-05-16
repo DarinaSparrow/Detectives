@@ -1,3 +1,4 @@
+import 'package:detectives/service/userSettings.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -46,10 +47,16 @@ class appService {
     }
   }
 
-  static Future<void> vibrate() async {
-    final hasVibrator = await Vibration.hasVibrator();
-    if (hasVibrator ?? false) {
-      Vibration.vibrate(duration: 500);
+  static Future<void> vibrate({int duration = 20, int amplitude = 30}) async {
+    if (userSettings.vibration == true) {
+      final hasVibrator = await Vibration.hasVibrator();
+      if (hasVibrator ?? false) {
+        Vibration.vibrate(
+          duration: duration,
+          amplitude: amplitude,
+        );
+
+      }
     }
   }
 

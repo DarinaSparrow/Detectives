@@ -23,7 +23,8 @@ class _profilePageState extends State<profilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
-        physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+        physics: const BouncingScrollPhysics(
+            parent: AlwaysScrollableScrollPhysics()),
         children: [
           Padding(
             padding: EdgeInsets.all(MediaQuery.of(context).size.height * 0.02),
@@ -38,12 +39,13 @@ class _profilePageState extends State<profilePage> {
                   _buildDivider(),
                   _buildSettingItem('Скорость сообщения', _buildSpeedOptions()),
                   _buildDivider(),
-                  _buildSettingSwitch('Вибрация', userSettings.vibration, (newValue) {
+                  _buildSettingSwitch('Вибрация', userSettings.vibration,
+                      (newValue) {
                     setState(() {
                       userSettings.vibration = newValue;
                     });
                     dataManager.saveSettings();
-                    appService.vibrate();
+                    appService.vibrate(duration: 300, amplitude: 100);
                   }),
                   _buildDivider(),
                   _buildSettingSwitch('Звук', userSettings.sound, (newValue) {
@@ -51,6 +53,7 @@ class _profilePageState extends State<profilePage> {
                       userSettings.sound = newValue;
                     });
                     dataManager.saveSettings();
+                    appService.vibrate();
                   }),
                   _buildDivider(),
                   _buildSettingButton('Перезапустить историю'),
@@ -66,14 +69,13 @@ class _profilePageState extends State<profilePage> {
   Widget _buildProfileAvatar(String profileImage) {
     double avatarRadius = MediaQuery.of(context).size.width * 0.2;
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        CircleAvatar(
-          radius: avatarRadius,
-          backgroundImage: AssetImage(profileImage),
-        ),
-      ]
-    );
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          CircleAvatar(
+            radius: avatarRadius,
+            backgroundImage: AssetImage(profileImage),
+          ),
+        ]);
   }
 
   Widget _buildProfileInfo(String name, String status) {
@@ -82,23 +84,24 @@ class _profilePageState extends State<profilePage> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        SizedBox(height: largeFontSize,),
+        SizedBox(
+          height: largeFontSize,
+        ),
         Text(
           name,
-          style: TextStyle(
-              fontSize: largeFontSize,
-              fontWeight: FontWeight.bold
-          ),
+          style:
+              TextStyle(fontSize: largeFontSize, fontWeight: FontWeight.bold),
         ),
         Text(
           status,
           style: TextStyle(
               fontSize: middleFontSize,
               fontWeight: FontWeight.bold,
-              color: Colors.grey[700]
-          ),
+              color: Colors.grey[700]),
         ),
-        SizedBox(height: largeFontSize,),
+        SizedBox(
+          height: largeFontSize,
+        ),
       ],
     );
   }
@@ -106,7 +109,8 @@ class _profilePageState extends State<profilePage> {
   Widget _buildSectionTitle(String title) {
     double middleFontSize = MediaQuery.of(context).size.height * 0.025;
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.01),
+      padding: EdgeInsets.symmetric(
+          vertical: MediaQuery.of(context).size.height * 0.01),
       child: Text(
         title,
         style: TextStyle(fontSize: middleFontSize, fontWeight: FontWeight.bold),
@@ -160,6 +164,7 @@ class _profilePageState extends State<profilePage> {
       children: [
         ElevatedButton(
           onPressed: () {
+            appService.vibrate();
             setState(() {
               userSettings.selectedSpeed = speedValue;
             });
@@ -169,20 +174,24 @@ class _profilePageState extends State<profilePage> {
             shape: MaterialStateProperty.all<CircleBorder>(
               const CircleBorder(),
             ),
-            backgroundColor: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+            backgroundColor: MaterialStateProperty.resolveWith<Color>(
+                (Set<MaterialState> states) {
               if (userSettings.selectedSpeed == speedValue) {
                 return Colors.blue;
               }
               return Colors.grey;
             }),
           ),
-          child: Icon(icon,),
+          child: Icon(
+            icon,
+          ),
         ),
       ],
     );
   }
 
-  Widget _buildSettingSwitch(String label, bool value, ValueChanged<bool> onChanged) {
+  Widget _buildSettingSwitch(
+      String label, bool value, ValueChanged<bool> onChanged) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -200,28 +209,34 @@ class _profilePageState extends State<profilePage> {
 
   Widget _buildSettingButton(String label) {
     return ElevatedButton(
-      onPressed: () => showDialog<String>(
-        context: context,
-        builder: (BuildContext context) => AlertDialog(
-          title: const Text('Подтверждение'),
-          content: const Text('Вы уверены, что хотите перезапустить историю?'),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context, 'Нет');
-              },
-              child: const Text('Нет'),
-            ),
-            TextButton(
-              onPressed: () {
-                dataManager.resetGameProgress();
-                Navigator.pop(context, 'Да');
-              },
-              child: const Text('Да'),
-            ),
-          ],
-        ),
-      ),
+      onPressed: () {
+        appService.vibrate();
+        showDialog<String>(
+          context: context,
+          builder: (BuildContext context) => AlertDialog(
+            title: const Text('Подтверждение'),
+            content:
+                const Text('Вы уверены, что хотите перезапустить историю?'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () {
+                  appService.vibrate();
+                  Navigator.pop(context, 'Нет');
+                },
+                child: const Text('Нет'),
+              ),
+              TextButton(
+                onPressed: () {
+                  appService.vibrate();
+                  dataManager.resetGameProgress();
+                  Navigator.pop(context, 'Да');
+                },
+                child: const Text('Да'),
+              ),
+            ],
+          ),
+        );
+      },
       child: Text(label),
     );
   }
