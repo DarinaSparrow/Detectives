@@ -61,7 +61,7 @@ class _splashScreenState extends State<splashScreen>
   Future<void> _loadResources() async {
     try {
       // Загрузка данных и ресурсов
-      await dataManager.startFromAssets();
+      await dataManager.startFromDevice();
       await appService.initialize();
     } catch (e) {
       print('Ошибка загрузки ресурсов: $e');

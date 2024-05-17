@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:detectives/service/userSettings.dart';
 import 'package:intl/intl.dart';
 import '../chat/chatManager.dart';
+import '../service/dataManager.dart';
 import 'appService.dart';
 
 class gameProcess {
@@ -48,18 +49,23 @@ class gameProcess {
         break;
     }
     resetTimer = true;
+
+    dataManager.saveGameProcess();
   }
 
   static void changeCurrentChat(int newChatIndex) {
     currentChat = newChatIndex;
+    dataManager.saveGameProcess();
   }
 
   static void changeChatWithOpenAnswers() {
     chatWithOpenAnswers = 0;
+    dataManager.saveGameProcess();
   }
 
   static void runPlot() {
     plotDevelopment = true;
+    dataManager.saveGameProcess();
   }
 
   static Future<void> runGameLoop() async {
@@ -84,8 +90,9 @@ class gameProcess {
                   .indexOfAnswer],
               conversationManager.messages[countOfOpenedMessages].time);
 
-          if (currentChat !=
-              conversationManager.messages[countOfOpenedMessages].id) {
+          if ((currentChat !=
+              conversationManager.messages[countOfOpenedMessages].id) &&
+              (conversationManager.messages[countOfOpenedMessages].name != "Женя")) {
             if (conversationManager.messages[countOfOpenedMessages].content ==
                 1) {
               appService.sendNotification(
@@ -103,6 +110,8 @@ class gameProcess {
             if (countOfOpenedMessages < conversationManager.messages.length - 1) {
               conversationManager.setIsOnlineById(
                   conversationManager.messages[countOfOpenedMessages + 1].id);
+
+              dataManager.saveConversations();
             }
 
             if (countOfOpenedMessages == 0) countOfOpenedMessages++;
@@ -121,6 +130,8 @@ class gameProcess {
         resetTimer = false;
         timer.cancel();
         runGameLoop();
+
+        dataManager.saveGameProcess();
       }
     });
   }
@@ -133,5 +144,7 @@ class gameProcess {
     stop = true;
     duration = 3;
     resetTimer = false;
+
+    dataManager.saveGameProcess();
   }
 }

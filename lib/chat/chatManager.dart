@@ -1,5 +1,6 @@
 import 'package:intl/intl.dart';
 import '../service/gameProcess.dart';
+import '../service/dataManager.dart';
 
 class Conversation {
   int id;
@@ -214,6 +215,9 @@ class conversationManager
     Conversation conversation = conversations[index];
     conversations.removeAt(index);
     conversations.insert(0, conversation);
+
+    dataManager.saveConversations();
+    dataManager.saveMessages();
   }
 
   static saveAnswer(int answer, int id, String message) {

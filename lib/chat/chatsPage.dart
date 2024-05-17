@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import '../service/gameProcess.dart';
+import '../service/dataManager.dart';
 import 'chatManager.dart';
 import '../profile/charactersProfilePage.dart';
 
@@ -47,6 +48,7 @@ class _chatsPageState extends State<chatsPage> {
               return GestureDetector(
                 onTap: () {
                   conversationManager.setIsMessageReadById(conversationManager.conversations[index].id);
+                  dataManager.saveConversations();
                   Navigator.push(
                     context,
                     MaterialPageRoute(
