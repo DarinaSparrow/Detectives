@@ -65,6 +65,7 @@ class gameProcess {
 
   static void runPlot() {
     plotDevelopment = true;
+    if (conversationManager.messages[countOfOpenedMessages].flag == 3) countOfOpenedMessages++;
     dataManager.saveGameProcess();
   }
 
@@ -76,7 +77,6 @@ class gameProcess {
           conversationManager.setIsOnlineById(0);
           timer.cancel();
         } else {
-
           DateTime now = DateTime.now();
           conversationManager.messages[countOfOpenedMessages + 1].time =
               DateFormat('HH:mm').format(now);
@@ -107,23 +107,31 @@ class gameProcess {
           }
 
           if (conversationManager.messages[countOfOpenedMessages].flag == 1) {
-            if (countOfOpenedMessages < conversationManager.messages.length - 1) {
+            if (countOfOpenedMessages <
+                conversationManager.messages.length - 1) {
+              DateTime now = DateTime.now();
+              conversationManager.messages[countOfOpenedMessages + 1].time =
+                  DateFormat('HH:mm').format(now);
+
               conversationManager.setIsOnlineById(
                   conversationManager.messages[countOfOpenedMessages + 1].id);
-
-              dataManager.saveConversations();
             }
 
             countOfOpenedMessages++;
           }
           else
           if (conversationManager.messages[countOfOpenedMessages].flag == 2) {
-            chatWithOpenAnswers = conversationManager.messages[countOfOpenedMessages].id;
-            plotDevelopment = false;
+            stop = !stop;
+            if (stop) { countOfOpenedMessages ++;
+            } else {
+              chatWithOpenAnswers = conversationManager.messages[countOfOpenedMessages].id;
+              plotDevelopment = false;
+            }
           }
           else {
             plotDevelopment = false;
           }
+
         }
       }
       if (resetTimer){
