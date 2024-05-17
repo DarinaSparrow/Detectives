@@ -41,10 +41,10 @@ class gameProcess {
         gameProcess.duration = 6;
         break;
       case 2:
-        gameProcess.duration = 3;
+        gameProcess.duration = 4;
         break;
       case 3:
-        gameProcess.duration = 1;
+        gameProcess.duration = 2;
         break;
     }
     resetTimer = true;

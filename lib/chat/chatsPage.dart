@@ -1,3 +1,4 @@
+import 'package:detectives/service/soundPlayer.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import '../service/gameProcess.dart';
@@ -199,7 +200,9 @@ class _detailedChatPageState extends State<detailedChatPage> {
         _localMessages.add(conversationManager.messages[gameProcess.countOfOpenedMessages]);
 
         updated = true;
-        WidgetsBinding.instance.addPostFrameCallback((_) => _scrollToBottom());
+        SoundPlayer.instance.stopSound();
+        SoundPlayer.instance.playSound('message.mp3');
+        //WidgetsBinding.instance.addPostFrameCallback((_) => _scrollToBottom());
       }
 
       setState(() {});

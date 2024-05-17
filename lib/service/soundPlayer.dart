@@ -25,6 +25,7 @@ class SoundPlayer {
 
   Future<void> playSound(String assetPath, {bool loop = false, Function()? onCompletion}) async {
     if (userSettings.sound == true) {
+      await _audioPlayer.stop();
       _onCompletion = onCompletion;
       if (loop) {
         _audioPlayer.setReleaseMode(ReleaseMode.loop);

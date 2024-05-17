@@ -147,7 +147,7 @@ class _splashScreenState extends State<splashScreen>
                         child: FittedBox(
                           fit: BoxFit.fill,
                           child: Text(
-                            'Гоу ту мессенждер',
+                            'Открыть мессенждер',
                             style: TextStyle(
                               fontSize: MediaQuery.of(context).size.width * 0.1,
                               color: Colors.black,
