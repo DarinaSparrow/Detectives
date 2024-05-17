@@ -47,7 +47,7 @@ class dataManager {
   // Сброс игрового прогресса
   static Future<void> resetGameProgress() async{
     await _loadConversationsFromAssets();
-    await _loadMessagesFromDevice();
+    await _loadMessagesFromAssets();
   }
 
   static Future<void> _loadSettingsFromDevice() async {
