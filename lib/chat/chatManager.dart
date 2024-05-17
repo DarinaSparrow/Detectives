@@ -197,7 +197,7 @@ class conversationManager
     }
   }
 
-  static void updateChats(int id, int content, String lastMessage, String time) {
+  static void updateChats(int id, String name, int content, String lastMessage, String time) {
     int index = conversations.indexWhere((conversation) => conversation.id == id);
 
     if (content == 2) {
@@ -210,7 +210,7 @@ class conversationManager
       }
     }
     conversations[index].time = time;
-    if (id != gameProcess.currentChat) conversations[index].isMessageRead = false;
+    if ((id != gameProcess.currentChat) && (name != "Женя")) conversations[index].isMessageRead = false;
 
     Conversation conversation = conversations[index];
     conversations.removeAt(index);

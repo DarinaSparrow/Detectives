@@ -76,7 +76,6 @@ class gameProcess {
           conversationManager.setIsOnlineById(0);
           timer.cancel();
         } else {
-          if (countOfOpenedMessages != 0) countOfOpenedMessages++;
 
           DateTime now = DateTime.now();
           conversationManager.messages[countOfOpenedMessages + 1].time =
@@ -84,6 +83,7 @@ class gameProcess {
 
           conversationManager.updateChats(
               conversationManager.messages[countOfOpenedMessages].id,
+              conversationManager.messages[countOfOpenedMessages].name,
               conversationManager.messages[countOfOpenedMessages].content,
               conversationManager.messages[countOfOpenedMessages]
                   .message[conversationManager.messages[countOfOpenedMessages]
@@ -98,7 +98,7 @@ class gameProcess {
               appService.sendNotification(
                   conversationManager.messages[countOfOpenedMessages].name,
                   conversationManager.messages[countOfOpenedMessages]
-                      .message[0]);
+                      .message[conversationManager.messages[countOfOpenedMessages].indexOfAnswer]);
             } else {
               appService.sendNotification(
                   conversationManager.messages[countOfOpenedMessages].name,
@@ -114,7 +114,7 @@ class gameProcess {
               dataManager.saveConversations();
             }
 
-            if (countOfOpenedMessages == 0) countOfOpenedMessages++;
+            countOfOpenedMessages++;
           }
           else
           if (conversationManager.messages[countOfOpenedMessages].flag == 2) {
